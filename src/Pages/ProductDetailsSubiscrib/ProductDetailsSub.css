@@ -1,0 +1,23 @@
+.main-content{
+    margin-top: 65px;
+}
+h3{
+    color:  var(--bs-heading-color);
+}
+p{
+    color: var(--main-color);
+}
+
+.fade {
+    margin-top: 150px;
+}
+
+.modal-title{
+    color: black;
+    font-weight: bold;
+}
+
+.modal-body label {
+    color: var(--main-color);
+    font-weight: bold;
+}

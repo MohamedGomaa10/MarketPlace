@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
+
+/* Variables */
+:root {
+  --main-color: #8396BF;
+  --text-color: #FFFFFF;
+  --icon-color: #00FFC3;
+  --card-color: #191B3B;
+  --font-size: 15px;
+  --font-family: 'Tajawal', sans-serif;
+}
+
+/* Language */
+*:lang(ar) {
+  direction: rtl !important;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: var(--font-size) !important;
+  font-family: var(--font-family) !important;
+  color: var(--text-color) !important;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  overflow-x: hidden;
+  background-color: #0B0D2E !important;
+}
+
+a,
+a:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  appearance: unset !important;
+  -webkit-appearance: unset !important;
+}
+
+input, select, textarea, button,
+input:focus, select:focus, textarea:focus, button:focus,
+input:hover, select:hover, textarea:hover, button:hover {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: none !important;
+  background-color: #fff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+span.error {
+  color: var(--danger-color)  !important;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000 !important;
+}
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color) !important;
+  border-radius: 5px;
+}
+
+h2 {
+  color: var(--text-color) !important;
+  font-size: 50px;
+  position: relative;
+}
+
+[dir="rtl"] h2 {
+  letter-spacing: 3px;
+}
+
+p {
+  color: var(--main-color) !important;
+  font-weight: 600;
+}
+
+[dir="rtl"] p {
+  letter-spacing: .5px;
+}
+
+
+button {
+  font-weight: 900;
+  border-radius: 15px;
+  color: #0B0D2E !important;
+  cursor: pointer;
+  font-family: 'Tajawal';
+}
+
+@media(max-width:767px) {
+  h2 {
+    font-size: 28px;
+    /* white-space: nowrap !important; */
+  }
+}

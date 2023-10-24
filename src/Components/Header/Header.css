@@ -1,0 +1,65 @@
+.page_header {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.page_header h1 {
+    font-size: 70px;
+    position: relative;
+}
+
+.page_header h1::after {
+    content: url("../../Assets/pathRight.png");
+    position: absolute;
+    top: 114%;
+    transform: translateY(-50%);
+    right: -10%;
+}
+
+.page_header h1::before {
+    content: url("../../Assets/featurs.png");
+    position: absolute;
+    top: 114%;
+    transform: translateY(-50%);
+    left: -10%;
+}
+
+.page_header p {
+    width: 26%;
+    margin: 0 auto;
+    margin-top: 18px;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 17px;
+}
+
+@media(max-width:1023px) {
+    .page_header h1::before {
+        z-index: -1;
+    }
+
+    .page_header h1::after {
+        display: none;
+    }
+    
+    .page_header p {
+        width: 100%;
+    }
+    .page_header h1::before{
+        top: 4%;
+    }
+}
+
+@media(max-width:767px) {
+    .page_header {
+        text-align: center;
+        margin-top: 22px;
+    }
+
+    .page_header h1 {
+        font-size: 45px;
+    }
+    .page_header h1::before{
+        top: 40%;
+    }
+}

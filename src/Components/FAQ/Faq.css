@@ -1,0 +1,142 @@
+.faq {
+    position: relative;
+    margin-top: 190px;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 50px;
+    margin-bottom: 66px;
+    position: relative;
+}
+
+.faq h2::after {
+    content: url('../../Assets/coject.png');
+    top: -120px;
+    position: absolute;
+    display: inline-block;
+}
+
+
+
+.faq article {
+    width: 28%;
+    margin: 0 auto;
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    padding-bottom: 10px;
+}
+
+.faq article:not(:first-child) {
+    margin-top: 20px;
+}
+
+.faq article header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.faq article header h4.bold {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.faq article button {
+    background-color: transparent;
+    border: none;
+    color: var(--main-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.faq article p {
+    color: #fff;
+    max-width: 80%;
+    margin-top: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.faq .actions {
+    margin-top: 50px;
+}
+
+.faq .actions ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.faq .actions ul li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+[dir="rtl"] .faq .actions ul li {
+    font-weight: 900;
+}
+
+.faq .actions ul li.question {
+    color: var(--main-color);
+}
+
+.faq .actions ul li.action {
+    color: var(--icon-color);
+    font-weight: bold;
+}
+
+[dir="ltr"] .faq .actions ul li.action img {
+    transform: rotate(180deg);
+}
+
+@media(min-width:1023px) {
+    [dir="ltr"] .faq h2::after {
+        right: 25%;
+    }
+
+    [dir="rtl"] .faq h2::after {
+        right: 28%;
+    }
+}
+
+@media(max-width:1023px) {
+    .faq {
+        margin-top: 75px;
+    }
+
+    .faq article {
+        width: 100%;
+    }
+
+    .faq h2::after {
+        left: 50%;
+        top: -50px;
+        transform: translateX(-50%) !important;
+    }
+}
+
+@media(max-width:767px) {
+    .faq {
+        margin-top: 100px;
+    }
+
+    .faq h2 {
+        font-size: 25px;
+    }
+
+    [dir="rtl"] .faq h2::after {
+        transform: translate(35%, -26%);
+    }
+
+    .faq article p {
+        max-width: 100%;
+    }
+
+    .faq article h4 {
+        font-size: 14px;
+    }
+}

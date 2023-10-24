@@ -1,0 +1,161 @@
+.ActiveCoupons {
+    margin-top: 70px;
+}
+
+html[dir="rtl"] .ActiveCoupons {
+    padding: 70px 60px 102px 130px;
+}
+
+html[dir="ltr"] .ActiveCoupons {
+    padding: 70px 130px 102px 60px;
+}
+
+.ActiveCoupons .mainTitle {
+    font-size: 30px;
+    line-height: 56px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.ActiveCoupons .subTitle {
+    font-size: 20px;
+    line-height: 56px;
+    font-weight: 400;
+    color: #8396BF;
+}
+.ActiveCoupons .CouponsActions{
+    display: flex;
+}
+
+.ActiveCoupons .section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    border-radius: 40px;
+    background-color: #8295BF1A;
+    color: #8396BF;
+    font-size: 16px;
+    line-height: 56px;
+    font-weight: 500;
+    margin: 5px;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.ActiveCoupons .section:hover {
+    background-color: #00FFC3;
+    color: #0B0D2E;
+}
+
+.ActiveCoupons>.row:nth-child(3) {
+    width: 100%;
+    margin: auto;
+}
+
+.ActiveCoupons .cardsContainer {
+    display: grid;
+    gap: 13px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ActiveCoupons .card {
+    /* width: 400px; */
+    /* min-height: 460px; */
+    padding: 0;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: #191B3B;
+    color: #ffffff;
+}
+
+.ActiveCoupons .card-body {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.ActiveCoupons .card-title {
+    font-size: 24px;
+    line-height: 28.8px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.ActiveCoupons .card-text {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.ActiveCoupons .card-text .title {
+    font-size: 20px;
+    line-height: 56px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.ActiveCoupons .card-text .amount {
+    line-height: 56px;
+    font-weight: 500;
+    color: #00FFC3;
+}
+
+.ActiveCoupons .card-text .amount .price {
+    font-size: 20px;
+}
+
+.ActiveCoupons .card-text .amount .currency {
+    font-size: 12px;
+}
+
+.ActiveCoupons .card-footer {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #00FFC3;
+}
+
+.ActiveCoupons .pagination i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.ActiveCoupons .pagination span {
+    font-size: 20px;
+}
+
+.ActiveCoupons .pagnationcurrent {
+    background: #191b3b;
+    width: 50px;
+    height: 32px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 6px;
+}
+
+.ActiveCoupons .pagination .bi-arrow-right,
+.ActiveCoupons .pagination .bi-arrow-left {
+    color: #00FFC3;
+}
+
+@media(max-width:600px) {
+    .ActiveCoupons {
+        width: 100%;
+        padding: 0 15px !important;
+    }
+
+    .ActiveCoupons .CouponsActions{
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .ActiveCoupons .cardsContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .ActiveCoupons .card {
+        width: fit-content;
+    }
+}

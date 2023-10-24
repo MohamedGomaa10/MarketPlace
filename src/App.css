@@ -1,0 +1,29 @@
+.app {
+  position: relative;
+}
+
+.app .app_container {
+  margin: 0 auto;
+  padding: 0px 68px;
+}
+
+@media(max-width:500px) {
+  .app .app_container {
+      margin: 0 auto !important;
+      padding: 0 20px !important;
+  }
+}
+
+section{
+  z-index: 1;
+}
+
+.app_marketing .app_container_marketing{
+  display: flex;
+}
+
+.app_marketing .Container_body{    
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}

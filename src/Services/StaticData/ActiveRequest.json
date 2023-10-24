@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "name": "Activation Requests",
+        "card_Body": [
+            {
+                "id": 1,
+                "name": "Accept",
+                "icon": "bi bi-journal-check",
+                "number": 1,
+                "color": "var(--icon-color)"
+            },
+            {
+                "id": 1,
+                "name": "Pending",
+                "icon": "bi bi-journal-text",
+                "number": 1,
+                "color": "#FFAA00"
+            },
+            {
+                "id": 2,
+                "name": "Refuse",
+                "icon": "bi bi-journal-x",
+                "number": 2,
+                "color": "#FF6670"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Activation Coupons",
+        "card_Body": [
+            {
+                "id": 1,
+                "name": "Active",
+                "icon": "bi bi-file-earmark-check",
+                "number": 1,
+                "color": "#FFAA00"
+            },
+            {
+                "id": 2,
+                "name": "Not Active",
+                "icon": "bi bi-file-earmark-x",
+                "number": 1,
+                "color": "#FFF"
+            },
+            {
+                "id": 2,
+                "name": "Finished",
+                "icon": "bi bi-file-earmark",
+                "number": 1,
+                "color": "#FFAA00"
+            },
+            {
+                "id": 2,
+                "name": "Off",
+                "icon": "bi bi-file-earmark-break",
+                "number": 1,
+                "color": "#FF6670"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Sales",
+        "card_Body": [
+            {
+                "id": 1,
+                "name": "Confirmed",
+                "icon": "bi bi-graph-up-arrow",
+                "number": 1,
+                "color": "#FF6670"
+            },
+            {
+                "id": 2,
+                "name": "Complete",
+                "icon": "bi bi-graph-up-arrow",
+                "number": 1,
+                "color": "#FFF"
+            },
+            {
+                "id": 2,
+                "name": "Pending",
+                "icon": "bi bi-graph-up-arrow",
+                "number": 1,
+                "color": "#FFAA00"
+            },
+            {
+                "id": 2,
+                "name": "Canceled",
+                "icon": "bi bi-graph-down-arrow",
+                "number": 1,
+                "color": "#FF6670"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Finance",
+        "card_Body": [
+            {
+                "id": 1,
+                "name": "Confirmed",
+                "icon": "bi bi-currency-dollar",
+                "number": 50,
+                "color": "var(--icon-color)"
+            }
+        ]
+    }
+]

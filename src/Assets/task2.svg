@@ -1,0 +1,17 @@
+<svg id="Group_12" data-name="Group 12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35" viewBox="0 0 35 35">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_89" data-name="Rectangle 89" width="17" height="17" fill="#fff" stroke="#191b3b" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="GD001_LS00_2021" fill="#8396bf" stroke="#8396bf" stroke-width="1.5">
+    <rect width="35" height="35" rx="12" stroke="none"/>
+    <rect x="0.75" y="0.75" width="33.5" height="33.5" rx="11.25" fill="none"/>
+  </g>
+  <g id="Mask_Group_15" data-name="Mask Group 15" transform="translate(9 9)" clip-path="url(#clip-path)">
+    <g id="_2561496_user_icon" data-name="2561496_user_icon" transform="translate(2.087 0.85)">
+      <path id="Path_36" data-name="Path 36" d="M17,17.85v-1.7a3.4,3.4,0,0,0-3.4-3.4H6.8a3.4,3.4,0,0,0-3.4,3.4v1.7" transform="translate(-3.4 -2.55)" fill="none" stroke="#191b3b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+      <circle id="Ellipse_6" data-name="Ellipse 6" cx="3.4" cy="3.4" r="3.4" transform="translate(3.4)" fill="none" stroke="#191b3b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "Name": "هوجو",
+        "Image": "2a1c59ad-7600-4181-95f2-617e10f3545d.png",
+        "discount": "23",
+        "commission": "6.5"
+    },
+    {
+        "id": 2,
+        "Name": "عين",
+        "Image": "62d4607f-1bb6-4798-9914-b7b54a94cc87.png",
+        "discount": "35",
+        "commission": "9"
+    },
+    {
+        "id": 3,
+        "Name": "سكرايبر",
+        "Image": "0a72f315-acda-4884-a701-03e16d65cb36.png",
+        "discount": "13",
+        "commission": "10"
+    }
+]

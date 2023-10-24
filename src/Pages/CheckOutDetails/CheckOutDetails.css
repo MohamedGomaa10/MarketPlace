@@ -1,0 +1,265 @@
+.marContiner{
+    margin-top: 175px;
+    position: relative;
+}
+
+.ImageBackGroundWave{
+    position: absolute;
+    right: 0;
+}
+
+.ImageBackGroundLogo{
+    position: absolute;
+    left: 0;
+}
+
+.MainCard{
+    z-index: 999999999;
+}
+.MainCardParent{
+    flex-direction: column;
+}
+
+.CardPayment{
+    background-color: #191B3B;
+    padding: 0 20 20 20;
+}
+
+.CardFrist{
+    border-top: 8px solid var(--icon-color);
+    background-color: #191B3B;
+    margin-top: 0;
+    padding-bottom: 100px;
+    border-radius: 10px;
+}
+
+.CardSecond{
+    background-color: #0B0D2E;
+}
+
+.CardSecond i{
+    font-size: 100px;
+    color: var(--icon-color);
+}
+.CardSecond button{
+    width: 30%;
+    background-color: var(--icon-color);
+    height: 50px;
+    border: 1px solid var(--icon-color);
+}
+
+.CardFrist h5{
+    color:var(--main-color);
+}
+
+.CardFrist h1{
+    color: var(--icon-color);
+    font-weight: bold;
+}
+hr {
+    margin: 1.875em 0;
+    border: none;
+    border-bottom: solid 3px var(--main-color);
+}
+
+.dashed {
+    border-bottom: dashed 3px var(--main-color);
+}
+
+.UserData{
+    margin-bottom: 20px;
+}
+
+.UserData h6{
+    color: var(--icon-color);
+}
+
+.FristCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .faild{
+     text-align: center;
+  }
+
+  .Links{
+    width: 65%;
+    margin-bottom: 50px;
+    z-index: 999999999;
+  }
+  
+  .Links h1{
+    font-weight: bold;
+  }
+  
+  .LinksDetails{
+    display: flex;
+    color: var(--main-color);
+    gap: 5px;
+  }
+  
+  .LinksDetails h4 {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .LinksDetails h5 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .modalInvoice{
+    z-index: 9999999999999999;
+  }
+
+  .FreeModal{
+    width: 100%;
+  }
+
+  .HeaderInvoice{
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+    overflow: hidden;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+
+  .Invoice{
+    width: 550px;
+    height: 130px;
+    background-color: #0B0D2E;    
+    transform: skewX(35deg);
+    margin-right: -72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Invoice h1{
+    transform: skewX(-35deg);
+    font-size: 45px;
+    font-weight: bold;
+  }
+  .modal-header{
+    padding: 0;
+  }
+
+  .modal-dialog{
+    max-width: 100% !important;
+    width: 850px !important;
+  }
+
+  .CompanyLogo{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+  }
+  .CompanyLogo img{
+    max-width: 170px;
+  }
+
+  .InvoiceDate{
+    width: 478px;
+    height: 40px;
+    background-color: #0B0D2E;
+    transform: skewX(35deg);
+    margin-right: -72px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 18px;
+    padding: 0px 8px;
+  }
+
+  .InvoiceDate h6{
+    transform: skewX(-35deg);
+    font-size: 16px;
+  }
+  .InvoiceDate h6 span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .GateWay{
+    padding: 20px;
+    color: #0B0D2E;
+    display: flex;
+    flex-direction: column;
+  }
+  .GateWay h6 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .GateWay h6 span{
+    color: #1c253a !important;
+  }
+
+  .GateWay span{
+    color: #1c253a !important;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  table{
+    width: 100%;
+  }
+
+  table thead{
+    background-color: #0B0D2E;
+    height: 40px;
+    text-align: center;
+  }
+
+  table tbody{
+    color: #1c253a !important;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    height: 60px;
+  }
+  table tbody tr{
+    height: 60px;
+  }
+
+  .Payment_Info {
+    text-align: start;
+  }
+
+  tr {
+  border-bottom: 1px solid #ddd;
+  }
+
+  .tableParent{
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .PaymentInfo{
+    padding: 20px;
+  }
+
+  .PaymentInfo h5{
+    font-size: 22px;
+    font-weight: bold;
+    color: #0B0D2E;
+  }
+  .PaymentInfo h6{
+    font-size: 18px;
+    font-weight: bold;
+    color: #191B3B;
+  }
+
+  .TotalAmount td{
+    color: #FFF;
+    font-size: 24px;
+    font-weight: bold;
+    background: #0B0D2E;
+  }
+
+  .QrCode{
+    padding: 0px 0px 0px 20px;
+  }

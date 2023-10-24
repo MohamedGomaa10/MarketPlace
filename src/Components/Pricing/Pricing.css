@@ -1,0 +1,223 @@
+.cpricing {
+    position: relative;
+    margin: 0 auto;
+    /* max-width: 75%; */
+    margin-top: 150px;
+}
+
+.cpricing h2 {
+    text-align: center;
+    font-size: 50px;
+}
+
+.cpricing .pricing_type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 45px 0 70px 0;
+}
+
+[dir="rtl"] .cpricing .pricing_type {
+    flex-direction: row-reverse;
+
+}
+
+.cpricing .pricing_type span {
+    color: var(--icon-color);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.cpricing .pricing_type ul {
+    display: flex;
+    align-items: center;
+}
+
+.cpricing .pricing_type ul li button {
+    cursor: pointer;
+    height: 53px;
+    width: 120px;
+    border: none;
+    background-color: #191B3B;
+    color: #fff;
+    border-radius: 15px;
+}
+
+.cpricing .pricing_type ul li button.inline {
+    background-color: #fff;
+    color: #191B3B;
+}
+
+.cpricing .pricing_type ul li:nth-child(1) button.inline {
+    transform: translateX(15px);
+}
+
+[dir="rtl"] .cpricing .pricing_type ul li:nth-child(1) button.inline {
+    transform: translateX(-15px);
+}
+
+.cpricing .pricing_type ul li:nth-child(2) button.inline {
+    transform: translateX(-15px);
+}
+
+[dir="rtl"] .cpricing .pricing_type ul li:nth-child(2) button.inline {
+    transform: translateX(15px);
+}
+
+.cpricing .plan_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.cpricing .plan_container .plan {
+    width: 260px;
+    height: 640px;
+    background-color: var(--card-color);
+    padding: 40px 30px;
+    border-radius: 15px;
+}
+
+.cpricing .plan_container .plan.pro {
+    border: 1px solid var(--icon-color);
+    box-shadow: 0px 1px 5px 3px rgba(0, 255, 195, 1);
+    -webkit-box-shadow: 0px 1px 5px 3px rgba(0, 255, 195, 1);
+    -moz-box-shadow: 0px 1px 5px 3px rgba(0, 255, 195, 1);
+    /* box-shadow: var(--icon-color); */
+}
+
+.cpricing .plan_container .plan h3 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cpricing .plan_container .plan h3 span {
+    color: var(--icon-color);
+    font-size: 11px;
+}
+
+.cpricing .plan_container .plan h3.price {
+    gap: 1px;
+}
+
+.cpricing .plan_container .plan h3.price span {
+    color: var(--main-color);
+    font-size: 20px;
+    transform: translateY(4px);
+}
+
+.cpricing .plan_container .plan p {
+    color: var(--main-color);
+    margin-bottom: 30px;
+    min-height: 70px;
+}
+
+.cpricing .plan_container .plan button {
+    width: 200px;
+    padding: 15px 0;
+    border-radius: 15px;
+    background-color: #ffff;
+    color: #fff;
+    border: none;
+    border: 2px solid #fff;
+    box-shadow: none;
+    margin-bottom: 28px;
+}
+
+.cpricing .plan_container .plan button.inline {
+    background-color: #fff;
+    color: #0B0D2E;
+}
+
+.cpricing .plan_container .plan ul li {
+    color: var(--main-color);
+    position: relative;
+}
+
+.cpricing .plan_container .plan ul li::before {
+    content: url("../../Assets/mask.png");
+    margin-inline-end: 10px;
+}
+
+.prcpricingicing .plan_container .plan ul li:not(:first-child) {
+    margin-top: 9px;
+}
+
+.cpricing .plan_container .plan.enterprise button {
+    margin-bottom: 75px;
+}
+
+.cpricing .compare {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.cpricing .compare ul li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--icon-color);
+    font-weight: bold;
+}
+
+.cpricing .compare ul li .icon {
+    display: flex;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+[dir="ltr"] .cpricing .compare ul li .icon img {
+    transform: rotate(180deg);
+}
+
+@media(max-width:1230px) {
+    .cpricing {
+        max-width: 100%;
+        margin-top: 80px;
+    }
+
+    .cpricing .plan_container .plan {
+        width: 100%;
+    }
+    
+    .cpricing .plan_container .plan {
+        height: 535px;
+    }
+    .cpricing .plan_container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media(min-width:1024px) {
+    .cpricing .plan_container .plan h3 {
+        min-height: 80px;
+    }
+}
+
+@media(max-width:767px) {
+    .cpricing {
+        max-width: 100%;
+        margin-top: 80px;
+    }
+
+    .cpricing .plan_container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cpricing .plan_container .plan {
+        width: 100%;
+    }
+
+    .cpricing .pricing_type ul li button {
+        height: 45px;
+        width: 105px;
+        border-radius: 11px;
+    }
+}

@@ -1,0 +1,376 @@
+.BrowseApplicationDetail {
+    width: 100%;
+    margin-top: 65px;
+}
+
+html[dir="rtl"] .BrowseApplicationDetail {
+    padding: 70px 60px 102px 130px;
+}
+
+html[dir="ltr"] .BrowseApplicationDetail {
+    padding: 70px 130px 102px 60px;
+}
+
+.BrowseApplicationDetail .container_body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.BrowseApplicationDetail .headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.BrowseApplicationDetail .headerTitle h1 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.BrowseApplicationDetail .headerTitle .arrowBack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(131, 150, 191, 0.3);
+    border-radius: 50px;
+}
+
+.BrowseApplicationDetail .headerTitle .bi-arrow-right {
+    display: flex;
+    color: #00FFC3;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.BrowseApplicationDetail .contentBody {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, 1.5fr) repeat(1, 1fr);
+}
+
+.BrowseApplicationDetail .cardDetails {
+    border: 1px solid #191b3b;
+    background: #191b3b;
+    border-radius: 20px;
+}
+
+.BrowseApplicationDetail .appDetails .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF !important;
+}
+
+.BrowseApplicationDetail .appDetails .details {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.BrowseApplicationDetail .appDetails .row:first-child .details {
+    line-height: 24px !important;
+}
+
+.BrowseApplicationDetail .appDetails,
+.BrowseApplicationDetail .couponDetail {
+    padding: 30px 31px 30px 25px;
+}
+
+.BrowseApplicationDetail .couponDetail,
+.BrowseApplicationDetail .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.BrowseApplicationDetail .cardChild {
+    background: #0b0d2e;
+    border-radius: 8px;
+    display: flex;
+    height: 95px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 60px;
+    padding-right: 20px;
+}
+
+.BrowseApplicationDetail .cardText span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 56px;
+}
+
+.BrowseApplicationDetail .textValue {
+    display: flex;
+    gap: 10px;
+}
+
+.BrowseApplicationDetail .textTitle span {
+    color: #FFFFFF;
+}
+
+.BrowseApplicationDetail .textValue span {
+    color: #00FFC3;
+}
+
+.BrowseApplicationDetail span.price {
+    font-size: 30px;
+}
+
+.BrowseApplicationDetail span.currency {
+    font-size: 16px;
+}
+
+.BrowseApplicationDetail .usesDetails .title,
+.BrowseApplicationDetail .linkDetails .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF !important;
+    margin-bottom: 0;
+}
+
+.BrowseApplicationDetail .usesDetails .row {
+    height: 100%;
+    align-items: center;
+}
+
+.BrowseApplicationDetail .usesDetails span.currency {
+    color: #00FFC3 !important;
+}
+
+.BrowseApplicationDetail .usesDetails .row .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.BrowseApplicationDetail .usesDetails,
+.BrowseApplicationDetail .linkDetails {
+    padding: 15px 31px 15px 25px;
+}
+
+.BrowseApplicationDetail .linkDetails .row {
+    height: 100%;
+    align-items: center;
+}
+
+.BrowseApplicationDetail .linkDetails .row .col-md-12 {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.BrowseApplicationDetail .currency.title,
+.BrowseApplicationDetail .link.title {
+    color: #00FFC3 !important;
+}
+
+.BrowseApplicationDetail .storeDetails,
+.BrowseApplicationDetail .stats {
+    padding: 20px 31px 20px 25px;
+}
+
+.BrowseApplicationDetail .storeDetails .storeTitle,
+.BrowseApplicationDetail .stats .storeTitle {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #00FFC3 !important;
+}
+
+.BrowseApplicationDetail .stats .storeTitle {
+    margin-bottom: 0px;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections {
+    align-items: center;
+    display: flex;
+    gap: 25px;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections .icon {
+    display: flex;
+    justify-content: center;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections .title {
+    color: #FFFFFF !important;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 56px;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections .subTitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections .content p {
+    margin: 0;
+}
+
+.BrowseApplicationDetail .storeDetails .storeSections .content img {
+    width: 92px;
+}
+
+.BrowseApplicationDetail .storeDetails i::before {
+    font-size: 30px;
+    color: #8396BF;
+}
+
+.BrowseApplicationDetail .buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.BrowseApplicationDetail .buttons button {
+    width: 100%;
+    height: 77px;
+    border-radius: 20px !important;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 56px;
+    border: none;
+}
+
+.BrowseApplicationDetail .buttons button i {
+    margin-left: 16px;
+}
+
+.BrowseApplicationDetail .buttons button.send {
+    background-color: #00FFC3;
+    color: #0B0D2E !important;
+}
+
+.BrowseApplicationDetail .buttons button.problem {
+    background-color: #FF6670;
+    color: #FFFFFF !important;
+}
+
+@media(max-width:800px) {
+    .BrowseApplicationDetail .contentBody {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .BrowseApplicationDetail {
+        padding: 20px !important;
+    }
+
+    .BrowseApplicationDetail .buttons {
+        gap: 10px;
+    }
+}
+
+.GenerateCouponModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 13px;
+    padding: 32px 0px 0px 0px;
+}
+
+.GenerateCouponModal i {
+    font-size: 50px;
+    color: var(--icon-color);
+}
+
+.subscribeModal h4 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.GenerateCouponModal .bi-check-circle {
+    font-size: 70px;
+}
+
+.actionsGenerateCoupon {
+    display: flex;
+    gap: 50px;
+}
+
+.GenerateCoupon {
+    background: #00FFC3;
+    border: 1px solid #00FFC3;
+    color: black !important;
+    font-weight: bold;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.Back {
+    background: var(--card-color);
+    border: 2px solid whitesmoke;
+    color: whitesmoke !important;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--card-color);
+}
+
+.modal-header {
+    border: none;
+}
+
+.FreeModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 13px;
+    padding: 32px 0px 0px 0px;
+}
+
+.FreeModal i {
+    font-size: 50px;
+    color: var(--icon-color);
+}
+
+.subscribeModal h4{
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.FreeModal .bi-check-circle{
+    font-size: 70px;
+}
+
+.Close{
+    background: #00FFC3;
+    border: 1px solid #00FFC3;
+    color: black !important;
+    font-weight: bold;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}

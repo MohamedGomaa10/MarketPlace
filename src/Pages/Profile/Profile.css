@@ -1,0 +1,180 @@
+.ParantDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin-top: 50px !important;
+}
+.form-control{
+    color: var(--card-color);
+    font-size: 18px;
+    font-weight: bold;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--card-color);
+}
+
+.profile-button {
+    background: var(--card-color);
+    color: white !important;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: var(--card-color);
+    color: white !important;
+}
+
+.profile-button:focus {
+    background: var(--card-color);
+    color: white !important;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: var(--card-color);
+    color: white !important;
+    box-shadow: none
+}
+
+.back:hover {
+    background: var(--card-color);
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: var(--card-color);
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px var(--card-color);
+}
+.mtTabs{
+    margin-top: 90px;
+}
+.nav-link{
+    background: #fff !important;
+}
+
+.nav-link:active{
+    background: transparent !important;
+}
+.nav-link.active{
+    background: transparent !important;
+    color: #fff !important;
+}
+.nav-item button{
+    border-radius: 0px !important;
+    width: fit-content;
+    font-size: 22px;
+    font-weight: 600;
+}
+.nav-tabs .nav-item{
+    margin: 0 1px;
+}
+
+.cfeatures{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.item_container .content p.discount {
+    font-size: 13px;
+    border: 1px;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    color: black;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 3px 15px 3px 3px;
+}
+.item_container .content p.save {
+    align-items: center;
+    color:var(--bs-green);
+}
+.item_container .content h4 {
+    font-size: 16px !important;
+}
+
+.item_container .img_header h3 {
+    font-size: 17px;
+}
+
+.card-sl {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image img {
+    min-height: 166px;
+    width: 100%;
+    border-radius: 8px 8px 0px 0;
+}
+
+.card-action {
+    position: relative;
+    float: right;
+    margin-top: -25px;
+    margin-right: 20px;
+    z-index: 2;
+    color: #E26D5C;
+    background: #fff;
+    border-radius: 100%;
+    padding: 15px;
+    font-size: 15px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-action:hover {
+    color: #fff;
+    background: #E26D5C;
+}
+
+.card-heading{
+    font-size: 18px;
+    font-weight: bold;
+    background: #fff;
+    padding: 10px 15px;
+    color: black !important;
+}
+
+.card-text {
+    padding: 10px 15px;
+    background: #fff;
+    font-size: 14px;
+    color: #636262; 
+    overflow: hidden ;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    min-height: 86px;
+}
+.card-text p{
+    height: 3em; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+.card-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #1F487E;
+    color: #fff !important;
+    border-radius: 0 0 8px 8px;
+}
+
+.card-button:hover {
+    text-decoration: none;
+    background-color: #1D3461;
+    color: #fff;
+
+}

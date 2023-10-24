@@ -1,0 +1,131 @@
+.app_container_marketing .container_Sales_main {
+    width: 100%;
+    margin-top: 70px;
+}
+
+html[dir="rtl"] .container_Sales_main {
+    padding: 70px 60px 102px 130px;
+}
+
+html[dir="ltr"] .container_Sales_main {
+    padding: 70px 130px 102px 60px;
+}
+
+.container_Sales_main .container_Sales_body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.container_Sales_main .Content_Body h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.container_Sales_main .cardDetails {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #191b3b;
+    background: #191b3b;
+    width: 100%;
+    padding: 38px 32px;
+    border-radius: 21px;
+    align-items: center;
+}
+
+.container_Sales_main i {
+    font-size: 45px;
+    color: var(--main-color);
+}
+
+.container_Sales_main h6 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.container_Sales_main h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 29px;
+}
+
+.container_Sales_main .cards {
+    display: grid;
+    gap: 13px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.CojectGrid .table {
+    z-index: 2;
+    margin: 15px 0;
+    overflow: hidden;
+    position: relative;
+    word-wrap: break-word;
+    font-size: 20px;
+    border-radius: 20px;
+    --bs-table-border-color: #50538d;
+}
+
+.CojectGrid .table thead {
+
+    overflow: hidden;
+    padding: 8px 13px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    --bs-table-color: #8396BF;
+    --bs-table-bg: #191b3b;
+
+}
+
+.CojectGrid .table tbody tr {
+    --bs-table-color: white;
+    --bs-table-bg: #191b3b;
+
+}
+
+.CojectGrid .table tr td {
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+.CojectGrid .pagination i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.CojectGrid .pagination span {
+    font-size: 20px;
+}
+
+.CojectGrid .pagnationcurrent {
+    background: #191b3b;
+    width: 50px;
+    height: 32px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 6px;
+}
+
+.ActiveCoupons .pagination .bi-arrow-right,
+.ActiveCoupons .pagination .bi-arrow-left {
+    color: #00FFC3;
+}
+
+@media(max-width: 600px){
+    .container_Sales_main{
+        padding: 15px !important;
+    }
+    
+    .container_Sales_main .cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .container_Sales_main .cardDetails{
+        padding: 25px !important;
+    }
+}

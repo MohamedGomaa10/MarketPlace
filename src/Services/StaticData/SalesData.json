@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "name": "مؤكدة",
+        "number": 1,
+        "color": "var(--icon-color)"
+    },{
+        "id": 2,
+        "name": "مكتملة",
+        "number": 1,
+        "color": "#FFAA00"
+    },
+    {
+        "id": 3,
+        "name": "معلقة",
+        "number": 1,
+        "color": "#FFAA00"
+    },
+    {
+        "id": 4,
+        "name": "ملغية",
+        "number": 2,
+        "color": "#FF6670"
+    }
+]

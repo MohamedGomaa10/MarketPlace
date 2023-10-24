@@ -1,0 +1,204 @@
+.Container{
+    margin-top: 120px;
+}
+
+.ContainerHeader .TextHeader .LinksHeader h1{
+    font-weight: bold;
+}
+
+.ContainerHeader .TextHeader .Links_Details{
+    display: flex;
+    color: var(--main-color);
+    gap: 5px;
+}
+
+.ContainerHeader .TextHeader .Links_Details h4 {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 20px;
+}
+.ContainerHeader .TextHeader .Links_Details h5 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.Container .ContainerHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Container .ContainerHeaderActions{
+    display: flex;
+    gap: 24px;
+}
+
+.Container .ContainerHeaderActions button{
+    height: 48px;
+    width: 202px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.Container .ContainerHeaderActions .helper {
+    background-color: #191B3B;
+    border: 2px solid #FFFFFF;
+    border-radius:  8px;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.Container .ContainerHeaderActions .activeBrowse {
+    background-color: var(--icon-color) !important;
+    border: 1px solid #FFFFFF !important;
+    border-radius:  8px;
+    color: #191B3B !important;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+.Details{
+    background: var(--card-color);
+    padding: 20px;
+    border: 1px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.Details .prdouctImage img{
+    width: 95px;
+    height: 95px;
+    border-radius: 14px;
+    max-width: 100%;
+}
+.Details .active{
+    background: #00ffc34f;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    text-align: center;
+    font-size: 16px;
+    width: 115px;
+    max-width: 100%;
+}
+
+.Details .active h6 {
+    margin: 0;
+}
+
+.Details .salaryType{
+    display: flex;
+    justify-content: center;
+    background: #0B0D2E;
+    height: 46px;
+    align-items: flex-start;
+    border-radius: 24px;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 10px;
+    gap: 8px;
+}
+
+.Details .DetailsHeader {
+    display: flex;
+    gap: 41px;
+}
+.Details .ProductHeader{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Details .ProductHeader h5{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--icon-color);
+}
+
+.Details .ProductHeader h6 {
+    font-size: 16px;
+}
+.Details .salaryType i {
+    font-size: 20px;
+    color: var(--main-color);
+}
+
+.Details .priceTag {
+    display: flex;
+    gap: 12px;
+}
+
+.ActiveSubscribe {
+    display: flex;
+    align-items: baseline;
+}
+
+.Details .priceTag .salaryType p{
+    margin: 0;
+    color: var(--main-color) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.Details .form-check-input:checked {
+    background-color: var(--icon-color) !important;
+    border-color:var(--icon-color) !important;
+    width: 100%;
+    height: 100%;
+  }
+  .Details .form-check-input{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .Details .form-switch{
+    width: 100px;
+    height: 23px;
+  }
+
+ .cardSupport .dataSupport{
+    display: flex;
+    justify-content: flex-end;
+    color: #00B1FF;
+}
+
+ .ContainerActions .reviewButton button{
+    background: var(--card-color);
+    border: 2px solid whitesmoke;
+    color: whitesmoke !important;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+}
+
+ .ContainerActions .activeAppButton button{
+    background: #00FFC3;
+    border: 1px solid #00FFC3;
+    color: black !important;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+}
+
+.cContainer {
+    margin-top: 40px;
+}
+
+.cContainer .titleHeader{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--icon-color);
+    margin-bottom: 50px;
+}

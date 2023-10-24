@@ -1,0 +1,298 @@
+.pricing {
+    position: relative;
+    margin-top: 150px;
+}
+
+.pricing .container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.pricing .pricing_type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 45px 0 70px 0;
+    flex-direction: row-reverse;
+}
+
+.pricing .pricing_type span {
+    color: var(--icon-color);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.pricing .pricing_type ul {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.pricing .pricing_type ul li button {
+    cursor: pointer;
+    height: 53px;
+    width: 120px;
+    border: none;
+    background-color: #191B3B;
+    color: #fff;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.pricing .pricing_type ul li button.inline {
+    background-color: #fff;
+    color: #191B3B;
+}
+
+.pricing .pricing_type ul li:nth-child(1) button.inline {
+    transform: translateX(-15px);
+}
+
+[dir="rtl"] .pricing .pricing_type ul li:nth-child(1) button.inline {
+    transform: translateX(15px);
+}
+
+.pricing .pricing_type ul li:nth-child(2) button.inline {
+    transform: translateX(15px);
+}
+
+[dir="rtl"] .pricing .pricing_type ul li:nth-child(2) button.inline {
+    transform: translateX(-15px);
+}
+
+
+
+.pricing .plan_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 42%;
+    margin: 0 auto;
+    gap: 140px;
+}
+
+.pricing .plan_container .plan {
+    width: 184px;
+}
+
+.pricing .plan_container .plan h3 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.pricing .plan_container .plan h3 span {
+    color: var(--icon-color);
+    font-size: 11px;
+}
+
+.pricing .plan_container .plan h3.price {
+    gap: 1px;
+}
+
+.pricing .plan_container .plan h3.price span {
+    color: var(--main-color);
+    font-size: 20px;
+    transform: translateY(4px);
+}
+
+.pricing .plan_container .plan p {
+    color: var(--main-color);
+    margin-bottom: 30px;
+    min-height: 70px;
+}
+
+.pricing table {
+    width: 100%;
+    border-spacing: 30px;
+}
+
+.pricing table th:nth-child(1) {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.pricing table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.pricing table td:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-inline-start: 20%;
+    white-space: nowrap;
+}
+
+.pricing table td:nth-child(1) svg {
+    color: var(--main-color);
+    font-size: 18px;
+}
+
+.pricing table .false {
+    color: var(--main-color);
+    font-size: 18px;
+}
+
+.pricing table .true {
+    color: var(--icon-color);
+    font-size: 18px;
+}
+
+.pricing table button {
+    width: 200px;
+    padding: 15px 0;
+    border-radius: 15px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    border: 2px solid #fff;
+    box-shadow: none;
+}
+
+.pricing table button.inline {
+    background-color: #fff;
+    color: #0B0D2E;
+}
+
+.pricing .stream {
+    display: flex;
+    background-color: var(--card-color);
+    width: 78%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 170px;
+}
+
+.pricing .stream .image {
+    width: 100%;
+}
+
+.pricing .stream .info {
+    margin-top: 30px;
+}
+
+.pricing .stream .info h2 {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.pricing .stream .info p {
+    color: var(--main-color);
+    width: 54%;
+    font-weight: bold;
+}
+
+.pricing .stream .info p:not(:first-child) {
+    margin-top: 15px;
+}
+
+.pricing .stream .info button {
+    cursor: pointer;
+    height: 53px;
+    width: 200px;
+    border: none;
+    background-color: #fff;
+    color: #191B3B;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+@media(min-width:1023px) {
+
+    .pricing .plan_container {
+        min-height: 80px;
+    }
+
+    [dir="ltr"] .pricing .plan_container {
+        width: 45%;
+        gap: 145px;
+    }
+}
+
+@media(max-width:1023px) {
+
+    .pricing .plan_container {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        gap: 30px;
+    }
+
+    .pricing table {
+        border-spacing: 15px;
+        overflow-x: scroll;
+        display: block;
+    }
+
+    .pricing table td:nth-child(1) {
+        white-space: nowrap;
+        margin-inline-start: 0;
+    }
+
+    .pricing .plan_container .plan {
+        width: 90%;
+    }
+
+    .pricing .plan_container .plan p {
+        min-height: 30px;
+    }
+
+    .pricing .stream,
+    .pricing .stream .info p {
+        width: 100%;
+    }
+
+    .pricing .stream {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+
+    .pricing .stream .image img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+@media(max-width:767px) {
+    .pricing {
+        margin-top: 80px;
+    }
+
+    .pricing .plan_container .plan h3 {
+        display: block;
+    }
+
+    .pricing .plan_container {
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .pricing .plan_container .plan p {
+        min-height: 8px;
+    }
+
+    .pricing .plan_container .plan {
+        width: 100%;
+    }
+
+    .pricing .stream .info button {
+        width: 100%;
+    }
+
+    .pricing .pricing_type ul li button {
+        height: 45px;
+        width: 105px;
+        border-radius: 11px;
+    }
+
+    .pricing table th:nth-child(1) {
+        text-align: justify;
+    }
+}

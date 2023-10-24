@@ -1,0 +1,230 @@
+.containerAcount_main{
+    margin-top: 70px;
+    padding: 53px 0px 0px 120px;
+    width: 100%;
+}
+
+html[dir="rtl"] .containerAcount_main {
+    padding: 70px 60px 102px 130px;
+}
+
+html[dir="ltr"] .containerAcount_main {
+    padding: 70px 130px 102px 60px;
+}
+
+.resultfilter {
+    background-color: #0B0D2E;
+    border-color: #292c54;
+    color: white;
+    height: 48px;
+    border-radius: 10px;
+}
+
+.ChooseAccount{
+    background: #191B3B;
+    border-radius: 20px;
+    padding: 22px 35px;
+    width: 100%;
+}
+
+.Form_Content{
+    background: #191B3B;
+    border-radius: 20px;
+    padding: 22px 35px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.Card_Parent .Header_Form h4{
+    color: #FF6670;
+}
+
+.Card_Parent h3{
+    color: var(--icon-color);
+    font-size: 20px;
+    margin-bottom: 17px;
+}
+
+.Card_Parent h4{
+    font-size: 20px;
+    margin-bottom: 17px;
+}
+
+ input{
+    width: 100%;
+    height: 48px;
+    background-color: #0B0D2E;
+    border: 1px solid #292c54;
+    border-radius: 10px;
+}
+
+.Form_Details input{
+    margin-bottom: 23px;
+}
+
+.Card_Parent{
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 17px;
+}
+.rightSideParent{
+    width: 776px;
+    max-width: 100%;
+}
+
+.Card_Parent .ChooseAccount:nth-child(1) {
+    margin-bottom: 17px;
+}
+
+.Card_Parent .LeftSideParent{
+    width: 541px;
+}
+
+.containerAcount_main ul {
+    padding: 0px 38px;
+    list-style: disc;
+}
+
+.containerAcount_main ul li{
+    font-size: 20px;
+}
+
+hr {
+    width: 100%;
+    color: #8295bf69;
+}
+
+.Footer_Form{
+    margin-bottom: 38px;
+}
+
+.Footer_Form h5 {
+    margin-bottom: 28px;
+}
+
+.Upload_Container{
+    display: flex;
+    gap: 17px;
+}
+
+.Upload{
+    display: flex;
+    gap: 14px;
+    position: relative;
+    align-items: center;
+    border: 1px dashed #8396BF;
+    padding: 0px 11px;
+    border-radius: 10px;
+    width: 35%;
+}
+
+.Upload input{
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.Upload i {
+    font-size: 40px;
+    color: var(--main-color);
+}
+
+.Upload p{
+    font-size: 20px !important;
+    margin: 0;
+}
+
+.Show_Upload{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #8396bf1c;
+    background: #8396bf1c;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 65%;
+    justify-content: space-between;
+}
+
+.Show_Upload i {
+    font-size: 24px;
+    color: var(--icon-color);
+}
+
+.Show_Upload p{
+    margin: 0;
+    font-size: 20px;
+}
+.Show_Upload span{
+    margin: 0;
+    font-size: 20px;
+    color: var(--icon-color);
+}
+
+.Form_Content p {
+    font-weight: 400 !important;
+    word-wrap: break-word;
+    width: 130px;
+}
+
+.Actions {
+    display: flex;
+    gap: 14px;
+}
+.Actions button:first-child {
+    background: var(--icon-color);
+    border: 1px solid;
+    border-radius: 20px;
+    width: 100%;
+    height: 77px;
+    color: #0B0D2E;
+    font-size: 20px;
+    font-weight: bold !important;
+}
+.Actions button:last-child {
+    background: #8396bf86;
+    border: 1px solid #8396bf86;
+    border-radius: 20px;
+    width: 100%;
+    height: 77px;
+    color: #FFF !important;
+    font-size: 20px;
+    font-weight: bold !important;
+}
+
+.settings {
+    display: flex;
+    gap: 11px;
+}
+
+.Footer_Form .shape{
+    background: #8396bf44;
+    border: 1px solid #8396bf44;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Footer_Form .shape:last-child i{
+    color: #FF6670;
+}
+
+.modal-header{
+    background: #191B3B;
+}
+
+.ShowImage img {
+    width: 100%;
+}
+
+.bi-x-circle{
+    font-size: 20px;
+    color: var(--icon-color);
+    cursor: pointer;
+}
