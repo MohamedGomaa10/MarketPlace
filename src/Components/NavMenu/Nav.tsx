@@ -253,7 +253,7 @@ const Nav = () => {
                             </ul> : ''}
 
                             {Token ? <ul>
-                                <div onClick={handleFreeShow}>
+                                <div onClick={handleFreeShow} className='MarketShop'>
                                     <i className="bi bi-shop"></i>
                                 </div>
                             </ul> : ''}

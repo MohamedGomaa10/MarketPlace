@@ -7,25 +7,19 @@
     },
     {
         "id": 2,
-        "Name": "Application Browse",
+        "Name": "OFFERS",
         "icon": "bi bi-bag-check",
         "URL": "/application-browse"
     },
     {
         "id": 3,
-        "Name": "CoponsActivation",
-        "icon": "bi bi-clipboard2-check",
-        "URL": "/active-coupons"
-    },
-    {
-        "id": 4,
-        "Name": "CoponsRecord",
+        "Name": "Copons",
         "icon": "bi bi-tags",
         "URL": "/activation-requests"
     },
     {
-        "id": 5,
-        "Name": "SalesReports",
+        "id": 4,
+        "Name": "Boket",
         "icon": "bi bi-clipboard-pulse",
         "URL": "/sales-reports"
     }

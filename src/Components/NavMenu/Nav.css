@@ -361,3 +361,7 @@ nav .lang {
 .FreeModal .bi-check-circle{
     font-size: 70px;
 }
+
+.MarketShop {
+    cursor: pointer;
+}
