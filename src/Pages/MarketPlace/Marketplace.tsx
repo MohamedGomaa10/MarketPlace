@@ -12,8 +12,6 @@ import { NavLink } from "react-router-dom";
 import { GetAllProducts, Selectproducts, SelectLatestProducts, SelectFeaturedProducts } from "../../Services/MasterStore/Reducers/ProductSlice";
 import { GetAllCategories, SelectCategories } from "../../Services/MasterStore/Reducers/CategorySlice";
 
-import { CheckMarkterJoinSlice, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
-
 //css
 import "./Marketplace.css";
 
@@ -21,7 +19,6 @@ const Marketplace:FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { products } = useAppSelector(Selectproducts);
-  const { CheckMarkterJoin } = useAppSelector(SelectMarketProgram);
   const { categories } = useAppSelector(SelectCategories);
   const [SearchValue, setSearchValue] = useState<any>([]);
   const [CategoryValue, setCategoryValue] = useState<any>([]);
@@ -41,13 +38,6 @@ const Marketplace:FC = () => {
     dispatch(GetAllProducts());
     dispatch(SelectLatestProducts());
     dispatch(SelectFeaturedProducts());
-
-    const payload =  {
-      USER_ID: 1060,
-      LANG: "ONE"
-    }
-
-    dispatch(CheckMarkterJoinSlice(payload))
   }, [dispatch]);
 
   useEffect(() => {  
@@ -73,7 +63,7 @@ const Marketplace:FC = () => {
 
   useEffect(() => {
     setCategoryCheck(localStorage.getItem("Category_Id"));
-  }, [CheckMarkterJoin]);
+  }, []);
 
   // set products
   useEffect(() => {
@@ -103,6 +93,8 @@ const Marketplace:FC = () => {
       const LastIndexPage = FirstIndexPage + PageSize;
       setFinalData(SearchValue.slice(FirstIndexPage, LastIndexPage));
       setPageNumber(PagesNumber);
+    }else{
+      setFinalData([]);
     }
   }, [SearchValue, PaginationSize, CurrentPage]);
 
