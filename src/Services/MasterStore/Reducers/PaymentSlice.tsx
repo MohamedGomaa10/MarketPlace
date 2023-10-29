@@ -4,15 +4,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // Master Store
 import { RootState } from "../MasterStore";
 
-import { useNavigate, useParams } from 'react-router-dom';
-
 // Actions
-import { CreatePaymentAction, CreatePaymentInterface, fetchData, CreatePaymentRecordInterface, GetPaymentAction } from '../Actions/PaymentAction';
+import { CreatePaymentAction, CreatePaymentInterface, CreatePaymentMarketOperationInsAction, GetPaymentAction } from '../Actions/PaymentAction';
 
 // Interface
 interface TPayment {
     loading?: boolean;
     payment?: any;
+    paymentOperation?: any;
     error?: any;
 }
 
@@ -20,6 +19,7 @@ interface TPayment {
 const initialState: TPayment = {
     loading: false,
     payment: {},
+    paymentOperation: {},
     error: ''
 }
 
@@ -35,13 +35,13 @@ export const CreatePayment = createAsyncThunk(
     }
 )
 
-// Create Payment
-// export const CreatePayment = createAsyncThunk(
-//     'Market/Payment',
-//     async (Payload: CreatePaymentInterface) => {
-//   return await CreatePaymentAction(Payload); 
-//     }
-//   )
+//Create Payment
+export const CreatePaymentMarketOperationInsSlice = createAsyncThunk(
+    'Market/PaymentOperationIns',
+    async ( PAYMENT_ID: number ) => {
+  return await CreatePaymentMarketOperationInsAction(PAYMENT_ID); 
+    }
+  )
 
 // get Payment
 export const GetPayment = createAsyncThunk(
@@ -89,7 +89,21 @@ const PaymentSlice = createSlice({
             State.payment = {};
             State.error = Action.error?.message;
         })
-
+        
+        // Create PaymentMarketOperationIns
+        Builder.addCase( CreatePaymentMarketOperationInsSlice.pending, ( State) => {
+            State.loading = true;
+        })
+        Builder.addCase( CreatePaymentMarketOperationInsSlice.fulfilled, ( State, Action) => {
+            State.loading = false;
+            State.paymentOperation = Action.payload.DATA;
+            State.error = '';
+        })
+        Builder.addCase( CreatePaymentMarketOperationInsSlice.rejected ,( State, Action) => {
+            State.loading = false;
+            State.paymentOperation = {};
+            State.error = Action.error?.message;
+        })
     },
 });
 

@@ -21,6 +21,7 @@ import { UserSignToProduct } from '../../Services/MasterStore/Reducers/UserSlice
 import { SelectOrderInfo, Selectorder, UpdateOrderStatues, SendEmail, SelectComapnySettings } from '../../Services/MasterStore/Reducers/OrderSlice';
 import { CreatePaymentRecord, SelectPaymentRecord, GetPaymentRecord } from '../../Services/MasterStore/Reducers/PaymentRecordSlice';
 import { CreatePaymentRecordInterface } from '../../Services/MasterStore/Actions/PaymentAction';
+import { CreatePaymentMarketOperationInsSlice } from '../../Services/MasterStore/Reducers/PaymentSlice';
 
 //translation
 import { useTranslation } from "react-i18next";
@@ -75,7 +76,8 @@ const CheckOutDetails:FC = () => {
     const [ValidDate, SetValidDate] = useState<any>();
     const [URL, SetURL] = useState<any>('');
     const userINFO = userDATA && userDATA[0];
-	const ORDER_INFO = orderInfo.ORDER_INFO && orderInfo.ORDER_INFO.length && orderInfo.ORDER_INFO[0];
+	const ORDER_INFO = orderInfo.ORDER_INFO && orderInfo.ORDER_INFO?.length && orderInfo?.ORDER_INFO[0];
+
     useEffect(() => {
 		setUserData(Token && jwtDecode<any>(Token))
 	}, [Token]);
@@ -131,7 +133,7 @@ const CheckOutDetails:FC = () => {
                     producT_ID: JSON.parse(payment.DATA.description).ProductId,
                     useR_ACCOUNT_ID: decodedToken?.UserId,
                     producT_PRICING_ID: JSON.parse(payment.DATA.description).PricingPlanId,
-                    status: payment.DATA.status,
+                    IS_PAID_Y_N: payment.DATA.status === 'paid' ? 'Y' : 'N',
                     getwaY_ID: payment.DATA.id,
                     ip: payment.DATA.ip,
                     crediT_CARD: payment.DATA.source.number,
@@ -141,7 +143,7 @@ const CheckOutDetails:FC = () => {
                     ordeR_ID: respons.payload.DATA.ORDER_INFO[0]?.ORDER_ID
                 }
                 URL && dispatch(CreatePaymentRecord(PaymentRecord)).then((result) => {
-                    if(result.payload.DATA.PRODUCT[0]?.STATUS === 'paid'){
+                    if(result.payload.DATA?.PRODUCT[0]?.IS_PAID_Y_N === 'Y'){
                         const DataUser: IForm = {
                             PRODUCT_ID: JSON.parse(payment.DATA.description).ProductId,
                             USER_NAME: decodedToken?.LoginName,
@@ -162,11 +164,12 @@ const CheckOutDetails:FC = () => {
                             }
                             dispatch(SelectProductUsingUserIdAndPRoductId(payload))
                             dispatch(UserSignToProduct({ Data, URL, Navigate, ProductId }));
+                            dispatch(CreatePaymentMarketOperationInsSlice(result.payload.DATA.PRODUCT[0].PAYMENT_ID));
                         });
                     }
-                    const DataUpdate: UpdateStatuesInterface = {ORDER_ID: result.payload.DATA.PRODUCT[0].ORDER_ID, ORDER_STATUS: result.payload.DATA.PRODUCT[0].STATUS}
+                    const DataUpdate: UpdateStatuesInterface = {ORDER_ID: result.payload.DATA?.PRODUCT[0]?.ORDER_ID, ORDER_STATUS: result.payload.DATA?.PRODUCT[0]?.STATUS}
                     dispatch(UpdateOrderStatues(DataUpdate)).then(()=>{
-                        payment.DATA.status === 'paid' && dispatch(SendEmail(respons.payload.DATA.ORDER_INFO[0]?.GUID));
+                        payment.DATA.status === 'paid' && dispatch(SendEmail(respons.payload.DATA?.ORDER_INFO[0]?.GUID));
                     });
                 });
             }
@@ -191,9 +194,7 @@ const CheckOutDetails:FC = () => {
         str ==='m'?navigate(`/marketplace`, { replace: true }) : navigate(`/checkOut/${ORDER_INFO?.PRODUCT_PRICING_ID}/${ORDER_INFO?.PRODUCT_ID}`, { replace: true });
     }
 
-    useEffect(()=>{
-        console.log(UserProducts);
-        
+    useEffect(()=>{        
         const arabicText =` إسم البائع :  ${companySettings?.companyName}
         \n  "رقم تسجيل ضريبة القيمة المضافة :"  ${companySettings?.companyTaxNumber}
         \n  "التاريخ :  ${formatDate(payment?.DATA?.updated_at)}

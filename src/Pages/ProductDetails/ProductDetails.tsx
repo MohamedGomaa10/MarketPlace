@@ -189,7 +189,7 @@ const ProductDetails:FC = () => {
       producT_ID: number,
       useR_ACCOUNT_ID: number,
       producT_PRICING_ID: number,
-      status: string,
+      IS_PAID_Y_N: string,
       getwaY_ID: string,
       ip: string,
       crediT_CARD: string,
@@ -219,8 +219,8 @@ const ProductDetails:FC = () => {
           const URL = product?.PRODUCT[0]?.PROJECT_URL_API;
           const ProductId= product?.PRODUCT[0]?.PRODUCT_ID;
           const PaymentData : CreatePaymentRecordInterface = {producT_ID: ProductId, useR_ACCOUNT_ID:  UserData && UserData?.UserId,
-            producT_PRICING_ID: PRODUCT_PLAN && PRODUCT_PLAN[0]?.PRODUCT_PRICING_ID, status: "Success",
-          getwaY_ID: "Default", ip: "Default", crediT_CARD: "Default", crediT_CARD_NAME: "Default", 
+            producT_PRICING_ID: PRODUCT_PLAN && PRODUCT_PLAN[0]?.PRODUCT_PRICING_ID, IS_PAID_Y_N: "Y",
+          getwaY_ID: "Default", ip: "Default", crediT_CARD: "Default", crediT_CARD_NAME: "Default",
           crediT_CARD_COMPANY: "Default", amount: "0", ordeR_ID:res?.payload?.DATA?.ORDER[0].ORDER_ID
         }
         dispatch(CreatePaymentRecord(PaymentData)).then((resPayment) => {

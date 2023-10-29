@@ -24,7 +24,7 @@ export interface CreatePaymentRecordInterface {
     producT_ID: number,
     useR_ACCOUNT_ID: number,
     producT_PRICING_ID: number,
-    status: string,
+    IS_PAID_Y_N: string,
     getwaY_ID: string,
     ip: string,
     crediT_CARD: string,
@@ -48,7 +48,6 @@ export const fetchData = (Payload: CreatePaymentInterface ) => {
             return response.data
         })
         .catch(error => {
-            console.log(error);
             return error.response.data.errors;
         });
   };
@@ -65,5 +64,10 @@ export const GetPaymentAction = async ( id: any ) => {
 
 export const GetPaymentSearchAction = async ( id: any ) => {
     const response =await Request.get(`Market/Payment?ID=${id}`);
+    return response.data;
+}
+
+export const CreatePaymentMarketOperationInsAction = async ( PAYMENT_ID: number ) => {
+    const response =await Request.post(`Market/PaymentMarketOperationIns/${PAYMENT_ID}`);
     return response.data;
 }
