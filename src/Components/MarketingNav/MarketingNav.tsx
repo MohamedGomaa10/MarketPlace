@@ -120,6 +120,7 @@ const MarketingNav = () => {
   return (
     <React.Fragment>
       <div className="headerNav">
+        <div className="rightNav">
         <NavLink to={'/'}>
           <img src={ArLogo} alt="logo" className="LogoHome" />
         </NavLink>
@@ -139,6 +140,7 @@ const MarketingNav = () => {
                 </div>
               </NavLink>
             ))}
+        </div>
         </div>
         <div className="settings">
           <div className="shape">

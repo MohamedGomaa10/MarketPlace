@@ -1,29 +1,26 @@
 [
     {
         "id": 1,
-        "name": "Statistics",
-        "card_Body": [
-            {
-                "id": 1,
-                "name": "ongoing",
-                "icon": "bi bi-journal-check",
-                "number": 1,
-                "color": "var(--icon-color)"
-            },
-            {
-                "id": 1,
-                "name": "Finished",
-                "icon": "bi bi-journal-text",
-                "number": 1,
-                "color": "#FFAA00"
-            },
-            {
-                "id": 2,
-                "name": "Off",
-                "icon": "bi bi-journal-x",
-                "number": 2,
-                "color": "#FF6670"
-            }
-        ]
+        "name": "ongoing",
+        "icon": "bi bi-journal-check",
+        "number": 0,
+        "COUPON_STATE": "A",
+        "color": "var(--icon-color)"
+    },
+    {
+        "id": 2,
+        "name": "Finished",
+        "icon": "bi bi-journal-text",
+        "number": 0,
+        "COUPON_STATE": "E",
+        "color": "#FFAA00"
+    },
+    {
+        "id": 3,
+        "name": "Off",
+        "icon": "bi bi-journal-x",
+        "COUPON_STATE": "N",
+        "number": 0,
+        "color": "#FF6670"
     }
 ]

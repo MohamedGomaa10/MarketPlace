@@ -106,15 +106,13 @@ const BrowseApplicationDetail = () => {
                 <p className="details">{localStorage.getItem("LANG") === "en" ? DATA_INFO?.PRODUCT_NAME_TWO : DATA_INFO?.PRODUCT_NAME_ONE}</p>
               </div>
               <div className="row">
+                <p className="title">{t('Offer Name')}</p>
+                <p className="details">{localStorage.getItem("LANG") === "en" ? DATA_INFO?.COUPON_NAME_TWO : DATA_INFO?.COUPON_NAME_ONE}</p>
+              </div>
+              <div className="row">
                 <p className="title">{t('Description')}</p>
                 <p className="details">
                   {localStorage.getItem("LANG") === "en" ? DATA_INFO?.PROMOTIONAL_DESCR_TWO : DATA_INFO?.PROMOTIONAL_DESC_ONE}
-                </p>
-              </div>
-              <div className="row">
-                <p className="title">{t('Important Alert')}</p>
-                <p className="details">
-                  {t('Random posting')}
                 </p>
               </div>
             </div>
@@ -124,7 +122,7 @@ const BrowseApplicationDetail = () => {
                   <span>{t("Discount Type")}</span>
                 </div>
                 <div className="cardText textValue">
-                  <span>{DATA_INFO?.DISCOUNT_TYPE_P_V}</span>
+                  <span className="price">{DATA_INFO?.DISCOUNT_TYPE_P_V}</span>
                 </div>
               </div>
               <div className="cardChild">
@@ -132,7 +130,7 @@ const BrowseApplicationDetail = () => {
                   <span>{t("Discount Amount")}</span>
                 </div>
                 <div className="cardText textValue">
-                  <span>{DATA_INFO?.DISCOUNT_AMOUNT}</span>
+                  <span className="price">{DATA_INFO?.DISCOUNT_AMOUNT}</span>
                   <span className="currency">{t("Salary_Type")}</span>
                 </div>
               </div>
@@ -155,22 +153,18 @@ const BrowseApplicationDetail = () => {
               </div>
             </div>
             <div className="cardDetails usesDetails">
-              <div className="row">
-                <div className="col-md-6">
-                  <div>
+              <div className="UsesContent">
+                <div className="UsesContentDetails">
                     <p className="title">{t("MAX_USAGE")}</p>
-                  </div>
-                  <div>
-                    <p className="currency title">{DATA_INFO?.MAX_USAGE}</p>
-                  </div>
+                    <p className="currency title">{DATA_INFO?.MAX_USAGE === 0 ? t('Unlimited') : DATA_INFO?.MAX_USAGE}</p>
                 </div>
-                <div className="col-md-6">
-                  <div>
+                <div className="UsesContentDetails">
                     <p className="title">{t("CUSTOMER_USAGE_LIMIT")}</p>
-                  </div>
-                  <div>
-                    <p className="currency title">{DATA_INFO?.CUSTOMER_USAGE_LIMIT}</p>
-                  </div>
+                    <p className="currency title">{DATA_INFO?.CUSTOMER_USAGE_LIMIT === 0 ? t('Unlimited') : DATA_INFO?.CUSTOMER_USAGE_LIMIT}</p>
+                </div>
+                <div className="UsesContentDetails">
+                    <p className="title">{t("CODE")}</p>
+                    <p className="currency title">{DATA_INFO?.CODE}</p>
                 </div>
               </div>
             </div>
@@ -181,16 +175,17 @@ const BrowseApplicationDetail = () => {
                     <p className="title">{t('Marketing video and photo links')}</p>
                   </div>
                   <div>
-                    <p className="link title">www.info.com</p>
+                    <p className="link title">{DATA_INFO?.MARKETING_LINKS}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="cardDetails storeDetails">
-              <p className="storeTitle">{t("Market Information")}</p>
+          </div>
+          
+          <div className="cardDetails storeDetails">
+              <p className="storeTitle">{t("Developer Information")}</p>
               <div className="row">
-                <div className="col-md-7">
-                  <div className="storeSections">
+                  <div className="storeSections col-md-3">
                     <div className="icon">
                       <i className="bi bi-dash-square"></i>
                     </div>
@@ -203,20 +198,20 @@ const BrowseApplicationDetail = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="storeSections">
+                  <div className="storeSections col-md-3">
                     <div className="icon">
                       <i className="bi bi-archive"></i>
                     </div>
                     <div className="content">
                       <div>
-                        <p className="title">{t("Categories")}</p>
+                        <p className="title">{t("categories")}</p>
                       </div>
                       <div>
                         <p className="subTitle">{localStorage.getItem("LANG") === "en" ? DATA_INFO?.CATEGORY_NAME_TWO : DATA_INFO?.CATEGORY_NAME_ONE}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="storeSections">
+                  <div className="storeSections col-md-3">
                     <div className="icon">
                       <i className="bi bi-receipt"></i>
                     </div>
@@ -225,74 +220,42 @@ const BrowseApplicationDetail = () => {
                       <p className="details">{localStorage.getItem("LANG") === "en" ? DATA_INFO?.PRODUCT_NAME_TWO : DATA_INFO?.PRODUCT_NAME_ONE}</p>
                     </div>
                   </div>
-                  <div className="storeSections">
+                  <div className="storeSections col-md-3">
                     <div className="icon">
                       <i className="bi bi-link-45deg"></i>
                     </div>
-                    <div className="content">
-                      <div>
-                        <p className="title">
-                          {t("Marketing video and photo links")}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="subTitle link">www.info.com</p>
-                      </div>
+                  <div className="content">
+                    <div>
+                      <p className="title">
+                        {t("Application link on the store")}
+                      </p>
+                    </div>
+                    <div>
+                      <NavLink to={`/productDetails/${DATA_INFO?.PRODUCT_ID}`}>
+                        <p className="subTitle link">{t("Application link on the store")}</p>
+                      </NavLink>
                     </div>
                   </div>
-                </div>
-                <div className="col-md-5">
+                  </div>
+                {/* <div className="col-md-5">
                   <div className="row storeSections">
                     <div className="col-md-12 content">
-                      <div>
-                        <p className="title">{t("trade mark")}</p>
-                      </div>
                       <div>
                          {DATA_INFO?.PRODUCT_ICON && <img src={require("../../Assets/Projects/" + DATA_INFO.PRODUCT_ICON)} alt='#' />}
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div className="cardDetails stats">
-              <p className="storeTitle">{t("Statistics")}</p>
-              <div className="cardChild">
-                <div className="cardText textTitle">
-                  <span>{t("COMMISSION TYPE")}</span>
-                </div>
-                <div
-                  className="cardText textValue"
-                  style={{ marginLeft: "35px" }}
-                >
-                <span className="price">{DATA_INFO?.COMMISSION_TYPE_P_V}</span>
-                </div>
-              </div>
-              <div className="cardChild">
-                <div className="cardText textTitle">
-                  <span>{t("COMMISSION Amount")}</span>
-                </div>
-                <div className="cardText textValue">
-                  <span className="price">{DATA_INFO?.COMMISSION_AMOUNT}</span>
-                  <span className="currency">{t("Salary_Type")}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row buttons">
+          {DATA_INFO?.MARKETER_STATUS !== "A" && <div className="row buttons">
             <div className="col-md-4">
               <button className="send" onClick={handleFreeShow}>
                 <i className="bi bi-lightning-charge"></i>
                 <span>{t("Request to activate a coupon")}</span>
               </button>
             </div>
-            <div className="col-md-4">
-              <button className="problem">
-                <i className="bi bi-exclamation-triangle"></i>
-                <span>{t("Report an error or problem")}</span>
-              </button>
-            </div>
-          </div>
+          </div>}
         </div>
       </div>
     </React.Fragment>

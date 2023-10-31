@@ -108,10 +108,10 @@ const ApplicationBrowse = () => {
                     </div>
                     <div className='card_section'>
                         {SearchValue ? SearchValue.map((Data: any, Index: any) => (
-                            <NavLink to={`/browse-application-detail/${Data?.GUID}`} className={'Parent_A'}>
-                                <div className='Market_Statues' style={{background: `${Data?.MARKETER_STATUS === 'A' ? 'var(--icon-color)' : Data?.MARKETER_STATUS === 'E' ? 'red' : '#FFAA00'}`}}><h6>{`${Data?.MARKETER_STATUS === 'A' ? t('active') : Data?.MARKETER_STATUS === 'E' ? t('Finished') : t('inactive')}`}</h6></div>
-                                <div className='card_content' key={Index}>
-                                    {Data.PRODUCT_ICON && <img src={require("../../Assets/Projects/" + Data.PRODUCT_ICON)} alt='#' />}
+                            <NavLink to={`/browse-application-detail/${Data?.GUID}`} className={'Parent_A'} key={Index}>
+                                <div className='Market_Statues' style={{background: `${Data?.MARKETER_STATUS === 'A' ? 'var(--icon-color)' : Data?.MARKETER_STATUS === 'E' ? '#d9534f' : '#FFAA00'}`}}><h6>{`${Data?.MARKETER_STATUS === 'A' ? t('active') : Data?.MARKETER_STATUS === 'E' ? t('Finished') : t('inactive')}`}</h6></div>
+                                <div className='card_content' >
+                                    {Data?.PRODUCT_ICON ? <img src={require("../../Assets/Projects/" + Data.PRODUCT_ICON)} alt='#' /> : ''}
                                     <h1>{localStorage.getItem("LANG") === "en" ? Data.PRODUCT_NAME_TWO : Data.PRODUCT_NAME_ONE}</h1>
                                     <span className='COUPON_NAME'>{localStorage.getItem("LANG") === "en" ? Data?.COUPON_NAME_TWO : Data?.COUPON_NAME_ONE}</span>
                                     <div className='discount'>

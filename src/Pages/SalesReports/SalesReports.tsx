@@ -3,7 +3,13 @@ import React,{ useState, useEffect } from "react";
 // Static Data
 import StaticData from "../../Services/StaticData/ActiveRequest.json";
 
-import SalesData from "../../Services/StaticData/SalesData.json";
+// Master Hooks
+import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/MasterHook";
+
+
+import { GetMarketerOperationSlice, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
+
+import jwtDecode from 'jwt-decode';
 
 //translation
 import { useTranslation } from 'react-i18next';
@@ -13,23 +19,33 @@ import "./SalesReports.css";
 
 const SalesReports = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const [SaleTabel,setSaleTabel]=useState<any>([]);
-  const [PaginationSize, setPaginationSize] = useState<any>(2);
-  const [CurrentPage, setCurrentPage] = useState<any>(0);
   const [PageNumber, setPageNumber] = useState<any>(0);
+  const [CurrentPage, setCurrentPage] = useState<any>(0);
+  const [Token] = useState(localStorage.getItem('token'));
+  const [PaginationSize, setPaginationSize] = useState<any>(2);
+  const { MarkterOperation } = useAppSelector(SelectMarketProgram);
+
+  const MARKETEROPERATIONDATA = MarkterOperation && MarkterOperation.DETAIL_REF;
+
+  useEffect(() => {
+    const decodedToken = Token && jwtDecode<any>(Token);
+    dispatch(GetMarketerOperationSlice(decodedToken?.UserId))
+  }, [dispatch, Token])
 
   // set pagination
   useEffect(() => {
-    if (SalesData && SalesData.length !== 0) {
+    if (MARKETEROPERATIONDATA && MARKETEROPERATIONDATA.length !== 0) {
       setPaginationSize(2)
       const PageSize = Number(PaginationSize);
-      const PagesNumber = Math.ceil(SalesData.length / PageSize);
+      const PagesNumber = Math.ceil(MARKETEROPERATIONDATA.length / PageSize);
       const FirstIndexPage = CurrentPage * PageSize;
       const LastIndexPage = FirstIndexPage + PageSize;
-      setSaleTabel(SalesData.slice(FirstIndexPage , LastIndexPage));
+      setSaleTabel(MARKETEROPERATIONDATA.slice(FirstIndexPage , LastIndexPage));
       setPageNumber(PagesNumber);
     }
-  }, [PaginationSize, CurrentPage]);
+  }, [PaginationSize, CurrentPage, MARKETEROPERATIONDATA]);
 
   const NextPage = () => {
     if (Number(CurrentPage) !== PageNumber - 1) {
@@ -43,6 +59,10 @@ const SalesReports = () => {
       setCurrentPage(Number(CurrentPage) - 1);
     }
   };
+
+  useEffect(() => {
+    console.log(MARKETEROPERATIONDATA);
+  }, [MARKETEROPERATIONDATA])
 
   return (
     <React.Fragment>
@@ -78,21 +98,19 @@ const SalesReports = () => {
                     <th>عمولتي ( ر.س )</th>
                     <th>الحالة</th>
                     <th>تاريخ الانشاء</th>
-                    <th>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
                   {!!SaleTabel.length &&
                     SaleTabel.map((Data: any, Index: any) => (
                       <tr key={Index}>
-                        <td>{Data.id}</td>
-                        <td>{Data.name}</td>
-                        <td>عسير</td>
-                        <td>{Data.number}</td>
-                        <td>{Data.color}</td>
-                        <td>فعال</td>
-                        <td>2023-06-03</td>
-                        <td>2023-06-03</td>
+                        <td>{Data.MARKETER_PAYMENT_OPERATION_ID}</td>
+                        <td>{Data.PRODUCT_MARKET_OFFER_NAME_ONE}</td>
+                        <td>{Data?.PRODUCT_NAME_ONE}</td>
+                        <td>{Data.COUPON_CODE}</td>
+                        <td>{Data.COMMISSION_NET_VALUE}</td>
+                        <td></td>
+                        <td>{Data.PAYMENT_DATE}</td>
                       </tr>
                     ))}
                 </tbody>
@@ -100,7 +118,7 @@ const SalesReports = () => {
               <div className="row">
                 <div className="pagination">
                   <div className="col-md-9">
-                    <span>{SalesData.length} سجل تم إيجاده</span>
+                    <span>{SaleTabel.length} سجل تم إيجاده</span>
                   </div>
                   <div
                     className="col-md-3"

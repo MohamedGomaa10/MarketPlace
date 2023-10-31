@@ -43,7 +43,9 @@ const Login:FC = () => {
     const { t } = useTranslation();
     const Navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [ErrorMessage, setErrorMessage] = useState('')
+    const [TermMessage, setTermMessage] = useState('');
+    const [ErrorMessage, setErrorMessage] = useState('');
+    const [Term, setTerm] = useState(false);
     const { register: registerSignIn, handleSubmit: handleSubmitSignIn } = useForm<IForm>();
     const { register: registerSignUp, handleSubmit: handleSubmitSignUp } = useForm<IFormSignUp>();
     const [Language] = useState( localStorage.LANG || "ar");
@@ -72,17 +74,23 @@ const Login:FC = () => {
 
     const onSubmitSignUp: SubmitHandler<IFormSignUp> = ( data ) => {
         const Data: IFormSignUp = { NAME_ONE:data.EMAIL, PASSWORD:data.PASSWORD, EMAIL:data.EMAIL }
-        dispatch(UserSignUp({ Data, Navigate })).then((res) =>{
-            setErrorMessage(res.payload.MESSAGE.MESSAGE );
-            if(res.payload.MESSAGE.MESSAGE === ''){
-                const Data: IForm = {LOGIN_NAME:data.EMAIL, PASSWORD:data.PASSWORD,  PROJECT_TYPE_ID: 1,LOGIN_TYPE_ID: "1",Language: localStorage.getItem('LANG') === 'en' ? 'TWO': 'ONE'}
-                dispatch(UserSignIn({ Data, Navigate }));
-            }
-        });
+
+        if(Term){
+            dispatch(UserSignUp({ Data, Navigate })).then((res) =>{
+                setErrorMessage(res.payload.MESSAGE.MESSAGE );
+                if(res.payload.MESSAGE.MESSAGE === ''){
+                    const Data: IForm = {LOGIN_NAME:data.EMAIL, PASSWORD:data.PASSWORD,  PROJECT_TYPE_ID: 1,LOGIN_TYPE_ID: "1",Language: localStorage.getItem('LANG') === 'en' ? 'TWO': 'ONE'}
+                    dispatch(UserSignIn({ Data, Navigate }));
+                }
+            });
+            setTermMessage('');
+        }else{
+            setTermMessage('يجب أن توافق علي الشروط اولا');
+        }
     };
 
-
-    const classActiveTab = (e:any) =>{        
+    const classActiveTab = (e:any) =>{  
+        setTermMessage('');
         for (let index = 0; index < tabs.length; index++) {
             tabs[index].classList.remove('active');            
         }
@@ -109,73 +117,81 @@ const Login:FC = () => {
                 document.getElementById('SIGINUP')?.classList.add('active')
                 document.getElementById('LOGIN')?.classList.remove('active')
                 localStorage.removeItem('state');
-              } 
+              }
         }
-        
     },[newState,loginElement , signupElement])
 
     const handleLinkClick = () => {
         window.scrollTo(0, 0);
     };
 
+    const CheckTerm = (e: any) => {
+        setTerm(e.target.checked);
+    }
+
+    useEffect(() => {
+        console.log(Term);
+    }, [Term])
+
     return (
         <React.Fragment>
             <Nav/>
             <div className='mainSection'>
-                <div className='row h-100'>                    
+                <div className='row h-100'>
                     <div className='col-md-6'>
                         <div className='right-side'>
                             <div className="form">
-                        <ul className="tab-group">
-                            <li id='SIGINUP' className="tab "><a href="#signup" onClick={(e) => {classActiveTab(e); handleLinkClick();}}>{t('SignUp')}</a></li>
-                            <li id='LOGIN' className="tab active"><a href="#login" onClick={(e) => {classActiveTab(e); handleLinkClick();}}>{t('LogIn')}</a></li>
-                        </ul>                
-                        <div className="tab-content">
-                            <div id="signup">   
-                                {/* <h1>{t('SignUpforFree')}</h1>                             */}
-                                <form onSubmit={handleSubmitSignUp(onSubmitSignUp)}>                              
-                                    <div className="field-wrap">
-                                        <label>{t('EmailAddress')}<span className="req"></span></label>
-                                        <input {...registerSignUp("EMAIL", { required: true })} placeholder={t('EmailAddress')} type="email" name='EMAIL' required autoComplete="off"/>
-                                        <h6 className='ErrorMessage'>{ErrorMessage}</h6>
-                                    </div>                            
-                                    <div className="field-wrap">
-                                        <label>{t('SetAPassword')}<span className="req"></span></label>
-                                        <input {...registerSignUp("PASSWORD", { required: true })} type="PASSWORD" placeholder={t('SetAPassword')} name='PASSWORD' required autoComplete="off"/>
+                                <ul className="tab-group">
+                                    <li id='SIGINUP' className="tab "><a href="#signup" onClick={(e) => { classActiveTab(e); handleLinkClick(); }}>{t('SignUp')}</a></li>
+                                    <li id='LOGIN' className="tab active"><a href="#login" onClick={(e) => { classActiveTab(e); handleLinkClick(); }}>{t('LogIn')}</a></li>
+                                </ul>
+                                <div className="tab-content">
+                                    <div id="signup">
+                                        {/* <h1>{t('SignUpforFree')}</h1>                             */}
+                                        <form onSubmit={handleSubmitSignUp(onSubmitSignUp)}>
+                                            <div className="field-wrap">
+                                                <label>{t('EmailAddress')}<span className="req"></span></label>
+                                                <input {...registerSignUp("EMAIL", { required: true })} placeholder={t('EmailAddress')} type="email" name='EMAIL' required autoComplete="off" />
+                                                <h6 className='ErrorMessage'>{ErrorMessage}</h6>
+                                            </div>
+                                            <div className="field-wrap">
+                                                <label>{t('SetAPassword')}<span className="req"></span></label>
+                                                <input {...registerSignUp("PASSWORD", { required: true })} type="PASSWORD" placeholder={t('SetAPassword')} name='PASSWORD' required autoComplete="off" />
+                                            </div>
+                                            <div className='Term'>
+                                                <input type="checkbox" name="terms" onChange={(e) => { CheckTerm(e) }} />
+                                                <p>{t('readandaccept')}<a href='https://dev.aait.com.sa/DevPortal/Terms'>{t('term')}</a></p>
+                                            </div>
+                                            <button className="button button-block">{t('GetStarted')}</button>
+                                            <h6 className='ErrorMessage'>{TermMessage}</h6>
+                                        </form>
                                     </div>
-                                    <div className='Term'>
-                                        <input type="checkbox" name="terms"/>
-                                        <p>{t('readandaccept')}<a href='https://dev.aait.com.sa/DevPortal/Terms'>{t('term')}</a></p>
-                                    </div>
-                                    <button className="button button-block">{t('GetStarted')}</button>
-                                </form>
-                            </div>
-                            <div id="login">
-                                {/* <h1>{t('WelcomeBack')}</h1>*/}
-                                <form onSubmit={handleSubmitSignIn(onSubmit)}>
-                                    <div className="field-wrap">
-                                        <label> {t('EmailAddress')}<span className="req"></span> </label>
-                                        <input {...registerSignIn("LOGIN_NAME", { required: true })} type={'email'} name='LOGIN_NAME' placeholder={t('EmailAddress')} required autoComplete="off"/>
-                                    </div>
-                                    <div className="field-wrap">
-                                        <label>{t('SetAPassword')}<span className="req"></span></label>
-                                        <input {...registerSignIn("PASSWORD", { required: true })} name='PASSWORD' placeholder={t('SetAPassword')} type="password" required autoComplete="off"/>
-                                    </div>
-                                    <div className='footerForm'>
-                                        <p className="forgot"><a href="/">{t('ForgotPassword')}</a></p>
-                                        <button className="button button-block">{t('LogIn')}</button>
-                                    </div>
-                                </form>
-                                <br/>
-                                <div className="App d-flex justify-content-center">
-                                    <header className="App-header">
-                                        {/* <GoogleOAuthProvider clientId="77207926742-87gcu7ts96gbh8qe1i9t3gt528mu8kt4.apps.googleusercontent.com">
+                                    <div id="login">
+                                        {/* <h1>{t('WelcomeBack')}</h1>*/}
+                                        <form onSubmit={handleSubmitSignIn(onSubmit)}>
+                                            <div className="field-wrap">
+                                                <label> {t('EmailAddress')}<span className="req"></span> </label>
+                                                <input {...registerSignIn("LOGIN_NAME", { required: true })} type={'email'} name='LOGIN_NAME' placeholder={t('EmailAddress')} required autoComplete="off" />
+                                            </div>
+                                            <div className="field-wrap">
+                                                <label>{t('SetAPassword')}<span className="req"></span></label>
+                                                <input {...registerSignIn("PASSWORD", { required: true })} name='PASSWORD' placeholder={t('SetAPassword')} type="password" required autoComplete="off" />
+                                            </div>
+                                            <div className='footerForm'>
+                                                <p className="forgot"><a href="/">{t('ForgotPassword')}</a></p>
+                                                <button className="button button-block">{t('LogIn')}</button>
+                                            </div>
+                                        </form>
+                                        <br />
+                                        <div className="App d-flex justify-content-center">
+                                            <header className="App-header">
+                                                {/* <GoogleOAuthProvider clientId="77207926742-87gcu7ts96gbh8qe1i9t3gt528mu8kt4.apps.googleusercontent.com">
                                             <Google />
                                         </GoogleOAuthProvider> */}
-                                    </header>
+                                            </header>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
                             </div>
                         </div>
                     </div>

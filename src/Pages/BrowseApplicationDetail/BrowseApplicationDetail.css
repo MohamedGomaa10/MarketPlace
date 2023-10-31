@@ -236,7 +236,7 @@ html[dir="ltr"] .BrowseApplicationDetail {
 
 .BrowseApplicationDetail .buttons{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .BrowseApplicationDetail .buttons button {
@@ -372,5 +372,16 @@ html[dir="ltr"] .BrowseApplicationDetail {
     border-radius: 5px;
     height: 40px;
     display: flex;
+    align-items: center;
+}
+
+.UsesContent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.UsesContent .UsesContentDetails{
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }

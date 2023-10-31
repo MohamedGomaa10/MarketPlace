@@ -26,7 +26,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'react-toastify/dist/ReactToastify.css';
 import '@splidejs/react-splide/css';
 
-
 import './index.css';
 
 const Index = ReactDOM.createRoot(

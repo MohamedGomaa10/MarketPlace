@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from "../MasterStore";
 
 // Actions
-import { GetAllProductProgramAction, CheckMarkterJoinAction, GetAllMarketCouponAction, GetOneProductProgramAction, CreateJoinMarketAction, JoinMarketInterface, CreateGenerateCouponInterface, CreateGenerateCouponAction, CheckMarkterInterface } from '../Actions/MarketProgramAction';
+import { GetAllProductProgramAction, CheckMarkterJoinAction, GetAllMarketCouponAction, GetAllMarketerOperationAction, GetOneProductProgramAction, CreateJoinMarketAction, JoinMarketInterface, CreateGenerateCouponInterface, CreateGenerateCouponAction, CheckMarkterInterface } from '../Actions/MarketProgramAction';
 
 // Interface
 interface IPrdouctsProgram {
@@ -16,6 +16,7 @@ interface IPrdouctsProgram {
     MarketCoupon?: any;
     CheckMarkterJoin?: any;
     MarkterJoin?: any;
+    MarkterOperation?: any;
     error?: any;
 }
 
@@ -27,6 +28,7 @@ const initialState: IPrdouctsProgram = {
     PrdouctProgram: {},
     GenerateCoupon: {},
     MarkterJoin: {},
+    MarkterOperation: {},
     CheckMarkterJoin: "",
     error: ''
 }
@@ -36,6 +38,14 @@ export const GetAllPrdouctsProgram = createAsyncThunk(
     'PrdouctsProgram',
     async (USER_ID: number) => {
         return await GetAllProductProgramAction(USER_ID);
+    }
+)
+
+// GetMarketerOperation
+export const GetMarketerOperationSlice = createAsyncThunk(
+    'MarketerOperation',
+    async (USER_ID: number) => {
+        return await GetAllMarketerOperationAction(USER_ID);
     }
 )
 
@@ -172,6 +182,21 @@ const MarketProgramSlice = createSlice({
         Builder.addCase( GetAllMarketCouponSlice.rejected ,( State, Action) => {
             State.loading = false;
             State.MarketCoupon = [];
+            State.error = Action.error?.message;
+        })
+
+        // CreateJoinMarket
+        Builder.addCase( GetMarketerOperationSlice.pending, ( State) => {
+            State.loading = true;
+        })
+        Builder.addCase( GetMarketerOperationSlice.fulfilled, ( State, Action) => {
+            State.loading = false;
+            State.MarkterOperation = Action.payload.DATA;
+            State.error = '';
+        })
+        Builder.addCase( GetMarketerOperationSlice.rejected ,( State, Action) => {
+            State.loading = false;
+            State.MarkterOperation = [];
             State.error = Action.error?.message;
         })
     },

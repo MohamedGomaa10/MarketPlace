@@ -143,7 +143,7 @@ const Checkout: FC = () => {
 			}
 		}
 		const pattern = new RegExp(`^([^e+-]{0,${len}})`);
-		return event.target.value = event.target.value.match(pattern)[0];	
+		return event.target.value = event.target.value.match(pattern)[0];
 	}
 
 	const CheckValueMonth = (event :any) => {

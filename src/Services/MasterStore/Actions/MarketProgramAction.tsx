@@ -19,6 +19,12 @@ export const GetAllMarketCouponAction = async (USER_ID: number) => {
     return response.data;
 }
 
+// GetAllMarketerOperation
+export const GetAllMarketerOperationAction = async (USER_ID: number) => {
+    const response = await Request.get( `Market/SelectMarketerOperation/${USER_ID}` );
+    return response.data;
+}
+
 export interface CheckMarkterInterface {
     USER_ID: number,
     LANG: string,

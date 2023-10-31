@@ -89,6 +89,7 @@ const UserSlice = createSlice({
             State.loading = true;
         })
         Builder.addCase( UserSignIn.fulfilled, ( State:any, Action:any ) => {
+            console.log(Action.payload?.DATA?.PUSER_INFO);            
             if (Action.payload?.DATA?.PUSER_INFO) {
                 State.loading = false;
                 State.user = Action.payload.DATA.PUSER_INFO;

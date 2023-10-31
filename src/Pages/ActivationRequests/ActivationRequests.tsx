@@ -5,6 +5,9 @@ import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/Maste
 
 import { GetAllMarketCouponSlice, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
 
+// Static Data
+import StaticData from "../../Services/StaticData/statisticsData.json";
+
 //translation
 import { useTranslation } from 'react-i18next';
 
@@ -60,13 +63,13 @@ const ActivationRequests = () => {
              <div className="Content_Body">
                 <h1>{t('Statistics')}</h1>
                 <div className="cards">
-                  {SUMMARY_REF?.map((Data: any, Index: any) => (
+                  {StaticData?.map((Data: any, Index: any) => (
                     <div className="cardDetails" key={Index}>
                       <div>
-                        <h3>{t(Data?.COUPON_STATE_ONE)}</h3>
-                        <h6 style={{ color: Data?.COUPON_COLOR }}>{Data?.COUPON_COUNT}</h6>
+                        <h3>{t(Data?.name)}</h3>
+                        <h6 style={{ color: Data?.color }}>{Index < SUMMARY_REF?.length ? SUMMARY_REF && SUMMARY_REF.map((Image: any) => ((Image.COUPON_STATE === Data.COUPON_STATE) ? Image?.COUPON_COUNT : '')) : 0}</h6>
                       </div>
-                      <i className={Data?.COUPON_ICON}></i>
+                      <i className={Data?.icon}></i>
                     </div>
                   ))}
                 </div>
@@ -82,7 +85,7 @@ const ActivationRequests = () => {
                     <th>اسم التطبيق</th>
                     <th>الحالة</th>
                     <th>تاريخ الانتهاء</th>
-                    <th>الإجراءات</th>
+                    <th>الكود</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -37,15 +37,15 @@ const CategorySlice = createSlice({
     extraReducers: ( Builder) => {
 
         // Get All Categories
-        Builder.addCase( GetAllCategories.pending, ( State) => {
+        Builder.addCase( GetAllCategories.pending, (State) => {
             State.loading = true;
         })
-        Builder.addCase( GetAllCategories.fulfilled, ( State, Action) => {
+        Builder.addCase( GetAllCategories.fulfilled, (State, Action) => {
             State.loading = false;
             State.categories = Action.payload.DATA.CATEGORY;
             State.error = '';
         })
-        Builder.addCase( GetAllCategories.rejected ,( State, Action) => {
+        Builder.addCase( GetAllCategories.rejected ,(State, Action) => {
             State.loading = false;
             State.categories = [];
             State.error = Action.error?.message;

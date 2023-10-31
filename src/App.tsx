@@ -15,7 +15,7 @@ import RequestProvider from './Middleware/Requests/RequestProvider';
 const App: FC = () => {
   const Navigate = useNavigate();
   const [Token] = useState(localStorage.getItem('token'));
-  
+
   useEffect(()=>{
       const decodedToken = Token && jwtDecode<any>(Token);
       const currentTime = Date.now() / 1000;
@@ -28,10 +28,10 @@ const App: FC = () => {
   return (
     <React.Fragment>
         <RequestProvider>
-          <RoutesProvider>          
+          <RoutesProvider>
           </RoutesProvider>
-        </RequestProvider> 
-    </React.Fragment>               
+        </RequestProvider>
+    </React.Fragment>
   )
 }
 
