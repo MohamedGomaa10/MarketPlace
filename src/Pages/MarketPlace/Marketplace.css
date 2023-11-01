@@ -13,7 +13,7 @@
     width: 180px;
 }
 
-.pagination{
+.leftSide .pagination{
     width: 93px;
     background-color: var(--card-color);
     border-color: #292c54;

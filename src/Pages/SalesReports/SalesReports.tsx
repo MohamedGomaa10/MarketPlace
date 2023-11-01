@@ -60,9 +60,13 @@ const SalesReports = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(MARKETEROPERATIONDATA);
-  }, [MARKETEROPERATIONDATA])
+  const formatDate = (dateString: any) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  };
 
   return (
     <React.Fragment>
@@ -91,13 +95,13 @@ const SalesReports = () => {
               <table className="table">
                 <thead>
                   <tr>
-                    <th>معرف الطلب</th>
-                    <th>اسم الكوبون</th>
-                    <th>اسم الابليكيشن</th>
-                    <th>كود الكوبون</th>
-                    <th>عمولتي ( ر.س )</th>
-                    <th>الحالة</th>
-                    <th>تاريخ الانشاء</th>
+                    <th>{t('Order ID')}</th>
+                    <th>{t('Coupon Name')}</th>
+                    <th>{t('Application Name')}</th>
+                    <th>{t('Coupon Code')}</th>
+                    <th>{t('COMMISSION')}</th>
+                    <th>{t('enter_State')}</th>
+                    <th>{t('Date Created')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -110,7 +114,7 @@ const SalesReports = () => {
                         <td>{Data.COUPON_CODE}</td>
                         <td>{Data.COMMISSION_NET_VALUE}</td>
                         <td></td>
-                        <td>{Data.PAYMENT_DATE}</td>
+                        <td>{formatDate(Data.PAYMENT_DATE)}</td>
                       </tr>
                     ))}
                 </tbody>
@@ -118,7 +122,7 @@ const SalesReports = () => {
               <div className="row">
                 <div className="pagination">
                   <div className="col-md-9">
-                    <span>{SaleTabel.length} سجل تم إيجاده</span>
+                    <span>{SaleTabel.length} {t('Record found')}</span>
                   </div>
                   <div
                     className="col-md-3"

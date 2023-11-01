@@ -121,17 +121,9 @@ const Login:FC = () => {
         }
     },[newState,loginElement , signupElement])
 
-    const handleLinkClick = () => {
-        window.scrollTo(0, 0);
-    };
-
     const CheckTerm = (e: any) => {
         setTerm(e.target.checked);
     }
-
-    useEffect(() => {
-        console.log(Term);
-    }, [Term])
 
     return (
         <React.Fragment>
@@ -142,12 +134,12 @@ const Login:FC = () => {
                         <div className='right-side'>
                             <div className="form">
                                 <ul className="tab-group">
-                                    <li id='SIGINUP' className="tab "><a href="#signup" onClick={(e) => { classActiveTab(e); handleLinkClick(); }}>{t('SignUp')}</a></li>
-                                    <li id='LOGIN' className="tab active"><a href="#login" onClick={(e) => { classActiveTab(e); handleLinkClick(); }}>{t('LogIn')}</a></li>
+                                    <li id='SIGINUP' className="tab "><a href="#signup" onClick={(e) => { classActiveTab(e); }}>{t('SignUp')}</a></li>
+                                    <li id='LOGIN' className="tab active"><a href="#login" onClick={(e) => { classActiveTab(e); }}>{t('LogIn')}</a></li>
                                 </ul>
                                 <div className="tab-content">
                                     <div id="signup">
-                                        {/* <h1>{t('SignUpforFree')}</h1>                             */}
+                                        {/* <h1>{t('SignUpforFree')}</h1>*/}
                                         <form onSubmit={handleSubmitSignUp(onSubmitSignUp)}>
                                             <div className="field-wrap">
                                                 <label>{t('EmailAddress')}<span className="req"></span></label>

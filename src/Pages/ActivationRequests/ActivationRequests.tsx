@@ -56,6 +56,14 @@ const ActivationRequests = () => {
     }
   };
 
+  const formatDate = (dateString: any) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  };
+
   return (
     <React.Fragment>
       <div className="container_Activation_main" id="container_main">
@@ -80,12 +88,12 @@ const ActivationRequests = () => {
               <table className="table">
                 <thead>
                   <tr>
-                    <th>معرف الطلب</th>
-                    <th>اسم العرض</th>
-                    <th>اسم التطبيق</th>
-                    <th>الحالة</th>
-                    <th>تاريخ الانتهاء</th>
-                    <th>الكود</th>
+                    <th>{t('Order ID')}</th>
+                    <th>{t('Order Name')}</th>
+                    <th>{t('Application Name')}</th>
+                    <th>{t('enter_State')}</th>
+                    <th>{t('Expiry date')}</th>
+                    <th>{t('CODE')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -96,7 +104,7 @@ const ActivationRequests = () => {
                         <td>{Data.COUPON_NAME_ONE}</td>
                         <td>{Data.NAME_ONE}</td>
                         <td>{Data?.COUPON_STATE_ONE}</td>
-                        <td>{Data?.VALID_TILL}</td>
+                        <td>{formatDate(Data?.VALID_TILL)}</td>
                         <td><span>{Data?.CODE}</span></td>
                       </tr>
                     ))}
@@ -105,7 +113,7 @@ const ActivationRequests = () => {
               <div className="row">
                 <div className="pagination">
                   <div className="col-md-9">
-                    <span>{MARKET_COUPON && MARKET_COUPON.length} سجل تم إيجاده</span>
+                    <span>{MARKET_COUPON && MARKET_COUPON.length} {t('Record found')}</span>
                   </div>
                   <div
                     className="col-md-3"

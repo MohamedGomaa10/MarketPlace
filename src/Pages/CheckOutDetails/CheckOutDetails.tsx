@@ -347,7 +347,7 @@ const CheckOutDetails:FC = () => {
                 </div>
             <iframe  title='Invoice'>
             </iframe>
-           <div ref={pdfRef}id='InvoicePrint' style={{maxWidth: '750px', background: '#FFF'}}>
+           <div ref={pdfRef}id='InvoicePrint' style={{maxWidth: '750px', background: '#FFF', zIndex: '-1'}}>
                 <div className='FreeModal subscribeModal'>
                     <div className='HeaderInvoice'>
                         <div className='Invoice'><h1>فاتورة ضريبية</h1></div>

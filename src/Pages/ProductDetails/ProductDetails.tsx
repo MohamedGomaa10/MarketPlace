@@ -245,11 +245,11 @@ const ProductDetails:FC = () => {
       setFreeShow(false);
   };
 
-  const ActiveApp = () =>{
+  const ActiveApp = () => {
     if (UserData === null || Object.keys(UserData).length === 0) {
       navigate(`/login`, { replace: true })
     }
-    else{
+    else {
       const Data: CreateOrderInterface = {
         guid: generateGUID(),
         amount: ProductPricing.MONTHS * ProductPricing.PRICE_PER_MONTH,
@@ -260,9 +260,9 @@ const ProductDetails:FC = () => {
         producT_PRICING_ID: ProductPricing.PRODUCT_PRICING_ID,
         useR_ACCOUNT_ID: UserData?.UserId
       };
-      dispatch(CreateOrder(Data)).then((res)=>{
+      dispatch(CreateOrder(Data)).then((res) => {
         if (res.meta.requestStatus === 'fulfilled') {
-          navigate(`/checkOut/${ProductPricing.PRODUCT_PRICING_ID}/${id}`, { replace: true })        
+          navigate(`/checkOut/${ProductPricing.PRODUCT_PRICING_ID}/${id}`, { replace: true })
         }
       });
       window.scrollTo(0, 0);
@@ -272,38 +272,38 @@ const ProductDetails:FC = () => {
 
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
-};
+  };
 
-const summation = PRODUCT_STARS && PRODUCT_STARS.reduce((accumulator: any, currentValue: any) => {
-  return accumulator + currentValue.STARS_VALUE;
-}, 0);
+  const summation = PRODUCT_STARS && PRODUCT_STARS.reduce((accumulator: any, currentValue: any) => {
+    return accumulator + currentValue.STARS_VALUE;
+  }, 0);
 
-const ReviewAverage = PRODUCT_STARS && PRODUCT_STARS.reduce((accumulator: any, currentValue: any) => {
-  return (accumulator + (currentValue.STARS_VALUE * currentValue.STARS_LABEL)/summation);
-}, 0);
+  const ReviewAverage = PRODUCT_STARS && PRODUCT_STARS.reduce((accumulator: any, currentValue: any) => {
+    return (accumulator + (currentValue.STARS_VALUE * currentValue.STARS_LABEL) / summation);
+  }, 0);
 
-useEffect(() => {
-  let arr = [];
-  for (let index = 0; index < PRODUCT_STARS.length; index++) {
-    arr.push(PRODUCT_STARS[index].STARS_LABEL)
+  useEffect(() => {
+    let arr = [];
+    for (let index = 0; index < PRODUCT_STARS.length; index++) {
+      arr.push(PRODUCT_STARS[index].STARS_LABEL)
+    }
+    setStar_Record(arr);
+  }, [PRODUCT_STARS, productInfo])
+
+  const formatDate = (dateString: any) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  };
+
+  const NavigateFor = (str: any) => {
+    str === 'm' ? navigate(`/marketplace`, { replace: true }) : navigate(`/subscriptionsManagement`, { replace: true });
   }
-  setStar_Record(arr);
-}, [PRODUCT_STARS, productInfo])
 
-const formatDate = (dateString: any) => {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-};
-
-const NavigateFor =(str:any)=>{
-  str ==='m'?navigate(`/marketplace`, { replace: true }):navigate(`/subscriptionsManagement`, { replace: true });
-}
-
-const OpenApp = (Url:string) =>{
-  window.open(Url, "_blank", "noreferrer");
+  const OpenApp = (Url: string) => {
+    window.open(Url, "_blank", "noreferrer");
   }
   
     return (
