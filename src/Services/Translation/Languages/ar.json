@@ -183,7 +183,7 @@
    "Payment has been completed": "تمت عملية الدفع",
    "Total amount paid": "إجمالي المبلغ المدفوع",
    "Total amount due": "إجمالي المبلغ المستحق",
-   "Total amount ": "إجمالي المبلغ",
+   "Total amount": "إجمالي المبلغ",
    "Payment Bill": "فاتورة الدفع",
    "Rating and reviews": "التقيم والمراجعات",
    "WEBSITE": "الموقع الالكروني",
@@ -343,5 +343,8 @@
    "Validate_Date": "السنة منتهية برجاء اعادة ادخال بطاقة سارية",
    "Subscription_management_main_title": "لا يوجد تطبيقات مفعلة على حسابك",
    "Subscription_management_sub_title": "ابدأ بربط تطبيقاتك و طور اعمالك من خلال حلول سوق تطبيقات كوجكت التي تساعدك في إدارة اعمالك باحترافية",
-   "Help Center": "مركز المساعدة"
+   "Help Center": "مركز المساعدة",
+   "Operation ID": "رقم العملية",
+   "Operation Type": "نوع العملية",
+   "Operation Date": "تايخ العملية"
 }

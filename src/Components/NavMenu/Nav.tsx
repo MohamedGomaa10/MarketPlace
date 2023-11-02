@@ -128,7 +128,7 @@ const Nav = () => {
             USER_ID: decodedToken?.UserId,
             LANG: localStorage.getItem('LANG') === 'en' ? "TWO" : "ONE"
           }
-          dispatch(CheckMarkterJoinSlice(payload))
+          dispatch(CheckMarkterJoinSlice(payload));
       }, [TokenData, Token, dispatch]);
 
       const JoinMarket: SubmitHandler<CreateApplyDiscountInterface> = ( data ) => {

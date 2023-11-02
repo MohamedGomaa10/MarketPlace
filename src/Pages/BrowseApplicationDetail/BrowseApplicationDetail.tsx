@@ -50,10 +50,6 @@ const BrowseApplicationDetail = () => {
     dispatch(GetOneProductProgram(id))
   }, [dispatch, id])
 
-  useEffect(() => {
-    console.log(DATA_INFO);    
-  }, [DATA_INFO])
-
   return (
     <React.Fragment>
       <div className="BrowseApplicationDetail" id="container_main">

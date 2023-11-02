@@ -109,17 +109,17 @@ const Login:FC = () => {
         parent.classList.add('active');
     }
 
-    useEffect(()=>{
-        if(newState === 'new') {
+    useEffect(() => {
+        if (newState === 'new') {
             if (loginElement && signupElement) {
                 loginElement.style.display = 'none';
                 signupElement.style.display = 'block';
                 document.getElementById('SIGINUP')?.classList.add('active')
                 document.getElementById('LOGIN')?.classList.remove('active')
                 localStorage.removeItem('state');
-              }
+            }
         }
-    },[newState,loginElement , signupElement])
+    }, [newState, loginElement, signupElement])
 
     const CheckTerm = (e: any) => {
         setTerm(e.target.checked);

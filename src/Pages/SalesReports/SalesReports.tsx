@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from "react";
 
 // Static Data
-import StaticData from "../../Services/StaticData/ActiveRequest.json";
+import StaticData from "../../Services/StaticData/SalesData.json";
 
 // Master Hooks
 import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/MasterHook";
@@ -68,16 +68,21 @@ const SalesReports = () => {
     return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
   };
 
+  const onClickGrid = (Row: any) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${'JwtInfo'}=`);
+    if (parts.length === 2) {
+    };
+  }
+
   return (
     <React.Fragment>
       <div className="container_Sales_main" id="container_main">
         <div className="container_Sales_body">
-          {!!StaticData.length &&
-            StaticData.map((Data: any, Index: any) => (
-              Data.id === 3 &&  <div className="Content_Body" key={Index}>
-                <h1>{t(Data?.name)}</h1>
+           <div className="Content_Body">
+                <h1>{t('المبيعات')}</h1>
                 <div className="cards">
-                  {Data?.card_Body.map((Data: any, Index: any) => (
+                  {StaticData?.map((Data: any, Index: any) => (
                     <div className="cardDetails" key={Index}>
                       <div>
                         <h3>{t(Data?.name)}</h3>
@@ -88,32 +93,25 @@ const SalesReports = () => {
                   ))}
                 </div>
               </div>
-            ))}
           <div className="Content_Body">
             <h1>{t('SalesReports')}</h1>
             <div className="CojectGrid">
               <table className="table">
                 <thead>
                   <tr>
-                    <th>{t('Order ID')}</th>
-                    <th>{t('Coupon Name')}</th>
-                    <th>{t('Application Name')}</th>
-                    <th>{t('Coupon Code')}</th>
-                    <th>{t('COMMISSION')}</th>
-                    <th>{t('enter_State')}</th>
-                    <th>{t('Date Created')}</th>
+                    <th>{t('Operation ID')}</th>
+                    <th>{t('Operation Type')}</th>
+                    <th>{t('Total amount')}</th>
+                    <th>{t('Operation Date')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {!!SaleTabel.length &&
                     SaleTabel.map((Data: any, Index: any) => (
-                      <tr key={Index}>
+                      <tr key={Index} onClick={() => {onClickGrid(Data)}} style={{cursor: 'pointer'}}>
                         <td>{Data.MARKETER_PAYMENT_OPERATION_ID}</td>
                         <td>{Data.PRODUCT_MARKET_OFFER_NAME_ONE}</td>
-                        <td>{Data?.PRODUCT_NAME_ONE}</td>
-                        <td>{Data.COUPON_CODE}</td>
-                        <td>{Data.COMMISSION_NET_VALUE}</td>
-                        <td></td>
+                        <td>{Data?.NET_AMOUNT}</td>
                         <td>{formatDate(Data.PAYMENT_DATE)}</td>
                       </tr>
                     ))}

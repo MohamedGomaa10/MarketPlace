@@ -88,8 +88,7 @@ const UserSlice = createSlice({
         Builder.addCase( UserSignIn.pending, ( State:any) => {
             State.loading = true;
         })
-        Builder.addCase( UserSignIn.fulfilled, ( State:any, Action:any ) => {
-            console.log(Action.payload?.DATA?.PUSER_INFO);            
+        Builder.addCase( UserSignIn.fulfilled, ( State:any, Action:any ) => { 
             if (Action.payload?.DATA?.PUSER_INFO) {
                 State.loading = false;
                 State.user = Action.payload.DATA.PUSER_INFO;
@@ -99,7 +98,7 @@ const UserSlice = createSlice({
                 toast.error(`UnAuthorized`, { position: "top-right", toastId: 'uniqueId' });
                 State.loading = false;
                 State.user = [];
-                State.error = Action.payload.MESSAGE.CODE;   
+                State.error = Action.payload.MESSAGE.CODE;
             }
         })
 
@@ -108,7 +107,6 @@ const UserSlice = createSlice({
             State.loading = true;
         })
         Builder.addCase( UserSignUp.fulfilled, ( State:any, Action:any ) => {
-            console.log(Action.payload?.MESSAGE?.MESSAGE);
             State.loading = false;
             State.user = Action.payload?.data?.user;
             State.error = '';
@@ -127,8 +125,7 @@ const UserSlice = createSlice({
             State.loading = false;
             State.error = '';
             toast.success(Action.payload?.message, { position: "top-right", toastId: 'uniqueId' });
-        });     
-
+        });
     },
 });
 

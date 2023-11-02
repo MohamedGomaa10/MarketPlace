@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 //translation
 import { useTranslation } from 'react-i18next';
@@ -16,12 +16,8 @@ const AccountBank = () => {
     const handleFreeClose = () => setFreeShow(false);
 
     const GetUploadData = (e: any, Type: any) => {
-        console.log(e.target.value);
-        console.log(e.target.files[0].type);
         let text = e.target.files[0].type;
         const ImageType = text.split("/");
-        console.log(ImageType);
-        console.log(FileData.filter((Item: any, Index2: any) => (Item.Name === Type)));
         
         if((ImageType && ImageType[1] === 'png') || (ImageType && ImageType[1] === 'jpg') || (ImageType && ImageType[1] === 'jpeg')){
             if(FileData.filter((Item: any, Index2: any) => (Item.Name === Type)).length === 0){
@@ -55,10 +51,6 @@ const AccountBank = () => {
             setFileDataURL(null);
           }
     }
-
-    useEffect(() => {
-        console.log(FileData);
-    }, [FileData])
 
     return (
         <React.Fragment>
