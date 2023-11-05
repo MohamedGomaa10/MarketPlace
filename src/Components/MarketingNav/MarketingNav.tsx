@@ -28,9 +28,9 @@ const MarketingNav = () => {
   const Navigate = useNavigate();
   const { t } = useTranslation();
   const [cookies] = useCookies(['JwtInfo']);
-  const [MenuData, setMenuData] = useState<any>('');
   const [Token] = useState(!!localStorage.token || false);
   const [Language, setLanguage] = useState(localStorage.LANG || "ar");
+  const queryString = window.location.pathname;
 
   const getWindowSize = () => {
     const { innerWidth, innerHeight } = window;
@@ -40,7 +40,7 @@ const MarketingNav = () => {
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
   useEffect(() => {
-    localStorage.setItem('token', JSON.stringify(cookies?.JwtInfo.ACCESS_TOKEN));
+    localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
   }, [cookies]);
 
   useEffect(() => {
@@ -102,11 +102,6 @@ const MarketingNav = () => {
     }
   };
 
-  //Active Menu
-  const ChangeMenu = (e: any, Data: any) => {
-    setMenuData(Data);
-  };
-
   useEffect(() => {
     const tabs = document.querySelectorAll(".content_body");
     const ShowMenu = document.getElementById("ChangeMenu");
@@ -114,18 +109,13 @@ const MarketingNav = () => {
       ShowMenu?.classList.remove("ShowMenu");
     }
     tabs.forEach((tab) => {
-      if (Number(tab.id) === MenuData.id) {
-        console.log(MenuData.id);
-        
+      if (tab.id === queryString) { 
         tab.classList.add("activeHeader");
       } else {
-        console.log(10);
-        
         tab.classList.remove("activeHeader");
       }
     });
-    console.log(MenuData);
-  }, [MenuData])
+  }, [queryString])
 
   //Close Menu
   const CloseMenu = () => {
@@ -151,9 +141,8 @@ const MarketingNav = () => {
           {!!StaticMenu.length &&
             StaticMenu.map((Data: any, Index: any) => (
               <NavLink to={Data?.URL} key={Index}>
-                <div className={`content_body ${Data?.id === 1 ? `activeHeader` : ""}`}
-                  id={Data?.id}
-                  onClick={(e: any) => {ChangeMenu(e, Data);}}>
+                <div className={`content_body`}
+                  id={Data?.URL}>
                   <h1>{t(Data?.Name)}</h1>
                 </div>
               </NavLink>
