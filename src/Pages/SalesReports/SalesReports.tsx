@@ -3,6 +3,8 @@ import React,{ useState, useEffect } from "react";
 // Static Data
 import StaticData from "../../Services/StaticData/SalesData.json";
 
+import { useCookies } from 'react-cookie';
+
 // Master Hooks
 import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/MasterHook";
 
@@ -21,6 +23,7 @@ const SalesReports = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [SaleTabel,setSaleTabel]=useState<any>([]);
+  const [cookies] = useCookies(['JwtInfo']);
   const [PageNumber, setPageNumber] = useState<any>(0);
   const [CurrentPage, setCurrentPage] = useState<any>(0);
   const [Token] = useState(localStorage.getItem('token'));
@@ -70,6 +73,7 @@ const SalesReports = () => {
 
   const onClickGrid = (Row: any) => {
     const value = `; ${document.cookie}`;
+    console.log(cookies?.JwtInfo);
     const parts = value.split(`; ${'JwtInfo'}=`);
     if (parts.length === 2) {
     };

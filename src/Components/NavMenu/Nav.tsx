@@ -15,6 +15,8 @@ import Modal from 'react-bootstrap/Modal';
 // React Hook Form
 import { useForm, SubmitHandler } from "react-hook-form";
 
+import { useCookies } from 'react-cookie';
+
 // Master Hooks
 import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/MasterHook";
 
@@ -43,6 +45,7 @@ const Nav = () => {
     const { t } = useTranslation();
     const Navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const [cookies] = useCookies(['JwtInfo']);
 	const { register: FormDiscount, handleSubmit: handleFormDiscount } = useForm<CreateApplyDiscountInterface>();
     const [bckGround, setbckGround] = useState(false)
     const { CheckMarkterJoin, MarkterJoin } = useAppSelector(SelectMarketProgram);
@@ -55,6 +58,9 @@ const Nav = () => {
     const [Token, setToken] = useState(!!localStorage.token || false);
     const [TokenData] = useState(localStorage.getItem('token'));
 
+    useEffect(() => {
+        localStorage.setItem('token', JSON.stringify(cookies?.JwtInfo.ACCESS_TOKEN));
+      }, [cookies]);
 
     const handleFreeClose = () => setFreeShow(false);
     const handleFreeShow = () => {

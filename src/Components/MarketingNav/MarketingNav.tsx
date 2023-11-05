@@ -18,14 +18,19 @@ import { GrLanguage } from "react-icons/gr";
 // Static Data
 import StaticMenu from "../../Services/StaticData/SideMenuData.json";
 
+
+import { useCookies } from 'react-cookie';
+
 //css
 import "./MarketingNav.css";
 
 const MarketingNav = () => {
   const Navigate = useNavigate();
   const { t } = useTranslation();
-  const [Language, setLanguage] = useState(localStorage.LANG || "ar");
+  const [cookies] = useCookies(['JwtInfo']);
+  const [MenuData, setMenuData] = useState<any>('');
   const [Token] = useState(!!localStorage.token || false);
+  const [Language, setLanguage] = useState(localStorage.LANG || "ar");
 
   const getWindowSize = () => {
     const { innerWidth, innerHeight } = window;
@@ -33,6 +38,10 @@ const MarketingNav = () => {
   };
 
   const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+    localStorage.setItem('token', JSON.stringify(cookies?.JwtInfo.ACCESS_TOKEN));
+  }, [cookies]);
 
   useEffect(() => {
     function handleWindowResize() {
@@ -95,19 +104,28 @@ const MarketingNav = () => {
 
   //Active Menu
   const ChangeMenu = (e: any, Data: any) => {
+    setMenuData(Data);
+  };
+
+  useEffect(() => {
     const tabs = document.querySelectorAll(".content_body");
     const ShowMenu = document.getElementById("ChangeMenu");
     if (ShowMenu) {
       ShowMenu?.classList.remove("ShowMenu");
     }
     tabs.forEach((tab) => {
-      if (Number(tab.id) === Data.id) {
+      if (Number(tab.id) === MenuData.id) {
+        console.log(MenuData.id);
+        
         tab.classList.add("activeHeader");
       } else {
+        console.log(10);
+        
         tab.classList.remove("activeHeader");
       }
     });
-  };
+    console.log(MenuData);
+  }, [MenuData])
 
   //Close Menu
   const CloseMenu = () => {
