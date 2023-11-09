@@ -193,8 +193,8 @@ const Nav = () => {
                             </NavLink>
                         </div>
                         <div className='shape' onClick={() => { handleShow('Actions') }}>
-                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') : localStorage.getItem('USER_NAME_ONE')}</h3>
-                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('PROFILE_IMAGE')}}/${localStorage.getItem('USER_NAME')}}`} alt="logo" />
+                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') ? localStorage.getItem('USER_NAME_TWO') : '' : localStorage.getItem('USER_NAME_ONE') ? localStorage.getItem('USER_NAME_ONE') : ''}</h3>
+                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('PROFILE_IMAGE') ? localStorage.getItem('PROFILE_IMAGE') : ''}}/${localStorage.getItem('USER_NAME') ? localStorage.getItem('USER_NAME') : ''}}`} alt="logo" />
                             <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div>{localStorage.getItem('LANG') === 'ar' ? 'En' : 'Ar'}</div>
@@ -214,7 +214,7 @@ const Nav = () => {
                                 </ul>}
                                 {Token ? <ul>
                                     <NavLink to='/profile' onClick={handleShow}>
-                                        {localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') : localStorage.getItem('USER_NAME_ONE')}
+                                        {localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') ? localStorage.getItem('USER_NAME_TWO') : '' : localStorage.getItem('USER_NAME_ONE') ? localStorage.getItem('USER_NAME_ONE') : ''}
                                     </NavLink>
                                 </ul> : ''}
                                 {Token ? <ul>
