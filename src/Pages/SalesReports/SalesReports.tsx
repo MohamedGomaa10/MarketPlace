@@ -3,11 +3,8 @@ import React,{ useState, useEffect } from "react";
 // Static Data
 import StaticData from "../../Services/StaticData/SalesData.json";
 
-import { useCookies } from 'react-cookie';
-
 // Master Hooks
 import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/MasterHook";
-
 
 import { GetMarketerOperationSlice, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
 
@@ -22,8 +19,7 @@ import "./SalesReports.css";
 const SalesReports = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [SaleTabel,setSaleTabel]=useState<any>([]);
-  const [cookies] = useCookies(['JwtInfo']);
+  const [SaleTabel, setSaleTabel] = useState<any>([]);
   const [PageNumber, setPageNumber] = useState<any>(0);
   const [CurrentPage, setCurrentPage] = useState<any>(0);
   const [Token] = useState(localStorage.getItem('token'));
@@ -45,7 +41,7 @@ const SalesReports = () => {
       const PagesNumber = Math.ceil(MARKETEROPERATIONDATA.length / PageSize);
       const FirstIndexPage = CurrentPage * PageSize;
       const LastIndexPage = FirstIndexPage + PageSize;
-      setSaleTabel(MARKETEROPERATIONDATA.slice(FirstIndexPage , LastIndexPage));
+      setSaleTabel(MARKETEROPERATIONDATA.slice(FirstIndexPage, LastIndexPage));
       setPageNumber(PagesNumber);
     }
   }, [PaginationSize, CurrentPage, MARKETEROPERATIONDATA]);
@@ -72,8 +68,7 @@ const SalesReports = () => {
   };
 
   const onClickGrid = (Row: any) => {
-    const value = `; ${document.cookie}`;
-    console.log(cookies?.JwtInfo);
+    const value = `;${document.cookie}`;
     const parts = value.split(`; ${'JwtInfo'}=`);
     if (parts.length === 2) {
     };
@@ -83,20 +78,20 @@ const SalesReports = () => {
     <React.Fragment>
       <div className="container_Sales_main" id="container_main">
         <div className="container_Sales_body">
-           <div className="Content_Body">
-                <h1>{t('المبيعات')}</h1>
-                <div className="cards">
-                  {StaticData?.map((Data: any, Index: any) => (
-                    <div className="cardDetails" key={Index}>
-                      <div>
-                        <h3>{t(Data?.name)}</h3>
-                        <h6 style={{ color: Data?.color }}>{Data?.number}</h6>
-                      </div>
-                      <i className={Data?.icon}></i>
-                    </div>
-                  ))}
+          <div className="Content_Body">
+            <h1>{t('المبيعات')}</h1>
+            <div className="cards">
+              {StaticData?.map((Data: any, Index: any) => (
+                <div className="cardDetails" key={Index}>
+                  <div>
+                    <h3>{t(Data?.name)}</h3>
+                    <h6 style={{ color: Data?.color }}>{Data?.number}</h6>
+                  </div>
+                  <i className={Data?.icon}></i>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
           <div className="Content_Body">
             <h1>{t('SalesReports')}</h1>
             <div className="CojectGrid">
@@ -112,7 +107,7 @@ const SalesReports = () => {
                 <tbody>
                   {!!SaleTabel.length &&
                     SaleTabel.map((Data: any, Index: any) => (
-                      <tr key={Index} onClick={() => {onClickGrid(Data)}} style={{cursor: 'pointer'}}>
+                      <tr key={Index} onClick={() => { onClickGrid(Data) }} style={{ cursor: 'pointer' }}>
                         <td>{Data.MARKETER_PAYMENT_OPERATION_ID}</td>
                         <td>{Data.PRODUCT_MARKET_OFFER_NAME_ONE}</td>
                         <td>{Data?.NET_AMOUNT}</td>
@@ -128,14 +123,14 @@ const SalesReports = () => {
                   </div>
                   <div
                     className="col-md-3"
-                    style={{  display: "flex",justifyContent:'end' }}
+                    style={{ display: "flex", justifyContent: 'end' }}
                   >
-                    <i className="bi bi-arrow-right" onClick={()=>{PreviousPage();}}></i>
+                    <i className="bi bi-arrow-right" onClick={() => { PreviousPage(); }}></i>
                     <div className="pagnationcurrent">
-                      <span>{CurrentPage+1}</span>
+                      <span>{CurrentPage + 1}</span>
                     </div>
                     <span style={{ marginLeft: "6px" }}>/{PageNumber}</span>
-                    <i className="bi bi-arrow-left" onClick={()=>{NextPage();}}></i>
+                    <i className="bi bi-arrow-left" onClick={() => { NextPage(); }}></i>
                   </div>
                 </div>
               </div>

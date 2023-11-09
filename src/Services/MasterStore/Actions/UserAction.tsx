@@ -21,8 +21,8 @@ export const UserSignInAction = async ( Payload: UserSignInInterface ) => {
     }else{
         localStorage.setItem('USER_NAME_ONE',response.data.DATA.PUSER_INFO[0].USER_NAME_ONE)
         localStorage.setItem('USER_NAME_TWO',response.data.DATA.PUSER_INFO[0].USER_NAME_TWO)
-        if(localStorage.getItem('Product_Id') !== null){            
-            Payload.Navigate('/productDetails/' + localStorage.getItem('Product_Id'), { replace: true });            
+        if(localStorage.getItem('Product_Id') !== null){
+            Payload.Navigate('/productDetails/' + localStorage.getItem('Product_Id'), { replace: true });
         }else{
             Payload.Navigate('/', { replace: true });
         }

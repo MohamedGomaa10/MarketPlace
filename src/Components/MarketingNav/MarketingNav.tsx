@@ -18,8 +18,7 @@ import { GrLanguage } from "react-icons/gr";
 // Static Data
 import StaticMenu from "../../Services/StaticData/SideMenuData.json";
 
-
-import { useCookies } from 'react-cookie';
+// import { useCookies } from 'react-cookie';
 
 //css
 import "./MarketingNav.css";
@@ -27,10 +26,10 @@ import "./MarketingNav.css";
 const MarketingNav = () => {
   const Navigate = useNavigate();
   const { t } = useTranslation();
-  const [cookies] = useCookies(['JwtInfo']);
+  // const [cookies] = useCookies(['JwtInfo']);
+  const queryString = window.location.pathname;
   const [Token] = useState(!!localStorage.token || false);
   const [Language, setLanguage] = useState(localStorage.LANG || "ar");
-  const queryString = window.location.pathname;
 
   const getWindowSize = () => {
     const { innerWidth, innerHeight } = window;
@@ -39,17 +38,15 @@ const MarketingNav = () => {
 
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
-  useEffect(() => {
-    localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-  }, [cookies]);
+  // useEffect(() => {
+  //   localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+  // }, [cookies]);
 
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
     }
-
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
@@ -109,7 +106,7 @@ const MarketingNav = () => {
       ShowMenu?.classList.remove("ShowMenu");
     }
     tabs.forEach((tab) => {
-      if (tab.id === queryString) { 
+      if (tab.id === queryString) {
         tab.classList.add("activeHeader");
       } else {
         tab.classList.remove("activeHeader");
@@ -129,25 +126,25 @@ const MarketingNav = () => {
     <React.Fragment>
       <div className="headerNav">
         <div className="rightNav">
-        <NavLink to={'/'}>
-          <img src={ArLogo} alt="logo" className="LogoHome" />
-        </NavLink>
-        <i onClick={ShowMenu} className="bi bi-justify"></i>
-        <NavLink to={'/'}>
-          <img src={ArLogo} alt="logo" className="ShowLogo" />
-        </NavLink>
-        <div className="content_Nav">
-          <i className="bi bi-x-circle" onClick={CloseMenu}></i>
-          {!!StaticMenu.length &&
-            StaticMenu.map((Data: any, Index: any) => (
-              <NavLink to={Data?.URL} key={Index}>
-                <div className={`content_body`}
-                  id={Data?.URL}>
-                  <h1>{t(Data?.Name)}</h1>
-                </div>
-              </NavLink>
-            ))}
-        </div>
+          <NavLink to={'/'}>
+            <img src={ArLogo} alt="logo" className="LogoHome" />
+          </NavLink>
+          <i onClick={ShowMenu} className="bi bi-justify"></i>
+          <NavLink to={'/'}>
+            <img src={ArLogo} alt="logo" className="ShowLogo" />
+          </NavLink>
+          <div className="content_Nav">
+            <i className="bi bi-x-circle" onClick={CloseMenu}></i>
+            {!!StaticMenu.length &&
+              StaticMenu.map((Data: any, Index: any) => (
+                <NavLink to={Data?.URL} key={Index}>
+                  <div className={`content_body`}
+                    id={Data?.URL}>
+                    <h1>{t(Data?.Name)}</h1>
+                  </div>
+                </NavLink>
+              ))}
+          </div>
         </div>
         <div className="settings">
           <div className="shape">
@@ -198,7 +195,7 @@ const MarketingNav = () => {
           <div className="lang" onClick={LanguageHandling} >
             <div>{localStorage.getItem("LANG") === "ar" ? "En" : "Ar"}</div>
             <div>
-              <GrLanguage/>
+              <GrLanguage />
             </div>
           </div>
           {Token ? (

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState, useCallback } from "react";
 
 //translation
 import { useTranslation } from "react-i18next";
@@ -29,7 +29,7 @@ const Marketplace:FC = () => {
   const { latestProducts, featuredProducts } = useAppSelector(Selectproducts);
 
   const [PaginationSize, setPaginationSize] = useState<any>(9);
-  const [CurrentPage, setCurrentPage] = useState<any>(0);
+  const [CurrentPage, setCurrentPage] = useState(0);
   const [PageNumber, setPageNumber] = useState<any>();
 
   // Get All Data
@@ -101,12 +101,13 @@ const Marketplace:FC = () => {
   useEffect(() => {
     setCurrentPage(0);
   }, [SearchValue]);
+    
   // Next Pages Group
-  const NextPage = () => {
+  const NextPage = useCallback(() => {
     if (Number(CurrentPage) !== PageNumber - 1) {
-      setCurrentPage(Number(CurrentPage) + 1);
+      setCurrentPage(c => Number(c) + 1);
     }
-  };
+  }, [PageNumber, CurrentPage]);
 
   // Previous Pages Group
   const PreviousPage = () => {

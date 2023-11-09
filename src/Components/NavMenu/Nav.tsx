@@ -24,8 +24,6 @@ import { CheckMarkterJoinSlice, SelectMarketProgram, CreateJoinMarketSlice } fro
 
 //icons
 import { GrLanguage } from "react-icons/gr";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import jwtDecode from "jwt-decode";
 
 //image
@@ -45,12 +43,11 @@ const Nav = () => {
     const { t } = useTranslation();
     const Navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [cookies] = useCookies(['JwtInfo']);
+     const [cookies] = useCookies(['JwtInfo']);
+     const [cookiesInfo] = useCookies(['UserInfo']);
 	const { register: FormDiscount, handleSubmit: handleFormDiscount } = useForm<CreateApplyDiscountInterface>();
-    const [bckGround, setbckGround] = useState(false)
     const { CheckMarkterJoin, MarkterJoin } = useAppSelector(SelectMarketProgram);
     const [ShowNav, setShowNav] = useState(false)
-    const [ShowLinks, setShowLinks] = useState(false)
     const [FreeShow, setFreeShow] = useState(false);
     const [ShowActions, setShowActions] = useState(false)
     const [SubscribeShow, setSubscribeShow] = useState(false);
@@ -59,8 +56,12 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-        localStorage.setItem('token', JSON.stringify(cookies?.JwtInfo.ACCESS_TOKEN));
-      }, [cookies]);
+    localStorage.setItem('token', JSON.stringify(cookies?.JwtInfo.ACCESS_TOKEN));
+    localStorage.setItem('USER_NAME', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME));
+    localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
+    localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
+    localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
+      }, [cookies, cookiesInfo]);
 
     const handleFreeClose = () => setFreeShow(false);
     const handleFreeShow = () => {
@@ -97,26 +98,11 @@ const Nav = () => {
         setShowNav(!ShowNav);
         if(type === 'Links'){
             setShowActions(true);
-            setShowLinks(false);
         }else{
-            setShowLinks(true);
-            setShowActions(false);
+            setShowActions(!ShowActions);
         }
         window.scrollTo(0, 0);
     }
-
-    const changeBackgroundColor = () => {
-        if (window.scrollY >= 60) {
-            setbckGround(true)
-        } else {
-            setbckGround(false)
-        }
-    }
-
-    useEffect(() => {
-        changeBackgroundColor();
-        window.addEventListener("scroll", changeBackgroundColor);
-    })
 
     const handleLinkClick = () => {
         window.scrollTo(0, 0);
@@ -199,86 +185,55 @@ const Nav = () => {
                         </div>
                     </Modal.Header>
                 </Modal>
-                <nav className={`${bckGround ? "active" : "no_active"}`}>
-                    <div className={`NAVDEtail ${ShowNav ? 'show' : ''}`}>
+                <nav className='active'>
+                    <div className={`NAVDEtail`}>
                         <div className='NavChild'>
                             <NavLink to='/' onClick={handleLinkClick} >
-                                <img src={`${Language === "ar" ? ArLogo : Logo}`} alt="logo" onClick={() => setShowNav(false)} className='hiddenLogo' />
+                                <img src={`${Language === "ar" ? ArLogo : Logo}`} alt="logo" onClick={() => setShowNav(false)} />
                             </NavLink>
-                            <ul className={`links ${ShowLinks ? 'hidden' : ''}`}>
-                                <li>
-                                    <NavLink to='/why-us' onClick={handleShow} >
-                                        {t(`whuUs`)}
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/features' onClick={handleShow} >
-                                        {t(`features`)}
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/' onClick={handleShow} >
-                                        {t(`marketplace`)}
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/pricing' onClick={handleShow}>
-                                        {t(`pricing`)}
-                                    </NavLink>
-                                </li>
-                                <li> {t(`guide`)}</li>
-                                <li>{t(`community`)}</li>
-                            </ul>
                         </div>
-                        <div className={`actions ${ShowActions ? 'hidden' : ''}`}>
-                            <div className='lang' onClick={LanguageHandling}>
-                                <div>{localStorage.getItem('LANG') === 'ar' ? 'En' : 'Ar'}</div>
-                                <div><GrLanguage /></div>
-                            </div>
-                            {!Token && <ul>
-                                <li>
-                                    <NavLink to='/login' onClick={handleShow}>
-                                        {t('signIn')}
-                                    </NavLink>
-                                </li>
-                                <li >
-                                    <NavLink to='/login#signup' onClick={() => localStorage.setItem('state', 'new')}>
-                                        <button>{t(`tryFree`)}</button>
-                                    </NavLink>
-                                </li>
-                            </ul>}
-                            {Token ? <ul>
-                                <NavLink to='/profile' onClick={handleShow}>
-                                    {localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') : localStorage.getItem('USER_NAME_ONE')}
-                                </NavLink>
-                            </ul> : ''}
-                            {Token ? <ul>
-                                <NavLink to='/subscriptionsManagement' onClick={handleShow}>
-                                    {t('Subscription management')}
-                                </NavLink>
-                            </ul> : ''}
-
-                            {Token ? <ul>
-                                <div onClick={handleFreeShow} className='MarketShop'>
-                                    <i className="bi bi-shop"></i>
-                                </div>
-                            </ul> : ''}
-                            {Token && <ul>
-                                <li onClick={LoGout}>
-                                    {t('LogOut')}
-                                </li>
-                            </ul>}
-                        </div>
-                    </div>
-                    <div className='MobileScreen'>
-                        <div className='icon_container'>
-                            {ShowActions ? <AiOutlineCloseCircle className='icon' onClick={handleShow} /> : <GiHamburgerMenu className='icon' onClick={() => { handleShow('Links') }} />}
-                        </div>
-                        <NavLink to='/' onClick={handleLinkClick}>
-                            <img src={`${Language === "ar" ? ArLogo : Logo}`} alt="logo" onClick={() => setShowNav(false)} className='ShowLogo' />
-                        </NavLink>
                         <div className='shape' onClick={() => { handleShow('Actions') }}>
-                            <i className="bi bi-gear"></i>
+                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') : localStorage.getItem('USER_NAME_ONE')}</h3>
+                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('PROFILE_IMAGE')}}/${localStorage.getItem('USER_NAME')}}`} alt="logo" />
+                            <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}>
+                                <div className='lang' onClick={LanguageHandling}>
+                                    <div>{localStorage.getItem('LANG') === 'ar' ? 'En' : 'Ar'}</div>
+                                    <div><GrLanguage /></div>
+                                </div>
+                                {!Token && <ul>
+                                    <li>
+                                        <NavLink to='/login' onClick={handleShow}>
+                                            {t('signIn')}
+                                        </NavLink>
+                                    </li>
+                                    <li >
+                                        <NavLink to='/login#signup' onClick={() => localStorage.setItem('state', 'new')}>
+                                            <button>{t(`tryFree`)}</button>
+                                        </NavLink>
+                                    </li>
+                                </ul>}
+                                {Token ? <ul>
+                                    <NavLink to='/profile' onClick={handleShow}>
+                                        {localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') : localStorage.getItem('USER_NAME_ONE')}
+                                    </NavLink>
+                                </ul> : ''}
+                                {Token ? <ul>
+                                    <NavLink to='/subscriptionsManagement' onClick={handleShow}>
+                                        {t('Subscription management')}
+                                    </NavLink>
+                                </ul> : ''}
+
+                                {Token ? <ul>
+                                    <div onClick={handleFreeShow} className='MarketShop'>
+                                        <i className="bi bi-shop"></i>
+                                    </div>
+                                </ul> : ''}
+                                {Token && <ul>
+                                    <li onClick={LoGout}>
+                                        {t('LogOut')}
+                                    </li>
+                                </ul>}
+                            </div>
                         </div>
                     </div>
                 </nav>

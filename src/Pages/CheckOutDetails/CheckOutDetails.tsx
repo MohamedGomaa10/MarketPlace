@@ -178,50 +178,50 @@ const CheckOutDetails:FC = () => {
 	}, [dispatch, payment, URL, paymentRecord, Navigate, Token, ValidDate]);
 
     const generatePassword = (length: number): string => {
-		const charset = "abcdefghijklmnopqrstuvw@xyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		let password = "";
-		for (let i = 0; i < length; i++) {
-			password += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
-		return password;
-	};
+        const charset = "abcdefghijklmnopqrstuvw@xyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let password = "";
+        for (let i = 0; i < length; i++) {
+            password += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+        return password;
+    };
 
-    const NavigateFor =(str:any)=>{
-        str ==='m'?navigate(`/marketplace`, { replace: true }):navigate(`/subscriptionsManagement`, { replace: true });
+    const NavigateFor = (str: any) => {
+        str === 'm' ? navigate(`/marketplace`, { replace: true }) : navigate(`/subscriptionsManagement`, { replace: true });
     }
 
-    const NavigateErrorPaid =(str:any)=>{
-        str ==='m'?navigate(`/marketplace`, { replace: true }) : navigate(`/checkOut/${ORDER_INFO?.PRODUCT_PRICING_ID}/${ORDER_INFO?.PRODUCT_ID}`, { replace: true });
+    const NavigateErrorPaid = (str: any) => {
+        str === 'm' ? navigate(`/marketplace`, { replace: true }) : navigate(`/checkOut/${ORDER_INFO?.PRODUCT_PRICING_ID}/${ORDER_INFO?.PRODUCT_ID}`, { replace: true });
     }
 
-    useEffect(()=>{        
-        const arabicText =` إسم البائع :  ${companySettings?.companyName}
+    useEffect(() => {
+        const arabicText = ` إسم البائع :  ${companySettings?.companyName}
         \n  "رقم تسجيل ضريبة القيمة المضافة :"  ${companySettings?.companyTaxNumber}
         \n  "التاريخ :  ${formatDate(payment?.DATA?.updated_at)}
         \n  "إجمالي ضريبة القيمة المضافة :  ${ORDER_INFO?.NET_VAT}
         \n  "مجموع الفاتورة (شامل ضريبة القيمة المضافة) :  ${ORDER_INFO && ORDER_INFO?.NET_AMOUNT}`;
         const binaryText = unescape(encodeURIComponent(arabicText));
         setEnCoding(btoa(binaryText));
-    },[UserData, ORDER_INFO, payment, companySettings, UserProducts])
+    }, [UserData, ORDER_INFO, payment, companySettings, UserProducts])
 
-    const OpenApp = (Url:string) =>{
+    const OpenApp = (Url: string) => {
         window.open(Url, "_blank", "noreferrer");
     }
 
     const formatDate = (dateString: any) => {
         const date = new Date(dateString);
-		const year = date.getFullYear();
-		const month = date.getMonth() + 1;
-		const day = date.getDate();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
         const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
         const formattedTime = date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit" });
-		return `${formattedDate + ' ' + formattedTime}`;
-	  };
+        return `${formattedDate + ' ' + formattedTime}`;
+    };
 
-      const DownloadPdf = () => {
+    const DownloadPdf = () => {
         const input = pdfRef.current;
-        if(input){
-            html2canvas(input, {scale: 1}).then((canvas: any) => {
+        if (input) {
+            html2canvas(input, { scale: 1 }).then((canvas: any) => {
                 const imgData = canvas.toDataURL("image/png");
                 const pdf = new jsPDF('p', 'mm');
                 const imgWidth = 210;
@@ -230,14 +230,14 @@ const CheckOutDetails:FC = () => {
                 pdf.save('Invoice.pdf');
             })
         }
-      }
+    }
 
-	return (
-		<React.Fragment>
+    return (
+        <React.Fragment>
             <div className="d-flex justify-content-between marContiner">
                 <div className='ImageBackGroundWave'>
                     <img className='bckground hiddenTab' src={PathRight} alt="hearobackground" />
-                </div>					
+                </div>
                 <div className='ImageBackGroundLogo'>
                     <img className='bckground hiddenTab' src={logo2} alt="hearobackground" />
                 </div>
@@ -246,10 +246,10 @@ const CheckOutDetails:FC = () => {
                 <div className='Links'>
                     <div className='LinksDetails'>
                         <NavLink to={'/'}>
-                        <h4>{t('Application Market')}</h4>
+                            <h4>{t('Application Market')}</h4>
                         </NavLink>
                         <NavLink to={'/MarketPlace'}>
-                        <h4>/ {t('Applications And Categories')}</h4>
+                            <h4>/ {t('Applications And Categories')}</h4>
                         </NavLink>
                         <NavLink to={'/productDetails/' + ORDER_INFO?.PRODUCT_ID}>
                             <h4>/ {product && product?.PRODUCT && product?.PRODUCT[0]?.NAME_ONE}</h4>
@@ -265,29 +265,29 @@ const CheckOutDetails:FC = () => {
                         <div>
                         </div>
                         <div className="FristCard">
-								<div>
-                                    <h5 className='mt-4 mb-4'>{t('Total amount paid')}</h5>
-                                    <h1>{payment && payment.DATA && payment.DATA.amount / 100} {t('Salary_Type_Two')}</h1>
-								</div>
-								<div>
-									<h5>{t('Order_Id')}</h5>
-									<br/>
-									<h2>{ORDER_INFO?.ORDER_ID}</h2>
-								</div>
-							</div>
-                        <hr className="dashed"/>
+                            <div>
+                                <h5 className='mt-4 mb-4'>{t('Total amount paid')}</h5>
+                                <h1>{payment && payment.DATA && payment.DATA.amount / 100} {t('Salary_Type_Two')}</h1>
+                            </div>
+                            <div>
+                                <h5>{t('Order_Id')}</h5>
+                                <br />
+                                <h2>{ORDER_INFO?.ORDER_ID}</h2>
+                            </div>
+                        </div>
+                        <hr className="dashed" />
                         <h5 className='mb-4'>{t('Pay For')}</h5>
                         <h6> {product && product.PRODUCT && product.PRODUCT[0].NAME_ONE}</h6>
                         <div className='d-flex justify-content-between'>
                             <h5>{t('Application Name')}</h5>
                             <h5>{t('Total')}</h5>
                         </div>
-                        <br/>
+                        <br />
                         <div className='d-flex justify-content-between'>
                             <h6> {product && product.PRODUCT && product.PRODUCT[0].NAME_ONE} </h6>
                             <h6> {payment && payment.DATA && payment.DATA.amount / 100} {t('Salary_Type_Two')} </h6>
                         </div>
-                        <hr className="dashed"/>
+                        <hr className="dashed" />
                         <div className='d-flex justify-content-between'>
                             <h4>{t('Total')}</h4>
                             <h4> {payment && payment.DATA && payment.DATA.amount / 100} {t('Salary_Type_Two')}</h4>
@@ -296,12 +296,12 @@ const CheckOutDetails:FC = () => {
                     <div className="col-md-6 CardSecond d-flex justify-content-center  flex-column">
                         {
                             payment && payment.DATA && payment.DATA.status === 'paid' &&
-                            <div>                        
+                            <div>
                                 <div className='d-flex justify-content-center align-items-center flex-column'>
                                     <i className="bi bi-check-circle"></i>
                                     <h3>{t('Payment has been completed')}</h3>
                                     <h5>{t('Send Invoice')}</h5>
-                                    <hr className="dashed"/>                            
+                                    <hr className="dashed" />
                                 </div>
                                 <div className='UserData'>
                                     <div className='d-flex gap-3 align-items-center'>
@@ -315,14 +315,14 @@ const CheckOutDetails:FC = () => {
                                 </div>
                                 <div className='d-flex justify-content-around'>
                                     <h6>{t('Send Invoice')}</h6>
-                                    <h6> {payment && payment.DATA && payment.DATA.id } </h6>
+                                    <h6> {payment && payment.DATA && payment.DATA.id} </h6>
                                 </div>
-                                
-                        <div className='d-flex justify-content-around mt-5'>
-                            <button type='submit' onClick={()=>NavigateFor("m")}>{t('back to the store')}</button>
-                            <button type='submit' onClick={()=>NavigateFor("r")}>{t('subscription')}</button>
-                        </div>
-                            </div>                            
+
+                                <div className='d-flex justify-content-around mt-5'>
+                                    <button type='submit' onClick={() => NavigateFor("m")}>{t('back to the store')}</button>
+                                    <button type='submit' onClick={() => NavigateFor("r")}>{t('subscription')}</button>
+                                </div>
+                            </div>
                         }
                         {
                             payment && payment.DATA && payment.DATA.status !== 'paid' &&
@@ -333,92 +333,92 @@ const CheckOutDetails:FC = () => {
                                     <h6 className='faild'> {t('Reason for payment failure')} : {payment.DATA.source.message}</h6>
                                 </div>
                                 <div className='d-flex justify-content-around mt-5'>
-                                    <button type='submit' onClick={()=>NavigateErrorPaid("r")}>{t('back to the Payment')}</button>
-                                    <button type='submit' onClick={()=>NavigateErrorPaid("m")}>{t('back to the store')}</button>
+                                    <button type='submit' onClick={() => NavigateErrorPaid("r")}>{t('back to the Payment')}</button>
+                                    <button type='submit' onClick={() => NavigateErrorPaid("m")}>{t('back to the store')}</button>
                                 </div>
                             </div>
                         }
-                        {  payment && payment.DATA && payment.DATA.status === 'paid' &&
-                        <div className='d-flex justify-content-around mt-5'>
-                        <button type='submit' onClick={DownloadPdf}>{t('Print the invoice')}</button>
-                            <button type='submit' onClick={()=>OpenApp(product?.PRODUCT[0]?.PRODUCT_URL)}>{t('launch to the application')}</button>
-                        </div>}
+                        {payment && payment.DATA && payment.DATA.status === 'paid' &&
+                            <div className='d-flex justify-content-around mt-5'>
+                                <button type='submit' onClick={DownloadPdf}>{t('Print the invoice')}</button>
+                                <button type='submit' onClick={() => OpenApp(product?.PRODUCT[0]?.PRODUCT_URL)}>{t('launch to the application')}</button>
+                            </div>}
                     </div>
                 </div>
-            <iframe  title='Invoice'>
-            </iframe>
-           <div ref={pdfRef}id='InvoicePrint' style={{maxWidth: '750px', background: '#FFF', zIndex: '-1'}}>
-                <div className='FreeModal subscribeModal'>
-                    <div className='HeaderInvoice'>
-                        <div className='Invoice'><h1>فاتورة ضريبية</h1></div>
-                        <div className='CompanyLogo'><img src={logoCoject} alt='#'/></div>
-                    </div>                    
-                    <div className='HeaderInvoice'>
-                        <div className='InvoiceDate'>
-                            <h6> الرقم التسلسلي  : <span>#{ORDER_INFO?.ORDER_ID}</span></h6>
-                            <h6>التاريخ : <span>{formatDate(payment?.DATA?.updated_at)}</span></h6>
-                        </div>                        
-                        <div className='QrCode'>
-                            <QRCodeSVG value={EnCoding}/>
+                <iframe title='Invoice'>
+                </iframe>
+                <div ref={pdfRef} id='InvoicePrint' style={{ maxWidth: '750px', background: '#FFF', zIndex: '-1' }}>
+                    <div className='FreeModal subscribeModal'>
+                        <div className='HeaderInvoice'>
+                            <div className='Invoice'><h1>فاتورة ضريبية</h1></div>
+                            <div className='CompanyLogo'><img src={logoCoject} alt='#' /></div>
+                        </div>
+                        <div className='HeaderInvoice'>
+                            <div className='InvoiceDate'>
+                                <h6> الرقم التسلسلي  : <span>#{ORDER_INFO?.ORDER_ID}</span></h6>
+                                <h6>التاريخ : <span>{formatDate(payment?.DATA?.updated_at)}</span></h6>
+                            </div>
+                            <div className='QrCode'>
+                                <QRCodeSVG value={EnCoding} />
+                            </div>
+                        </div>
+                        <div className='HeaderInvoice'>
+                            <div className='GateWay'>
+                                <h6>مصدر الفاتورة :</h6>
+                                <span>{companySettings?.companyName}</span>
+                                <span> السجل الضريبي : {companySettings?.companyTaxNumber}</span>
+                                <span>السجل التجاري : {companySettings?.companyCommercialNO}</span>
+                            </div>
+                            <div className='GateWay'>
+                                <h6> فاتورة الي :</h6>
+                                <span>{UserData?.UserName}</span>
+                                <span>{UserData?.LoginName}</span>
+                            </div>
                         </div>
                     </div>
-                    <div className='HeaderInvoice'>
-                        <div className='GateWay'>
-                            <h6>مصدر الفاتورة :</h6>
-                            <span>{companySettings?.companyName}</span>
-                            <span> السجل الضريبي : {companySettings?.companyTaxNumber}</span>
-                            <span>السجل التجاري : {companySettings?.companyCommercialNO}</span>
-                        </div>
-                        <div className='GateWay'>
-                            <h6> فاتورة الي :</h6>
-                            <span>{UserData?.UserName}</span>
-                            <span>{UserData?.LoginName}</span>
-                        </div>
+                    <div className='tableParent'>
+                        {ORDER_INFO && <table>
+                            <thead>
+                                <tr>
+                                    <th>المنتج</th>
+                                    <th>الكمية</th>
+                                    <th>السعر</th>
+                                    <th>الخصم</th>
+                                    <th>الإجمالي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{product?.PRODUCT && product?.PRODUCT[0]?.NAME_ONE}</td>
+                                    <td>1</td>
+                                    <td>{ORDER_INFO?.AMOUNT - ORDER_INFO?.VAT}</td>
+                                    <td>{ORDER_INFO?.NET_DISCOUNT}</td>
+                                    <td>{ORDER_INFO?.NET_AMOUNT - ORDER_INFO?.NET_VAT}</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan={2} rowSpan={3} className='Payment_Info'>
+                                    </td>
+                                    <td>المجموع</td>
+                                    <td></td>
+                                    <td>{ORDER_INFO?.NET_AMOUNT - ORDER_INFO?.NET_VAT}</td>
+                                </tr>
+                                <tr>
+                                    <td>الضريبة المضافة(15%)</td>
+                                    <td></td>
+                                    <td>{ORDER_INFO?.NET_VAT}</td>
+                                </tr>
+                                <tr className='TotalAmount'>
+                                    <td>الإجمالي</td>
+                                    <td></td>
+                                    <td>{payment && payment.DATA?.amount_format}</td>
+                                </tr>
+                            </tbody>
+                        </table>}
                     </div>
-                </div>
-                <div className='tableParent'>  
-                   { ORDER_INFO &&  <table>
-                        <thead>
-                            <tr>
-                                <th>المنتج</th>
-                                <th>الكمية</th>
-                                <th>السعر</th>
-                                <th>الخصم</th>
-                                <th>الإجمالي</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{product?.PRODUCT && product?.PRODUCT[0]?.NAME_ONE}</td>
-                                <td>1</td>
-                                <td>{ORDER_INFO?.AMOUNT - ORDER_INFO?.VAT}</td>
-                                <td>{ORDER_INFO?.NET_DISCOUNT}</td>
-                                <td>{ORDER_INFO?.NET_AMOUNT - ORDER_INFO?.NET_VAT}</td>
-                            </tr>
-                            <tr>
-                                <td colSpan={2} rowSpan={3} className='Payment_Info'>
-                                </td>
-                                <td>المجموع</td>
-                                <td></td>
-                                <td>{ORDER_INFO?.NET_AMOUNT - ORDER_INFO?.NET_VAT}</td>
-                            </tr>
-                            <tr>
-                                <td>الضريبة المضافة(15%)</td>
-                                <td></td>
-                                <td>{ORDER_INFO?.NET_VAT}</td>
-                            </tr>
-                            <tr className='TotalAmount'>
-                                <td>الإجمالي</td>
-                                <td></td>
-                                <td>{payment && payment.DATA?.amount_format}</td>
-                            </tr>                            
-                        </tbody>
-                    </table>}
                 </div>
             </div>
-            </div>
-		</React.Fragment>
-	)
+        </React.Fragment>
+    )
 }
 
 export default CheckOutDetails;

@@ -41,10 +41,10 @@ const Home = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { products } = useAppSelector(Selectproducts);
-  const { userProductOne } = useAppSelector(SelectUserProducts);
-  const { latestProducts, featuredProducts } = useAppSelector(Selectproducts);
   const { categories } = useAppSelector(SelectCategories);
   const [FreeProducts, setFreeProducts] = useState<any>({});
+  const { userProductOne } = useAppSelector(SelectUserProducts);
+  const { latestProducts, featuredProducts } = useAppSelector(Selectproducts);
 
     // Get All Data
     useEffect(() => {
@@ -112,7 +112,6 @@ const CategoryImagesArray: any = [
       </div>
 
       {/* First Cards */}
-
       <section className="cSectionTwo">
         <div className="SectionTwo_container">
           {/* <div className="row"> */}
@@ -171,46 +170,46 @@ const CategoryImagesArray: any = [
             <h1>{t(`featured applications`)}</h1>
             <p>{t('hint_Features_section')}</p>
           </div>
-            <NavLink to='/marketplace' onClick={handleLinkClick}>
-              <div className="leftHeaderSection">
-                <h6>{t(`Latest applications`)}</h6>
-                <span>
-                  {localStorage.getItem('LANG') === 'en' ? <i className="bi bi-chevron-right"></i> : <i className="bi bi-chevron-left"></i>}
-                </span>
-              </div>
-            </NavLink>
+          <NavLink to='/marketplace' onClick={handleLinkClick}>
+            <div className="leftHeaderSection">
+              <h6>{t(`Latest applications`)}</h6>
+              <span>
+                {localStorage.getItem('LANG') === 'en' ? <i className="bi bi-chevron-right"></i> : <i className="bi bi-chevron-left"></i>}
+              </span>
+            </div>
+          </NavLink>
         </div>
-        <Splide aria-label="My Favorite Images"options={{type: "loop", direction: "rtl", autoWidth: true, perMove: 1, autoplay: true, speed: 3000, gap: "16px",}}>
-                  {!!featuredProducts?.FEATURED_PRODUCT?.length &&
-                  featuredProducts?.FEATURED_PRODUCT.map((Product: any, Index: number) => (
-                    <SplideSlide key={Index}>
-                      <div className="CardContainer">
-                          <div className="CardInner">
-                              <div className="cardLabel">
-                                  <i className="bi bi-tags"></i>
-                                  <p>{localStorage.getItem('LANG') === 'en' ? Product.PRICING_TAG_TWO : Product?.PRICING_TAG_ONE}</p>
-                              </div>
-                              <div className="CardImage">
-                                  <img src={require('../../Assets/Projects/'+Product.PRODUCT_ICON)} alt="cloud"/>
-                              </div>
-                              <div className="CardText">
-                                  <div className="TextHeader">
-                                      <h4>{localStorage.getItem('LANG') === 'en' ? Product.NAME_TWO : Product?.NAME_ONE}</h4>
-                                      <div className="CardRate">
-                                          <i className="bi bi-star-fill"></i>
-                                          <p>{Product.RATING_VALUE}({Product.RATING_COUNT} تقييم )</p>
-                                      </div>
-                                  </div>
-                                  <p>{localStorage.getItem('LANG') === 'en' ? Product.DESC_TWO : Product?.DESC_ONE}</p>
-                              </div>
-                              <NavLink to={`/productDetails/${Product?.PRODUCT_ID}`}>
-                                <button className="btn">{t('install app')}</button>
-                              </NavLink>
-                          </div>
-                          <div className="CardBackground" style={{backgroundColor: Product.COLOR}}/>
+        <Splide aria-label="My Favorite Images" options={{ type: "loop", direction: "rtl", autoWidth: true, perMove: 1, autoplay: true, speed: 3000, gap: "16px", }}>
+          {!!featuredProducts?.FEATURED_PRODUCT?.length &&
+            featuredProducts?.FEATURED_PRODUCT.map((Product: any, Index: number) => (
+              <SplideSlide key={Index}>
+                <div className="CardContainer">
+                  <div className="CardInner">
+                    <div className="cardLabel">
+                      <i className="bi bi-tags"></i>
+                      <p>{localStorage.getItem('LANG') === 'en' ? Product.PRICING_TAG_TWO : Product?.PRICING_TAG_ONE}</p>
+                    </div>
+                    <div className="CardImage">
+                      <img src={require('../../Assets/Projects/' + Product.PRODUCT_ICON)} alt="cloud" />
+                    </div>
+                    <div className="CardText">
+                      <div className="TextHeader">
+                        <h4>{localStorage.getItem('LANG') === 'en' ? Product.NAME_TWO : Product?.NAME_ONE}</h4>
+                        <div className="CardRate">
+                          <i className="bi bi-star-fill"></i>
+                          <p>{Product.RATING_VALUE}({Product.RATING_COUNT} تقييم )</p>
+                        </div>
                       </div>
-                    </SplideSlide>
-                  ))}
+                      <p>{localStorage.getItem('LANG') === 'en' ? Product.DESC_TWO : Product?.DESC_ONE}</p>
+                    </div>
+                    <NavLink to={`/productDetails/${Product?.PRODUCT_ID}`}>
+                      <button className="btn">{t('install app')}</button>
+                    </NavLink>
+                  </div>
+                  <div className="CardBackground" style={{ backgroundColor: Product.COLOR }} />
+                </div>
+              </SplideSlide>
+            ))}
         </Splide>
       </div>
 
@@ -314,32 +313,32 @@ const CategoryImagesArray: any = [
           {/* <div className="row"> */}
           <div className="sectionSix">
             <div className="moreDetail">
-            {FreeProducts && !!FreeProducts.length &&
-                  FreeProducts.map((Product: any, Index: number) => (
-                    <NavLink to={`/productDetails/${Product?.PRODUCT_ID}`} key={Index} onClick={handleLinkClick}>
-                      <div className="col-md-3 col-sm-6 details">
-                        <div className="CardTop">
-                          <div>
-                              <img src={require('../../Assets/Projects/'+Product.PRODUCT_ICON)} alt="cloud"/>
+              {FreeProducts && !!FreeProducts.length &&
+                FreeProducts.map((Product: any, Index: number) => (
+                  <NavLink to={`/productDetails/${Product?.PRODUCT_ID}`} key={Index} onClick={handleLinkClick}>
+                    <div className="col-md-3 col-sm-6 details">
+                      <div className="CardTop">
+                        <div>
+                          <img src={require('../../Assets/Projects/' + Product.PRODUCT_ICON)} alt="cloud" />
+                        </div>
+                        <div className="leftSideCard">
+                          <div className="cardLabel">
+                            <i className="bi bi-star-fill"></i>
+                            <p>{Product?.RATING_VALUE}</p>
                           </div>
-                          <div className="leftSideCard">
-                            <div className="cardLabel">
-                                <i className="bi bi-star-fill"></i>
-                                <p>{Product?.RATING_VALUE}</p>
-                            </div>
-                            <div className="cardLabel">
-                                <i className="bi bi-tags"></i>
-                                <p className="priceText">{localStorage.getItem('LANG') === 'en' ? Product.PRICING_TAG_TWO : Product?.PRICING_TAG_ONE}</p>
-                            </div>
+                          <div className="cardLabel">
+                            <i className="bi bi-tags"></i>
+                            <p className="priceText">{localStorage.getItem('LANG') === 'en' ? Product.PRICING_TAG_TWO : Product?.PRICING_TAG_ONE}</p>
                           </div>
                         </div>
-                          <h3>{localStorage.getItem('LANG') === 'en' ? Product.NAME_TWO : Product?.NAME_ONE}</h3>
-                          <h6>
-                            {localStorage.getItem('LANG') === 'en' ? Product.DESC_TWO : Product?.DESC_ONE}
-                          </h6>
                       </div>
-                    </NavLink>
-                  ))}
+                      <h3>{localStorage.getItem('LANG') === 'en' ? Product.NAME_TWO : Product?.NAME_ONE}</h3>
+                      <h6>
+                        {localStorage.getItem('LANG') === 'en' ? Product.DESC_TWO : Product?.DESC_ONE}
+                      </h6>
+                    </div>
+                  </NavLink>
+                ))}
             </div>
           </div>
         </div>
@@ -353,7 +352,7 @@ const CategoryImagesArray: any = [
             <h5>{t(`Be Zed's partner in growth`)}</h5>
             <div className="col-md-3">
               <button type="button" className="CustomButton">
-                 {t('Register Now')}
+                {t('Register Now')}
               </button>
             </div>
           </div>
@@ -378,36 +377,36 @@ const CategoryImagesArray: any = [
           {/* <div className="row"> */}
           <div className="sectionSix">
             <div className="moreDetail">
-            {!!latestProducts?.LATEST_PRODUCT?.length &&
-                  latestProducts?.LATEST_PRODUCT.map((Product: any, Index: number) => (
-                    <NavLink to={`/productDetails/${Product?.PRODUCT_ID}`} key={Index} onClick={handleLinkClick}>
-                      <div className="col-lg-4 col-md-3 col-sm-6 details">
-                        <div className="CardTop">
-                          <div>
-                            <img src={require('../../Assets/Projects/'+Product.PRODUCT_ICON)} alt="#" />
-                          </div>
-                          <div className="leftSideCard">
-                            <div className="cardLabel">
-                                <i className="bi bi-star-fill"></i>
-                                <p>{Product.RATING_VALUE}</p>
-                            </div>
-                            <div className="cardLabel">
-                                <i className="bi bi-tags"></i>
-                                <p className="priceText">{localStorage.getItem('LANG') === 'en' ? Product.PRICING_TAG_TWO : Product.PRICING_TAG_ONE}</p>
-                            </div>
-                          </div>
-                        </div>
+              {!!latestProducts?.LATEST_PRODUCT?.length &&
+                latestProducts?.LATEST_PRODUCT.map((Product: any, Index: number) => (
+                  <NavLink to={`/productDetails/${Product?.PRODUCT_ID}`} key={Index} onClick={handleLinkClick}>
+                    <div className="col-lg-4 col-md-3 col-sm-6 details">
+                      <div className="CardTop">
                         <div>
-                          <h3>{localStorage.getItem('LANG') === 'en' ? Product.NAME_TWO : Product?.NAME_ONE}</h3>
+                          <img src={require('../../Assets/Projects/' + Product.PRODUCT_ICON)} alt="#" />
                         </div>
-                        <div>
-                          <h6>
-                            {localStorage.getItem('LANG') === 'en' ? Product.DESC_TWO : Product?.DESC_ONE}
-                          </h6>
+                        <div className="leftSideCard">
+                          <div className="cardLabel">
+                            <i className="bi bi-star-fill"></i>
+                            <p>{Product.RATING_VALUE}</p>
+                          </div>
+                          <div className="cardLabel">
+                            <i className="bi bi-tags"></i>
+                            <p className="priceText">{localStorage.getItem('LANG') === 'en' ? Product.PRICING_TAG_TWO : Product.PRICING_TAG_ONE}</p>
+                          </div>
                         </div>
                       </div>
-                    </NavLink>
-                  ))}
+                      <div>
+                        <h3>{localStorage.getItem('LANG') === 'en' ? Product.NAME_TWO : Product?.NAME_ONE}</h3>
+                      </div>
+                      <div>
+                        <h6>
+                          {localStorage.getItem('LANG') === 'en' ? Product.DESC_TWO : Product?.DESC_ONE}
+                        </h6>
+                      </div>
+                    </div>
+                  </NavLink>
+                ))}
             </div>
           </div>
         </div>
@@ -425,25 +424,6 @@ const CategoryImagesArray: any = [
         </div>
         <img src={apps2} className="imageBlock bckground" alt="#" />
       </div>
-
-      {/* last Section */}
-      {/* <div className='d-flex align-items-center  justify-content-between' style={{marginTop:"160px"}}>
-<div>
-<img className='bckground d-none75' src={PathRight} alt="hearobackground" />
-</div>
-<div className='SutfMarket'>
-<h1>
-اقتراحاتكم تهمنا
-</h1>
-<h5>
-جرَّب التجزئة بشكلها الحديث مع زد, انشئ متجرك الآن مجاناً وبدون رسوم
-</h5>
-<button type='button' className='InstallButton'> تصفح جميع التطبيقات</button>
-</div>
-<div>
-<img className='bckground d-none75' src={logo2} alt="hearobackground" />
-</div>
-</div> */}
     </React.Fragment>
   );
 };
