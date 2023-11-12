@@ -5,18 +5,12 @@
         "number": 8,
         "icon": "bi bi-arrow-down-up",
         "color": "var(--icon-color)"
-    },{
+    },
+    {
         "id": 2,
         "name": "عدد التحويلات",
         "number": 3,
         "icon": "bi bi-arrow-left-right",
         "color": "#FFAA00"
-    },
-    {
-        "id": 3,
-        "name": "رصيد المحفظة",
-        "number": 200,
-        "icon": "bi bi-cash-coin",
-        "color": "#FF6670"
     }
 ]

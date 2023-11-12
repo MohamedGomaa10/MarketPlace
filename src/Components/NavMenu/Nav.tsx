@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+﻿import React, { useEffect, useState } from 'react'
 
 //React Router
 import { NavLink } from 'react-router-dom'
@@ -56,7 +56,6 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-        console.log(JSON.parse(localStorage.User_Info).LANGUAGE);
         localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
         localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
     // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
@@ -194,8 +193,8 @@ const Nav = () => {
                             </NavLink>
                         </div>
                         <div className='shape' onClick={() => { handleShow('Actions') }}>
-                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('UserInfo') ? JSON.parse(localStorage.User_Info).USER_NAME_TWO : '' :  JSON.parse(localStorage.User_Info).USER_NAME_ONE }</h3>
-                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('UserInfo') ? JSON.parse(localStorage.User_Info).PROFILE_IMAGE : ''}}/${localStorage.getItem('USER_NAME') ? JSON.parse(localStorage.User_Info).USER_NAME : ''}}`} alt="logo" />
+                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }</h3>
+                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).PROFILE_IMAGE : ''}}/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME : ''}}`} alt="logo" />
                             <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div><GrLanguage /></div>

@@ -18,7 +18,7 @@ import { GrLanguage } from "react-icons/gr";
 // Static Data
 import StaticMenu from "../../Services/StaticData/SideMenuData.json";
 
-// import { useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
 //css
 import "./MarketingNav.css";
@@ -26,7 +26,8 @@ import "./MarketingNav.css";
 const MarketingNav = () => {
   const Navigate = useNavigate();
   const { t } = useTranslation();
-  // const [cookies] = useCookies(['JwtInfo']);
+  const [cookies] = useCookies(['JwtInfo']);
+  const [cookiesInfo] = useCookies(['UserInfo']);
   const queryString = window.location.pathname;
   const [Token] = useState(!!localStorage.token || false);
   const [Language, setLanguage] = useState(localStorage.LANG || "ar");
@@ -38,9 +39,10 @@ const MarketingNav = () => {
 
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
-  // useEffect(() => {
-  //   localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-  // }, [cookies]);
+   useEffect(() => {
+    localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+    localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+   }, [cookies, cookiesInfo]);
 
   useEffect(() => {
     function handleWindowResize() {
@@ -172,9 +174,7 @@ const MarketingNav = () => {
               {Token ? (
                 <li className="mobileMenu">
                   <NavLink to="/profile" onClick={handleShow}>
-                    {localStorage.getItem("LANG") === "en"
-                      ? localStorage.getItem("USER_NAME_TWO")
-                      : localStorage.getItem("USER_NAME_ONE")}
+                      {localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }
                   </NavLink>
                 </li>
               ) : (

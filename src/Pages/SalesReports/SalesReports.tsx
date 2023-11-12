@@ -102,6 +102,7 @@ const SalesReports = () => {
                     <th>{t('Operation Type')}</th>
                     <th>{t('Total amount')}</th>
                     <th>{t('Operation Date')}</th>
+                    <th>{t('Total Card')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -112,6 +113,7 @@ const SalesReports = () => {
                         <td>{Data.PRODUCT_MARKET_OFFER_NAME_ONE}</td>
                         <td>{Data?.NET_AMOUNT}</td>
                         <td>{formatDate(Data.PAYMENT_DATE)}</td>
+                        <td>{Data?.NET_AMOUNT}</td>
                       </tr>
                     ))}
                 </tbody>
