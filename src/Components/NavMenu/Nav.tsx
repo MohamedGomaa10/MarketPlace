@@ -193,12 +193,12 @@ const Nav = () => {
                             </NavLink>
                         </div>
                         <div className='shape' onClick={() => { handleShow('Actions') }}>
-                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') ? localStorage.getItem('USER_NAME_TWO') : '' : localStorage.getItem('USER_NAME_ONE') ? localStorage.getItem('USER_NAME_ONE') : ''}</h3>
-                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('PROFILE_IMAGE') ? localStorage.getItem('PROFILE_IMAGE') : ''}}/${localStorage.getItem('USER_NAME') ? localStorage.getItem('USER_NAME') : ''}}`} alt="logo" />
+                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') ? localStorage.getItem('USER_NAME_TWO')?.split('"')[1] : '' : localStorage.getItem('USER_NAME_ONE') ? localStorage.getItem('USER_NAME_ONE')?.split('"')[1] : ''}</h3>
+                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('PROFILE_IMAGE') ? localStorage.getItem('PROFILE_IMAGE')?.split('"')[1] : ''}}/${localStorage.getItem('USER_NAME') ? localStorage.getItem('USER_NAME')?.split('"')[1] : ''}}`} alt="logo" />
                             <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}>
                                 <div className='lang' onClick={LanguageHandling}>
-                                    <div>{localStorage.getItem('LANG') === 'ar' ? 'En' : 'Ar'}</div>
                                     <div><GrLanguage /></div>
+                                    <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
                                 </div>
                                 {!Token && <ul>
                                     <li>
@@ -214,22 +214,25 @@ const Nav = () => {
                                 </ul>}
                                 {Token ? <ul>
                                     <NavLink to='/profile' onClick={handleShow}>
-                                        {localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') ? localStorage.getItem('USER_NAME_TWO') : '' : localStorage.getItem('USER_NAME_ONE') ? localStorage.getItem('USER_NAME_ONE') : ''}
+                                        <i className="bi bi-person-badge"></i>
+                                        {localStorage.getItem('LANG') === 'en' ? 'Profile' : 'الملف الشخصي'}
                                     </NavLink>
                                 </ul> : ''}
                                 {Token ? <ul>
-                                    <NavLink to='/subscriptionsManagement' onClick={handleShow}>
+                                    <NavLink to='/subscriptionsManagement' onClick={handleShow} className={'buildings'}>
+                                        <i className="bi bi-buildings"></i>
                                         {t('Subscription management')}
                                     </NavLink>
                                 </ul> : ''}
-
                                 {Token ? <ul>
                                     <div onClick={handleFreeShow} className='MarketShop'>
                                         <i className="bi bi-shop"></i>
+                                        {t('Marketer Gate')}
                                     </div>
                                 </ul> : ''}
                                 {Token && <ul>
-                                    <li onClick={LoGout}>
+                                    <li onClick={LoGout} className='LogOut-box-arrow'>
+                                        <i className="bi bi-box-arrow-left"></i>
                                         {t('LogOut')}
                                     </li>
                                 </ul>}
@@ -238,7 +241,7 @@ const Nav = () => {
                     </div>
                 </nav>
             </div>
-        </React.Fragment>       
+        </React.Fragment>     
     )
 }
 

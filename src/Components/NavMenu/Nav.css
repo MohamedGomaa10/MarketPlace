@@ -154,11 +154,10 @@ nav .NAVDEtail.show {
     font-weight: bold !important;
     gap: 10px !important;
     padding: 15px;
-
     opacity: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     position: absolute;
     z-index: 99999999;
     height: auto;
@@ -370,5 +369,19 @@ nav .NAVDEtail.show {
 }
 
 .MarketShop {
+    display: flex;
     cursor: pointer;
+    gap: 5px;
+}
+
+.buildings{
+    display: flex;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.LogOut-box-arrow{
+    display: flex;
+    cursor: pointer;
+    gap: 5px;
 }
