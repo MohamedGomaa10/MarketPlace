@@ -93,7 +93,9 @@ const UserSlice = createSlice({
                 State.loading = false;
                 State.user = Action.payload.DATA.PUSER_INFO;
                 State.error = '';
-                localStorage.setItem( 'token', JSON.stringify(Action.payload?.JWT?.ACCESS_TOKEN) );
+                localStorage.setItem( 'token', Action.payload?.JWT?.ACCESS_TOKEN );
+                console.log(Action.payload?.DATA);
+                localStorage.setItem( 'User_Info', JSON.stringify(Action.payload?.DATA?.PUSER_INFO[0]));
             }else{
                 toast.error(`UnAuthorized`, { position: "top-right", toastId: 'uniqueId' });
                 State.loading = false;

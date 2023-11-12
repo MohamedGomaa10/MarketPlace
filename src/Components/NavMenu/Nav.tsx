@@ -56,11 +56,12 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-    localStorage.setItem('token', JSON.stringify(cookies?.JwtInfo.ACCESS_TOKEN));
-    localStorage.setItem('USER_NAME', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME));
-    localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
-    localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
-    localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
+        console.log(JSON.parse(localStorage.User_Info).LANGUAGE);
+        localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+        localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+    // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
+    // localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
+    // localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
       }, [cookies, cookiesInfo]);
 
     const handleFreeClose = () => setFreeShow(false);
@@ -193,8 +194,8 @@ const Nav = () => {
                             </NavLink>
                         </div>
                         <div className='shape' onClick={() => { handleShow('Actions') }}>
-                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('USER_NAME_TWO') ? localStorage.getItem('USER_NAME_TWO')?.split('"')[1] : '' : localStorage.getItem('USER_NAME_ONE') ? localStorage.getItem('USER_NAME_ONE')?.split('"')[1] : ''}</h3>
-                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('PROFILE_IMAGE') ? localStorage.getItem('PROFILE_IMAGE')?.split('"')[1] : ''}}/${localStorage.getItem('USER_NAME') ? localStorage.getItem('USER_NAME')?.split('"')[1] : ''}}`} alt="logo" />
+                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.getItem('UserInfo') ? JSON.parse(localStorage.User_Info).USER_NAME_TWO : '' :  JSON.parse(localStorage.User_Info).USER_NAME_ONE }</h3>
+                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.getItem('UserInfo') ? JSON.parse(localStorage.User_Info).PROFILE_IMAGE : ''}}/${localStorage.getItem('USER_NAME') ? JSON.parse(localStorage.User_Info).USER_NAME : ''}}`} alt="logo" />
                             <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div><GrLanguage /></div>
