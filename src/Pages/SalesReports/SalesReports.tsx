@@ -22,16 +22,14 @@ const SalesReports = () => {
   const [SaleTabel, setSaleTabel] = useState<any>([]);
   const [PageNumber, setPageNumber] = useState<any>(0);
   const [CurrentPage, setCurrentPage] = useState<any>(0);
-  const [Token] = useState(localStorage.getItem('token'));
   const [PaginationSize, setPaginationSize] = useState<any>(2);
   const { MarkterOperation } = useAppSelector(SelectMarketProgram);
 
   const MARKETEROPERATIONDATA = MarkterOperation && MarkterOperation.DETAIL_REF;
 
   useEffect(() => {
-    const decodedToken = Token && jwtDecode<any>(Token);
-    dispatch(GetMarketerOperationSlice(decodedToken?.UserId))
-  }, [dispatch, Token])
+    dispatch(GetMarketerOperationSlice())
+  }, [dispatch])
 
   // set pagination
   useEffect(() => {

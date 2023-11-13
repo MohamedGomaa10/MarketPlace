@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from "../MasterStore";
 
 // Actions
-import { GetAllProductProgramAction, CheckMarkterJoinAction, GetAllMarketCouponAction, GetAllMarketerOperationAction, GetOneProductProgramAction, CreateJoinMarketAction, JoinMarketInterface, CreateGenerateCouponInterface, CreateGenerateCouponAction, CheckMarkterInterface } from '../Actions/MarketProgramAction';
+import { GetAllProductProgramAction, CheckMarkterJoinAction, GetAllMarketCouponAction, GetAllMarketerOperationAction, GetOneProductProgramAction, CreateJoinMarketAction, JoinMarketInterface, CreateGenerateCouponInterface, CreateGenerateCouponAction } from '../Actions/MarketProgramAction';
 
 // Interface
 interface IPrdouctsProgram {
@@ -34,18 +34,18 @@ const initialState: IPrdouctsProgram = {
 }
 
 // Get All PrdouctsProgram
-export const GetAllPrdouctsProgram = createAsyncThunk(
-    'PrdouctsProgram',
-    async (USER_ID: number) => {
-        return await GetAllProductProgramAction(USER_ID);
+export const GetAllPrdouctsOffer = createAsyncThunk(
+    'ProductOffer',
+    async () => {
+        return await GetAllProductProgramAction();
     }
 )
 
 // GetMarketerOperation
 export const GetMarketerOperationSlice = createAsyncThunk(
     'MarketerOperation',
-    async (USER_ID: number) => {
-        return await GetAllMarketerOperationAction(USER_ID);
+    async () => {
+        return await GetAllMarketerOperationAction();
     }
 )
 
@@ -60,16 +60,16 @@ export const GetOneProductProgram = createAsyncThunk(
 // Get All MarketCoupon
 export const GetAllMarketCouponSlice = createAsyncThunk(
     'MarketCoupon',
-    async (USER_ID: number) => {
-        return await GetAllMarketCouponAction(USER_ID);
+    async () => {
+        return await GetAllMarketCouponAction();
     }
 )
 
 //CheckMarkterJoin
 export const CheckMarkterJoinSlice = createAsyncThunk(
     'CheckMarkterJoin',
-    async (payload: CheckMarkterInterface) => {
-        return await CheckMarkterJoinAction(payload);
+    async () => {
+        return await CheckMarkterJoinAction();
     }
 )
 
@@ -96,15 +96,15 @@ const MarketProgramSlice = createSlice({
     extraReducers: ( Builder) => {
 
         // Get All PrdouctsProgram
-        Builder.addCase( GetAllPrdouctsProgram.pending, ( State) => {
+        Builder.addCase( GetAllPrdouctsOffer.pending, ( State) => {
             State.loading = true;
         })
-        Builder.addCase( GetAllPrdouctsProgram.fulfilled, ( State, Action) => {
+        Builder.addCase( GetAllPrdouctsOffer.fulfilled, ( State, Action) => {
             State.loading = false;
             State.PrdouctsProgram = Action.payload.DATA;
             State.error = '';
         })
-        Builder.addCase( GetAllPrdouctsProgram.rejected ,( State, Action) => {
+        Builder.addCase( GetAllPrdouctsOffer.rejected ,( State, Action) => {
             State.loading = false;
             State.PrdouctsProgram = [];
             State.error = Action.error?.message;

@@ -21,6 +21,7 @@ const Marketplace:FC = () => {
   const { products } = useAppSelector(Selectproducts);
   const { categories } = useAppSelector(SelectCategories);
   const [SearchValue, setSearchValue] = useState<any>([]);
+  const [CategoryName, setCategoryName] = useState<any>({});
   const [CategoryValue, setCategoryValue] = useState<any>([]);
   const [CategoryCheck, setCategoryCheck] = useState<any>();
 
@@ -137,6 +138,9 @@ const Marketplace:FC = () => {
     window.scrollTo(0, 0);
 };
 
+useEffect(() => {
+  console.log(CategoryName);
+}, [CategoryName])
   return (
     <React.Fragment>
         <div className="containerHeader">
@@ -153,13 +157,14 @@ const Marketplace:FC = () => {
                           className="Radio"
                           type="radio"
                           name="category"
-                          onChange={() => {setCategoryCheck(Category.CATEGORY_ID);}}
+                          onChange={() => {setCategoryCheck(Category.CATEGORY_ID); setCategoryName(Category)}}
                           checked={
                             Category.CATEGORY_ID === Number(CategoryCheck)? true : false
                           }
                         ></input>
-                        <div className="CategoryNameParent">
-                          <h4 className="CategoryName">
+                        <div className="CategoryNameParent"
+                          >
+                          <h4 className="CategoryName" onClick={() => {setCategoryCheck(Category.CATEGORY_ID); setCategoryName(Category)}}>
                             {localStorage.getItem("LANG") === "en"
                               ? Category.NAME_TWO
                               : Category.NAME_ONE}
@@ -290,7 +295,7 @@ const Marketplace:FC = () => {
                 </div>
               </section>
               <div className="filter">
-                <div className="row">
+                {!!FinalData.length ? <div className="row">
                   <div className="col-6 results">
                     <p>
                       {t('show')} {FinalData.length} {t('from')} {PaginationSize} {t('Out of all results')}
@@ -302,7 +307,7 @@ const Marketplace:FC = () => {
                       <button type="button" className="btn next" onClick={()=>{NextPage(); handleLinkClick();}}>{t('next')}</button>
                     </div>
                   </div>
-                </div>
+                </div> : <h5 className="fw-bold">{localStorage.getItem("LANG") === "en" ? `Not Found Apps To Category (${CategoryName.NAME_TWO})` : `لا توجد تطبيقات لتصنيف (${CategoryName.NAME_ONE})`}</h5>}
               </div>
             </div>}
         </div>

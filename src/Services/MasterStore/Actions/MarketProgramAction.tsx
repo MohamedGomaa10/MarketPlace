@@ -2,8 +2,8 @@
 import Request from '../../../Middleware/Requests/RequestMaster';
 
 // Get All ProductProgram
-export const GetAllProductProgramAction = async (USER_ID: number) => {
-    const response = await Request.get( `Market/ProductProgram/${USER_ID}` );
+export const GetAllProductProgramAction = async () => {
+    const response = await Request.get( `Market/ProductOffer` );
     return response.data;
 }
 
@@ -14,25 +14,20 @@ export const GetOneProductProgramAction = async (GUID: any) => {
 }
 
 // GetAllMarketCoupon
-export const GetAllMarketCouponAction = async (USER_ID: number) => {
-    const response = await Request.get( `Market/SelectMarketCoupon/${USER_ID}` );
+export const GetAllMarketCouponAction = async () => {
+    const response = await Request.get( `Market/SelectMarketCoupon` );
     return response.data;
 }
 
 // GetAllMarketerOperation
-export const GetAllMarketerOperationAction = async (USER_ID: number) => {
-    const response = await Request.get( `Market/SelectMarketerOperation/${USER_ID}` );
+export const GetAllMarketerOperationAction = async () => {
+    const response = await Request.get( `Market/SelectMarketerOperation` );
     return response.data;
 }
 
-export interface CheckMarkterInterface {
-    USER_ID: number,
-    LANG: string,
-}
-
 //CheckMarkterJoin
-export const CheckMarkterJoinAction = async (payload: CheckMarkterInterface) => {
-    const response = await Request.get( `Market/getCheckMarkterJoin/${payload.USER_ID}/${payload.LANG}` );
+export const CheckMarkterJoinAction = async () => {
+    const response = await Request.get( `Market/getCheckMarkterJoin` );
     return response.data;
 }
 

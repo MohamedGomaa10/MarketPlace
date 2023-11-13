@@ -27,7 +27,7 @@ const ActivationRequests = () => {
   const MARKET_COUPON = MarketCoupon && MarketCoupon.MARKET_COUPON;
 
   useEffect(() => {
-    dispatch(GetAllMarketCouponSlice(1060))
+    dispatch(GetAllMarketCouponSlice())
   }, [dispatch])
 
   // set pagination

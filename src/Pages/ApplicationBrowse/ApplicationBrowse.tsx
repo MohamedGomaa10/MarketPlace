@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/Maste
 
 import { GetAllCategories, SelectCategories } from "../../Services/MasterStore/Reducers/CategorySlice";
 
-import { GetAllPrdouctsProgram, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
+import { GetAllPrdouctsOffer, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
 
 //css
 import './ApplicationBrowse.css';
@@ -28,8 +28,7 @@ const ApplicationBrowse = () => {
     const ProductProgram = PrdouctsProgram && PrdouctsProgram.PRODUCT
 
     useEffect(() => {
-        const decodedToken = TokenData && jwtDecode<any>(TokenData);
-        dispatch(GetAllPrdouctsProgram(decodedToken?.UserId));
+        dispatch(GetAllPrdouctsOffer());
         dispatch(GetAllCategories());
     }, [dispatch, TokenData])
 

@@ -47,6 +47,8 @@ const Nav = () => {
     const [cookies] = useCookies(['JwtInfo']);
     const [cookiesInfo] = useCookies(['UserInfo']);
     const [openSlide, setopenSlide] = useState(true);
+            
+    const [cookiesInfos, setCookies, removeCookies] = useCookies(['token']);
 	const { register: FormDiscount, handleSubmit: handleFormDiscount } = useForm<CreateApplyDiscountInterface>();
     const { CheckMarkterJoin, MarkterJoin } = useAppSelector(SelectMarketProgram);
     const [ShowNav, setShowNav] = useState(false)
@@ -58,12 +60,18 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-         localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-         localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+        //  localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+        //  localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
     // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
     // localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
     // localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
       }, [cookies, cookiesInfo]);
+
+
+      useEffect(() => {
+        console.log(cookies);
+        console.log(cookiesInfos);
+      }, [cookies, cookiesInfo, cookiesInfos])
 
     const handleFreeClose = () => setFreeShow(false);
     const handleFreeShow = () => {
@@ -97,6 +105,7 @@ const Nav = () => {
     }, [Language]);
 
     const handleShow = (type: any) => {
+        removeCookies('token');
         setShowNav(!ShowNav);
         if(type === 'Links'){
             setShowActions(true);
@@ -112,17 +121,13 @@ const Nav = () => {
 
     const LoGout =() =>{
         localStorage.clear();
-        window.location.href = 'https://auth.aait.com.sa/';
+        Navigate('/', { replace: true })
+        window.location.reload();
     }
 
     useEffect(() => {
-        const decodedToken = TokenData && jwtDecode<any>(TokenData);
-        const payload =  {
-            USER_ID: decodedToken?.UserId,
-            LANG: localStorage.getItem('LANG') === 'en' ? "TWO" : "ONE"
-          }
-          dispatch(CheckMarkterJoinSlice(payload));
-      }, [TokenData, Token, dispatch]);
+          dispatch(CheckMarkterJoinSlice());
+      }, [dispatch]);
 
       const JoinMarket: SubmitHandler<CreateApplyDiscountInterface> = ( data ) => {
         const decodedToken = TokenData && jwtDecode<any>(TokenData);
@@ -206,26 +211,14 @@ const Nav = () => {
                                 <img src={`${Language === "ar" ? ArLogo : Logo}`} alt="logo" onClick={() => setShowNav(false)} />
                             </NavLink>
                         </div>
-                        <div className='shape' onClick={() => { handleShow('Actions') }}>
-                             <h3 id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }</h3>
+                        {Token ? <div className='shape' onClick={() => { handleShow('Actions') }}>
+                             <h4 className='UserName' id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }</h4>
                             <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).PROFILE_IMAGE : ''}}/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME : ''}}`} alt="logo" /> 
                             {openSlide && <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}ref={closeMenu}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div><GrLanguage /></div>
                                     <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
                                 </div>
-                                {!Token && <ul>
-                                    <li>
-                                        <NavLink to='/login' onClick={handleShow}>
-                                            {t('signIn')}
-                                        </NavLink>
-                                    </li>
-                                    <li >
-                                        <NavLink to='/login#signup' onClick={() => localStorage.setItem('state', 'new')}>
-                                            <button>{t(`tryFree`)}</button>
-                                        </NavLink>
-                                    </li>
-                                </ul>}
                                 {Token ? <ul>
                                     <NavLink to='/profile' onClick={handleShow}>
                                         <i className="bi bi-person-badge"></i>
@@ -251,7 +244,11 @@ const Nav = () => {
                                     </li>
                                 </ul>}
                             </div>}
-                        </div>
+                        </div> : 
+                                <div className='lang' onClick={LanguageHandling}>
+                                    <div><GrLanguage /></div>
+                                    <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
+                                </div>}
                     </div>
                 </nav>
             </div>

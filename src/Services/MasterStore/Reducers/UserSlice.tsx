@@ -1,6 +1,10 @@
 // Redux Toolkit
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+
+
+import { useCookies } from 'react-cookie';
+
 // React Toastify
 import { toast } from 'react-toastify';
 
@@ -77,8 +81,6 @@ export const UserSignToProduct = createAsyncThunk(
 //     }
 // )
 
-
-
 const UserSlice = createSlice({
     name: 'Users',
     initialState,
@@ -88,7 +90,8 @@ const UserSlice = createSlice({
         Builder.addCase( UserSignIn.pending, ( State:any) => {
             State.loading = true;
         })
-        Builder.addCase( UserSignIn.fulfilled, ( State:any, Action:any ) => { 
+        Builder.addCase( UserSignIn.fulfilled, ( State:any, Action:any ) => {
+            document.cookie = `token=${Action.payload?.JWT?.ACCESS_TOKEN}; path=/`
             if (Action.payload?.DATA?.PUSER_INFO) {
                 State.loading = false;
                 State.user = Action.payload.DATA.PUSER_INFO;

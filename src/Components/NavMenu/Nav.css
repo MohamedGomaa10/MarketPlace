@@ -150,7 +150,7 @@ nav .NAVDEtail.show {
 
 .actions {
     color: var(--main-color);
-    font-size: 19px !important;
+    font-size: 16px !important;
     font-weight: bold !important;
     gap: 10px !important;
     padding: 15px;
@@ -195,6 +195,10 @@ nav .NAVDEtail.show {
 
     .actions ul {
         margin: 0 !important;
+    }
+
+    .shape .UserName{
+        display: none;
     }
 }
 

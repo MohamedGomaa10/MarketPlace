@@ -36,8 +36,8 @@ const MarketingNav = () => {
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
    useEffect(() => {
-    localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-    localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+    // localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+    // localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
    }, [cookies, cookiesInfo]);
 
   useEffect(() => {
