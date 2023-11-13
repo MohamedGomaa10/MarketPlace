@@ -3,7 +3,11 @@ import Request from '../../../Middleware/Requests/RequestMaster';
 
 // Get All ProductProgram
 export const GetAllProductProgramAction = async () => {
-    const response = await Request.get( `Market/ProductOffer` );
+    const response = await Request.get( `Market/ProductOffer`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
+    } );
     return response.data;
 }
 
