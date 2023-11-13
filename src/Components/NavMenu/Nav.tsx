@@ -44,8 +44,8 @@ const Nav = () => {
     const Navigate = useNavigate();
     const dispatch = useAppDispatch();
     const closeMenu = useRef(null);
-    const [cookies, setCookies, removeCookies] = useCookies(['JwtInfo']);
-    const [cookiesInfo, setInfoCookies, removeInfoCookies] = useCookies(['UserInfo']);
+    const [cookies, , removeCookies] = useCookies(['JwtInfo']);
+    const [cookiesInfo, , removeInfoCookies] = useCookies(['UserInfo']);
     const [openSlide, setopenSlide] = useState(true);
 	const { register: FormDiscount, handleSubmit: handleFormDiscount } = useForm<CreateApplyDiscountInterface>();
     const { CheckMarkterJoin, MarkterJoin } = useAppSelector(SelectMarketProgram);
@@ -62,11 +62,6 @@ const Nav = () => {
             localStorage.setItem('token', cookies?.JwtInfo?.ACCESS_TOKEN);
             localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
         }
-    // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
-    // localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
-    // localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
-    console.log(cookies);
-    
       }, [cookies, cookiesInfo]);
 
     const handleFreeClose = () => setFreeShow(false);
