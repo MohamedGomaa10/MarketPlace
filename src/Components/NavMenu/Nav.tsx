@@ -58,20 +58,20 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-        // localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-        // localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+        if(cookies?.JwtInfo && cookiesInfo?.UserInfo){
+            localStorage.setItem('token', cookies?.JwtInfo?.ACCESS_TOKEN);
+            localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+        }
     // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
     // localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
     // localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
+    console.log(cookies);
+    
       }, [cookies, cookiesInfo]);
 
     const handleFreeClose = () => setFreeShow(false);
     const handleFreeShow = () => {
-        if(CheckMarkterJoin === 'N' ){
-            Navigate('/marketing-home', { replace: true })
-          }else{
-              setFreeShow(true);
-          }
+        Navigate('/marketing-home', { replace: true })
     };
 
     const LanguageHandling = (e:any) => {
@@ -205,8 +205,8 @@ const Nav = () => {
                             </NavLink>
                         </div>
                         {Token ? <div className='shape' onClick={() => { handleShow('Actions') }}>
-                             <h4 className='UserName' id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }</h4>
-                            <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).PROFILE_IMAGE : ''}}/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME : ''}}`} alt="logo" /> 
+                             {localStorage?.UserInfo && <h4 className='UserName' id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_TWO : '' : localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_ONE : '' }</h4>}
+                            <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE : ''}}/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''}}`} alt="logo" /> 
                             {openSlide && <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}ref={closeMenu}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div><GrLanguage /></div>
