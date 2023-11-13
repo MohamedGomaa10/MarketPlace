@@ -58,8 +58,8 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-        // localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-        // localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+         localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+         localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
     // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
     // localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
     // localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
@@ -153,7 +153,7 @@ const Nav = () => {
             setopenSlide(true);
         }
       }
-      
+
       useEffect(() => {
         document.body.addEventListener('click', CloseMenu);
       }, [closeMenu, openSlide])
