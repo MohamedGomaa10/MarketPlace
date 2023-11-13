@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react'
+﻿import React, { useEffect, useState, useRef } from 'react'
 
 //React Router
 import { NavLink } from 'react-router-dom'
@@ -43,8 +43,10 @@ const Nav = () => {
     const { t } = useTranslation();
     const Navigate = useNavigate();
     const dispatch = useAppDispatch();
-     const [cookies] = useCookies(['JwtInfo']);
-     const [cookiesInfo] = useCookies(['UserInfo']);
+    const closeMenu = useRef(null);
+    const [cookies] = useCookies(['JwtInfo']);
+    const [cookiesInfo] = useCookies(['UserInfo']);
+    const [openSlide, setopenSlide] = useState(true);
 	const { register: FormDiscount, handleSubmit: handleFormDiscount } = useForm<CreateApplyDiscountInterface>();
     const { CheckMarkterJoin, MarkterJoin } = useAppSelector(SelectMarketProgram);
     const [ShowNav, setShowNav] = useState(false)
@@ -56,8 +58,8 @@ const Nav = () => {
     const [TokenData] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-        localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
-        localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
+        // localStorage.setItem('token', cookies?.JwtInfo.ACCESS_TOKEN);
+        // localStorage.setItem('UserInfo', JSON.stringify(cookiesInfo?.UserInfo));
     // localStorage.setItem('USER_NAME_TWO', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_TWO));
     // localStorage.setItem('USER_NAME_ONE', JSON.stringify(cookiesInfo?.UserInfo.USER_NAME_ONE));
     // localStorage.setItem('PROFILE_IMAGE', JSON.stringify(cookiesInfo?.UserInfo.PROFILE_IMAGE));
@@ -110,8 +112,7 @@ const Nav = () => {
 
     const LoGout =() =>{
         localStorage.clear();
-        Navigate('/', { replace: true })
-        window.location.reload();
+        window.location.href = 'https://auth.aait.com.sa/';
     }
 
     useEffect(() => {
@@ -143,6 +144,19 @@ const Nav = () => {
             })
           }
       }
+
+      const CloseMenu = (e: any) => {
+        if(!e.target.id){
+            setopenSlide(false);
+            setShowActions(false);
+        }else{
+            setopenSlide(true);
+        }
+      }
+      
+      useEffect(() => {
+        document.body.addEventListener('click', CloseMenu);
+      }, [closeMenu, openSlide])
 
     return (
         <React.Fragment>
@@ -193,9 +207,9 @@ const Nav = () => {
                             </NavLink>
                         </div>
                         <div className='shape' onClick={() => { handleShow('Actions') }}>
-                            <h3>{localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }</h3>
-                            <img src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).PROFILE_IMAGE : ''}}/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME : ''}}`} alt="logo" />
-                            <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}>
+                             <h3 id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }</h3>
+                            <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).PROFILE_IMAGE : ''}}/${localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME : ''}}`} alt="logo" /> 
+                            {openSlide && <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}ref={closeMenu}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div><GrLanguage /></div>
                                     <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
@@ -236,7 +250,7 @@ const Nav = () => {
                                         {t('LogOut')}
                                     </li>
                                 </ul>}
-                            </div>
+                            </div>}
                         </div>
                     </div>
                 </nav>

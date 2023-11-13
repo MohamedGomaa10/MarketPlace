@@ -9,9 +9,6 @@ import i18next from "i18next";
 
 import { useTranslation } from "react-i18next";
 
-// React Router
-import { useNavigate } from "react-router-dom";
-
 //icons
 import { GrLanguage } from "react-icons/gr";
 
@@ -24,7 +21,6 @@ import { useCookies } from 'react-cookie';
 import "./MarketingNav.css";
 
 const MarketingNav = () => {
-  const Navigate = useNavigate();
   const { t } = useTranslation();
   const [cookies] = useCookies(['JwtInfo']);
   const [cookiesInfo] = useCookies(['UserInfo']);
@@ -60,8 +56,7 @@ const MarketingNav = () => {
 
   const LoGout = () => {
     localStorage.clear();
-    Navigate("/", { replace: true });
-    window.location.reload();
+    window.location.href = 'https://auth.aait.com.sa/';
   };
 
   const LanguageHandling = () => {
