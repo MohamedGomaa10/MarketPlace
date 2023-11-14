@@ -201,7 +201,7 @@ const Nav = () => {
                         </div>
                         {Token ? <div className='shape' onClick={() => { handleShow('Actions') }}>
                              {localStorage?.UserInfo && <h4 className='UserName' id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_TWO : '' : localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_ONE : '' }</h4>}
-                            <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE : ''}}/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''}}`} alt="logo" /> 
+                            <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE : ''}/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''}`} alt="logo" /> 
                             {openSlide && <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}ref={closeMenu}>
                                 <div className='lang' onClick={LanguageHandling}>
                                     <div><GrLanguage /></div>

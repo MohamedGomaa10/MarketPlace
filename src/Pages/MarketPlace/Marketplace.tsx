@@ -25,8 +25,8 @@ const Marketplace:FC = () => {
   const [CategoryValue, setCategoryValue] = useState<any>([]);
   const [CategoryCheck, setCategoryCheck] = useState<any>();
 
-  const [AllProducts, setAllProducts] = useState<any>([]);
   const [FinalData, setFinalData] = useState<any>([]);
+  const [AllProducts, setAllProducts] = useState<any>([]);
   const { latestProducts, featuredProducts } = useAppSelector(Selectproducts);
 
   const [PaginationSize, setPaginationSize] = useState<any>(9);
@@ -35,8 +35,8 @@ const Marketplace:FC = () => {
 
   // Get All Data
   useEffect(() => {
-    dispatch(GetAllCategories());
     dispatch(GetAllProducts());
+    dispatch(GetAllCategories());
     dispatch(SelectLatestProducts());
     dispatch(SelectFeaturedProducts());
   }, [dispatch]);
@@ -265,7 +265,7 @@ useEffect(() => {
                                 <div className="col-8 leftSideCard">
                                   <div className="cardLabel">
                                     <i className="bi bi-star-fill"></i>
-                                    <p>5</p>
+                                    <p>{Product?.RATING_VALUE}</p>
                                   </div>
                                   <div className="cardLabel">
                                     <i className="bi bi-tags"></i>
