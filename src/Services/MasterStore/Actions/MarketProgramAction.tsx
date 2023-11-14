@@ -7,31 +7,47 @@ export const GetAllProductProgramAction = async () => {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }
-    } );
+    });
     return response.data;
 }
 
 // GetOneProductProgram
 export const GetOneProductProgramAction = async (GUID: any) => {
-    const response = await Request.get( `Market/SelectOneMarketOffer/${GUID}` );
+    const response = await Request.get( `Market/SelectOneMarketOffer/${GUID}`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
+    });
     return response.data;
 }
 
 // GetAllMarketCoupon
 export const GetAllMarketCouponAction = async () => {
-    const response = await Request.get( `Market/SelectMarketCoupon` );
+    const response = await Request.get( `Market/SelectMarketCoupon`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
+    });
     return response.data;
 }
 
 // GetAllMarketerOperation
 export const GetAllMarketerOperationAction = async () => {
-    const response = await Request.get( `Market/SelectMarketerOperation` );
+    const response = await Request.get( `Market/SelectMarketerOperation`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
+    });
     return response.data;
 }
 
 //CheckMarkterJoin
 export const CheckMarkterJoinAction = async () => {
-    const response = await Request.get( `Market/getCheckMarkterJoin` );
+    const response = await Request.get( `Market/getCheckMarkterJoin`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
+    });
     return response.data;
 }
 
