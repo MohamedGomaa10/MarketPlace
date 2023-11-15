@@ -229,12 +229,18 @@ nav .NAVDEtail.show {
     align-items: center;
     justify-content: flex-end;
     gap: 20px;
+    cursor: pointer;
 }
 
 .shape img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+}
+
+.UserName{
+    font-weight: bold;
+    margin: 0;
 }
 
 .ParentNav .NavChild {

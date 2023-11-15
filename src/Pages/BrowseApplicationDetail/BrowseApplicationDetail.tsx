@@ -152,7 +152,7 @@ const BrowseApplicationDetail = () => {
               <div className="UsesContent">
                 <div className="UsesContentDetails">
                     <p className="title">{t("MAX_USAGE")}</p>
-                    <p className="currency title">{DATA_INFO?.MAX_USAGE === 0 ? t('Unlimited') : DATA_INFO?.MAX_USAGE}</p>
+                    <p className="currency title">{DATA_INFO?.MARKETER_USAGE_LIMIT === 0 ? t('Unlimited') : DATA_INFO?.MARKETER_USAGE_LIMIT}</p>
                 </div>
                 <div className="UsesContentDetails">
                     <p className="title">{t("CUSTOMER_USAGE_LIMIT")}</p>

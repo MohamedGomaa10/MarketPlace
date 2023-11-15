@@ -54,11 +54,6 @@ const MarketingNav = () => {
     window.scrollTo(0, 0);
   };
 
-  const LoGout = () => {
-    localStorage.clear();
-    window.location.href = 'https://auth.aait.com.sa/';
-  };
-
   const LanguageHandling = () => {
     if (Language === "ar") {
       setLanguage("en");
@@ -144,9 +139,6 @@ const MarketingNav = () => {
           </div>
         </div>
         <div className="settings">
-          <div className="shape">
-            <i className="bi bi-bell"></i>
-          </div>
           <div className="dropdown">
             <div
               className="shape"
@@ -154,13 +146,19 @@ const MarketingNav = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i className="bi bi-gear"></i>
+              <div className="ImageUserHeader">
+                <h4>
+                {localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : ''}</h4>
+                <img id='ImgClick' src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE : ''}/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''}`} alt="logo" />
+              </div>
             </div>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li className="lang" onClick={LanguageHandling}>
-                <div>{localStorage.getItem("LANG") === "ar" ? "En" : "Ar"}</div>
                 <div>
-                  <GrLanguage />
+                  <h5 className="dropdownBody">
+                    <GrLanguage />
+                    {localStorage.getItem("LANG") === "ar" ? "English" : "Arabic"}
+                    </h5>
                 </div>
               </li>
               <li>
@@ -168,25 +166,19 @@ const MarketingNav = () => {
               </li>
               {Token ? (
                 <li className="mobileMenu">
-                  <NavLink to="/profile" onClick={handleShow}>
-                      {localStorage.getItem('LANG') === 'en' ? localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_TWO : '' : localStorage.UserInfo ? JSON.parse(localStorage.UserInfo).USER_NAME_ONE : '' }
+                  <NavLink to="/" onClick={handleShow}>
+                      <h5 className="dropdownBody">
+                      <i className="bi bi-shop-window"></i>
+                        {localStorage.getItem('LANG') === 'en' ? 'Marketing Application' : 'تطبيق التسويق' }</h5>
                   </NavLink>
                 </li>
               ) : (
                 ""
               )}
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              {Token && (
-                <li className="mobileMenu" onClick={LoGout}>
-                  {t("LogOut")}
-                </li>
-              )}
             </ul>
           </div>
         </div>
-        <div className="FullScreen">
+        {/* <div className="FullScreen">
           <div className="lang" onClick={LanguageHandling} >
             <div>{localStorage.getItem("LANG") === "ar" ? "En" : "Ar"}</div>
             <div>
@@ -196,9 +188,7 @@ const MarketingNav = () => {
           {Token ? (
             <ul>
               <NavLink to="/profile" onClick={handleShow}>
-                {localStorage.getItem("LANG") === "en"
-                  ? localStorage.getItem("USER_NAME_TWO")
-                  : localStorage.getItem("USER_NAME_ONE")}
+              {localStorage?.UserInfo && <h4 className='UserName' id='NameClick'>{localStorage.getItem('LANG') === 'en' ? localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_TWO : '' : localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_ONE : ''}</h4>}
               </NavLink>
             </ul>
           ) : (
@@ -209,7 +199,7 @@ const MarketingNav = () => {
               <li onClick={LoGout}>{t("LogOut")}</li>
             </ul>
           )}
-        </div>
+        </div> */}
       </div>
     </React.Fragment>
   );

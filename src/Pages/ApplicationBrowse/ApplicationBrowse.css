@@ -146,12 +146,12 @@ hr {
     color: #8295bf69;
 }
 
-.actions {
+.Cardactions {
     display: flex;
     gap: 7px;
 }
 
-.actions button {
+.Cardactions button {
     background: #8295bf1c;
     color: #8396BF !important;
     border-radius: 40px;

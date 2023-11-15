@@ -35,9 +35,13 @@
 }
 
 .headerNav .settings {
-    display: none;
+    display: block;
 }
 
+.shape img {
+    width: 60px;
+    border-radius: 50%;
+}
 
 .headerNav i {
     color: var(--main-color);
@@ -46,11 +50,8 @@
 }
 
 .headerNav .shape {
-    background: #191b3b;
-    border: 1px solid #8396bf17;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: fit-content;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -63,6 +64,16 @@
 
 .bi-justify {
     display: none;
+}
+
+.ImageUserHeader{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.ImageUserHeader h4{
+    font-weight: bold;
 }
 
 @media(max-width: 700px) {
@@ -162,6 +173,12 @@
     background: #191b3b;
     color: var(--main-color);
     border: 1px solid var(--main-color);
+}
+
+.dropdownBody{
+    gap: 5px;
+    display: flex;
+    font-weight: 600;
 }
 
 .dropdown-divider{

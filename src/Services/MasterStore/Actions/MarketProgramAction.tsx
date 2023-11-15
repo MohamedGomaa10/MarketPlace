@@ -13,7 +13,7 @@ export const GetAllProductProgramAction = async () => {
 
 // GetOneProductProgram
 export const GetOneProductProgramAction = async (GUID: any) => {
-    const response = await Request.get( `Market/SelectOneMarketOffer/${GUID}`, {
+    const response = await Request.get( `Market/ProductOffer/${GUID}`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }

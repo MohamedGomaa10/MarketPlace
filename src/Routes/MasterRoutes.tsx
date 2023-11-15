@@ -24,6 +24,7 @@ const MarketPlace = lazy(() => import('../Pages/MarketPlace/Marketplace'));
 const Login = lazy(() => import('../Pages/Login/login'));
 const ProductDetails = lazy(() => import('../Pages/ProductDetails/ProductDetails'));
 const Checkout = lazy(() => import('../Pages/CheckOut/Checkout'));
+const PublisherProducts = lazy(() => import('../Pages/PublisherProducts/PublisherProducts'));
 const ProductDetailsSub = lazy(() => import('../Pages/ProductDetailsSubiscrib/ProductDetailsSub'));
 const CheckoutDetails = lazy(()=> import('../Pages/CheckOutDetails/CheckOutDetails'));
 const SubscriptionsManagement = lazy(()=> import('../Pages/SubscriptionsManagement/SubscriptionsManagement'));
@@ -48,6 +49,7 @@ const MasterRoutes: FC  = () => {
                 { path: 'marketplace', element: <MarketPlace /> },
                 { path: 'productDetailsSub/:id', element: <ProductDetailsSub /> },
                 { path: 'productDetails/:id', element: <ProductDetails /> },
+                { path: 'publisherProducts/:id', element: <PublisherProducts /> },
                 {
                     path: 'checkOut/:pricingId/:id',
                     element: checkAuthenticated(<Checkout />)

@@ -8,8 +8,6 @@ import { useAppDispatch, useAppSelector } from "../../Services/MasterStore/Maste
 
 import { GetMarketerOperationSlice, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
 
-import jwtDecode from 'jwt-decode';
-
 //translation
 import { useTranslation } from 'react-i18next';
 

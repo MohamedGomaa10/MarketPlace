@@ -424,7 +424,9 @@ const ProductDetails:FC = () => {
                         </div>
                     </div>
                     <div className='Description'>
-                      <h6>{t('development')} : {Product_Info?.PUBLISHER_NAME}</h6>
+                      <NavLink to={`/publisherProducts/${Product_Info.PUBLISHER_ID}`}>
+                        <h6>{t('development')} : {Product_Info?.PUBLISHER_NAME}</h6>
+                      </NavLink>
                       <h6>{Product_Info?.DESCRIPTION_NAME}</h6>
                     </div>
                     <div className='activeProduct'>

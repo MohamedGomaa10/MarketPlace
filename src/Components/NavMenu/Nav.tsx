@@ -199,44 +199,45 @@ const Nav = () => {
                                 <img src={`${Language === "ar" ? ArLogo : Logo}`} alt="logo" onClick={() => setShowNav(false)} />
                             </NavLink>
                         </div>
-                        {Token ? <div className='shape' onClick={() => { handleShow('Actions') }}>
-                             {localStorage?.UserInfo && <h4 className='UserName' id='NameClick' onClick={(e) => {CloseMenu(e)}}>{localStorage.getItem('LANG') === 'en' ? localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_TWO : '' : localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_ONE : '' }</h4>}
-                            <img id='ImgClick' onClick={(e) => {CloseMenu(e)}} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE : ''}}/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''}}`} alt="logo" /> 
-                            {openSlide && <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`}ref={closeMenu}>
-                                <div className='lang' onClick={LanguageHandling}>
-                                    <div><GrLanguage /></div>
-                                    <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
-                                </div>
-                                {Token ? <ul>
-                                    <NavLink to='/profile' onClick={handleShow}>
-                                        <i className="bi bi-person-badge"></i>
-                                        {localStorage.getItem('LANG') === 'en' ? 'Profile' : 'الملف الشخصي'}
-                                    </NavLink>
-                                </ul> : ''}
-                                {Token ? <ul>
-                                    <NavLink to='/subscriptionsManagement' onClick={handleShow} className={'buildings'}>
-                                        <i className="bi bi-buildings"></i>
-                                        {t('Subscription management')}
-                                    </NavLink>
-                                </ul> : ''}
-                                {Token ? <ul>
-                                    <div onClick={handleFreeShow} className='MarketShop'>
-                                        <i className="bi bi-shop"></i>
-                                        {t('Marketer Gate')}
+                        {Token ?
+                            <div className='shape' onClick={() => { handleShow('Actions') }}>
+                                {localStorage?.UserInfo && <h4 className='UserName' id='NameClick' onClick={(e) => { CloseMenu(e) }}>{localStorage.getItem('LANG') === 'en' ? localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_TWO : '' : localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME_ONE : ''}</h4>}
+                                <img id='ImgClick' onClick={(e) => { CloseMenu(e) }} src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE : ''}/${localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''}`} alt="logo" />
+                                {openSlide && <div className={`actions ${ShowActions ? 'showaction' : 'hiddenaction'}`} ref={closeMenu}>
+                                    <div className='lang' onClick={LanguageHandling}>
+                                        <div><GrLanguage /></div>
+                                        <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
                                     </div>
-                                </ul> : ''}
-                                {Token && <ul>
-                                    <li onClick={LoGout} className='LogOut-box-arrow'>
-                                        <i className="bi bi-box-arrow-left"></i>
-                                        {t('LogOut')}
-                                    </li>
-                                </ul>}
-                            </div>}
-                        </div> : 
-                                <div className='lang' onClick={LanguageHandling}>
-                                    <div><GrLanguage /></div>
-                                    <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
+                                    {Token ? <ul>
+                                        <NavLink to='/profile' onClick={handleShow}>
+                                            <i className="bi bi-person-badge"></i>
+                                            {localStorage.getItem('LANG') === 'en' ? 'Profile' : 'الملف الشخصي'}
+                                        </NavLink>
+                                    </ul> : ''}
+                                    {Token ? <ul>
+                                        <NavLink to='/subscriptionsManagement' onClick={handleShow} className={'buildings'}>
+                                            <i className="bi bi-buildings"></i>
+                                            {t('Subscription management')}
+                                        </NavLink>
+                                    </ul> : ''}
+                                    {Token ? <ul>
+                                        <div onClick={handleFreeShow} className='MarketShop'>
+                                            <i className="bi bi-shop"></i>
+                                            {t('Marketer Gate')}
+                                        </div>
+                                    </ul> : ''}
+                                    {Token && <ul>
+                                        <li onClick={LoGout} className='LogOut-box-arrow'>
+                                            <i className="bi bi-box-arrow-left"></i>
+                                            {t('LogOut')}
+                                        </li>
+                                    </ul>}
                                 </div>}
+                            </div> :
+                            <div className='lang' onClick={LanguageHandling}>
+                                <div><GrLanguage /></div>
+                                <div>{localStorage.getItem('LANG') === 'ar' ? 'English' : 'Arabic'}</div>
+                            </div>}
                     </div>
                 </nav>
             </div>
