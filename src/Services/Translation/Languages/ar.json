@@ -349,5 +349,17 @@
    "Marketer Gate": "بوابة المسوقين",
    "Total Card": "إجمالي المحفظة",
    "Not Found": "لا يوجد تطبيقات لهذا الصنف...",
-   "Operation Date": "تايخ العملية"
+   "Operation Date": "تايخ العملية",
+   "Name": "الاسم",
+	"Email": "البريد الإلكتروني",
+	"Prefered_Language": "اللغة",
+	"User_Name": "اسم المستخدم",
+	"Old_Password": "كلمة السر السابقة",
+	"New_Password": "كلمة السر الجديدة",
+	"Confirm_Password": "تأكيد كلمة السر",
+	"Change Password": "تغيير كلمة السر",
+   "Save": "حفظ",
+   "Select": "اختار",
+	"Public Profile": "البيانات الشخصية",
+	"Password and Authentication": "كلمة السر و الحماية"
 }

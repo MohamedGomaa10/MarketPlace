@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../../Components/NavMenu/Nav";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
@@ -14,27 +14,99 @@ import { useTranslation } from "react-i18next";
 import "./Profile.css";
 import jwtDecode from "jwt-decode";
 
+import { useForm } from "react-hook-form";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
+
 const Profile = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [Token] = useState(localStorage.getItem('token'));
+  const [Token] = useState(localStorage.getItem("token"));
+  const [type, setType] = useState({
+    Old_Password: "password",
+    New_Password: "password",
+    Confirm_Password: "password",
+  });
+  const [icon, setIcon] = useState({
+    Old_Password: eyeOff,
+    New_Password: eyeOff,
+    Confirm_Password: eyeOff,
+  });
+  const { register, handleSubmit } = useForm();
 
-    useEffect(() => {
-      const decodedToken = Token && jwtDecode<any>(Token);
-      decodedToken && dispatch(SelectUserProduct(decodedToken.UserId));
-    }, [dispatch, Token]);
-  
-    // const formatDate = (dateString: any) => {
-    //   const date = new Date(dateString);
-    //   const year = date.getFullYear();
-    //   const month = date.getMonth() + 1;
-    //   const day = date.getDate();
-    //   return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-    // };
+  useEffect(() => {
+    const decodedToken = Token && jwtDecode<any>(Token);
+    decodedToken && dispatch(SelectUserProduct(decodedToken.UserId));
+  }, [dispatch, Token]);
 
-    // const OpenApp = (Url:string) =>{
-    //   window.open(Url, "_blank", "noreferrer");
-    // }
+  // const formatDate = (dateString: any) => {
+  //   const date = new Date(dateString);
+  //   const year = date.getFullYear();
+  //   const month = date.getMonth() + 1;
+  //   const day = date.getDate();
+  //   return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  // };
+
+  // const OpenApp = (Url:string) =>{
+  //   window.open(Url, "_blank", "noreferrer");
+  // }
+
+  const handleToggle = (id: any) => {
+    if (id === "Old_Password") {
+      if (type.Old_Password === "password") {
+        setIcon((prev) => {
+          return { ...prev, Old_Password: eye };
+        });
+        setType((prev) => {
+          return { ...prev, Old_Password: "text" };
+        });
+      } else {
+        setIcon((prev) => {
+          return { ...prev, Old_Password: eyeOff };
+        });
+        setType((prev) => {
+          return { ...prev, Old_Password: "password" };
+        });
+      }
+    }
+    else if (id === "New_Password"){
+      if (type.New_Password === "password") {
+        setIcon((prev) => {
+          return { ...prev, New_Password: eye };
+        });
+        setType((prev) => {
+          return { ...prev, New_Password: "text" };
+        });
+      } else {
+        setIcon((prev) => {
+          return { ...prev, New_Password: eyeOff };
+        });
+        setType((prev) => {
+          return { ...prev, New_Password: "password" };
+        });
+      }
+    }
+    else {
+      if (type.Confirm_Password === "password") {
+        setIcon((prev) => {
+          return { ...prev, Confirm_Password: eye };
+        });
+        setType((prev) => {
+          return { ...prev, Confirm_Password: "text" };
+        });
+      } else {
+        setIcon((prev) => {
+          return { ...prev, Confirm_Password: eyeOff };
+        });
+        setType((prev) => {
+          return { ...prev, Confirm_Password: "password" };
+        });
+      }
+    }
+  };
+
+  console.log(type, icon);
 
   return (
     <React.Fragment>
@@ -44,21 +116,32 @@ const Profile = () => {
           <Tab eventKey="profile" title={t("Profile")}>
             <div className="ParantDiv">
               <div className="container mb-5">
-                <div className="row">
-                  <div className="col-md-3 border-right">
-                    <div className="d-flex flex-column align-items-center text-center ">
+                <div className="row justify-content-center">
+                  <div className="col-md-3">
+                    <div className="d-flex flex-column align-items-center text-center">
                       <img
                         className="rounded-circle"
                         width="150px"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                        alt="#"
+                        src={`https://dev.aait.com.sa/ProfileImageHandler/ProfileImage/${
+                          localStorage?.UserInfo
+                            ? JSON.parse(localStorage?.UserInfo)?.PROFILE_IMAGE
+                            : ""
+                        }}/${
+                          localStorage?.UserInfo
+                            ? JSON.parse(localStorage?.UserInfo)?.USER_NAME
+                            : ""
+                        }}`}
+                        alt="Profile Pic"
                       />
-                      <span className="font-weight-bold">Edogaru</span>
-                      <span className="text-black-50">edogaru@mail.com.my</span>
-                      <span> </span>
+                      {/* <input type="file" id="myFile" name="filename" /> */}
+                      <div className="Upload">
+                        <i className="bi bi-cloud-upload"></i>
+                        <input type="file" id="National_Identity" />
+                        <p>{t("Choose File")}</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="col-md-5 border-right">
+                  {/* <div className="col-md-5 border-right">
                     <div className="p-3 py-5">
                       <div className="d-flex justify-content-between align-items-center mb-3">
                         <h4 className="text-right">Profile Settings</h4>
@@ -80,8 +163,6 @@ const Profile = () => {
                             placeholder={t("second_name")}
                           />
                         </div>
-                      </div>
-                      <div className="row mt-3">
                         <div className="col-md-12">
                           <label className="labels"></label>
                           <input
@@ -146,8 +227,6 @@ const Profile = () => {
                             placeholder={t("education")}
                           />
                         </div>
-                      </div>
-                      <div className="row mt-3">
                         <div className="col-md-6">
                           <label className="labels"></label>
                           <input
@@ -174,8 +253,8 @@ const Profile = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-md-4">
+                  </div> */}
+                  {/* <div className="col-md-4">
                     <div className="p-3 py-5">
                       <div className="d-flex justify-content-between align-items-center experience">
                         <span>Edit Experience</span>
@@ -201,6 +280,231 @@ const Profile = () => {
                           placeholder={t("additinal_details")}
                         />
                       </div>
+                    </div>
+                  </div> */}
+                  <div className="col-md-6">
+                    <div className="publicProfileForm mb-5">
+                      <h3 className="mb-4">{t("Public Profile")}</h3>
+                      <form
+                        onSubmit={handleSubmit((data) => console.log(data))}
+                      >
+                        <div className="row justify-content-center">
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label className="labels" htmlFor="Name">
+                                  {t("Name")}
+                                </label>
+                              </div>
+                              <div className="col-md-10">
+                                <input
+                                  {...register("Name", { required: true })}
+                                  id="Name"
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={t("Name")}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label className="labels" htmlFor="Email">
+                                  {t("Email")}
+                                </label>
+                              </div>
+                              <div className="col-md-10">
+                                <input
+                                  {...register("Email", { required: true })}
+                                  id="Email"
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={t("Email")}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label
+                                  className="labels"
+                                  htmlFor="Prefered_Language"
+                                >
+                                  {t("Prefered_Language")}
+                                </label>
+                              </div>
+                              <div className="col-md-10">
+                                <select
+                                  id="Prefered_Language"
+                                  className="form-control w-100"
+                                  {...register("Prefered_Language", {
+                                    required: true,
+                                  })}
+                                >
+                                  <option value="">{t("Select")}</option>
+                                  <option value="English">{"English"}</option>
+                                  <option value="Arabic">{"عربي"}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row justify-content-end mt-3">
+                          <div className="col-md-3 d-flex justify-content-end">
+                            <button
+                              className="btn text-dark bg-light"
+                              type="submit"
+                            >
+                              {t("Save")}
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <hr />
+                    <div className="authentication">
+                      <h3 className="mb-4">{t("Password and Authentication")}</h3>
+                      <form
+                        onSubmit={handleSubmit((data) => console.log(data))}
+                      >
+                        <div className="row justify-content-center">
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label className="labels" htmlFor="User_Name">
+                                  {t("User_Name")}
+                                </label>
+                              </div>
+                              <div className="col-md-10">
+                                <input
+                                  {...register("User_Name", { required: true })}
+                                  id="User_Name"
+                                  type="text"
+                                  className="form-control"
+                                  placeholder={t("User_Name")}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label
+                                  className="labels"
+                                  htmlFor="Old_Password"
+                                >
+                                  {t("Old_Password")}
+                                </label>
+                              </div>
+                              <div className="col-md-10 passParent">
+                                <input
+                                  {...register("Old_Password", {
+                                    required: true,
+                                  })}
+                                  id="Old_Password"
+                                  type={type.Old_Password}
+                                  className="form-control"
+                                  placeholder={t("Old_Password")}
+                                />
+                                <span
+                                  className="passIcon"
+                                  onClick={() => {
+                                    handleToggle("Old_Password");
+                                  }}
+                                >
+                                  <Icon
+                                    className="absolute mr-10"
+                                    icon={icon.Old_Password}
+                                    size={25}
+                                  />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label
+                                  className="labels"
+                                  htmlFor="New_Password"
+                                >
+                                  {t("New_Password")}
+                                </label>
+                              </div>
+                              <div className="col-md-10 passParent">
+                                <input
+                                  {...register("New_Password", {
+                                    required: true,
+                                  })}
+                                  id="New_Password"
+                                  type={type.New_Password}
+                                  className="form-control"
+                                  placeholder={t("New_Password")}
+                                />
+                                <span
+                                  className="passIcon"
+                                  onClick={() => {
+                                    handleToggle("New_Password");
+                                  }}
+                                >
+                                  <Icon
+                                    className="absolute mr-10"
+                                    icon={icon.New_Password}
+                                    size={25}
+                                  />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-12 mb-4">
+                            <div className="row">
+                              <div className="col-md-2 d-flex align-items-center">
+                                <label
+                                  className="labels"
+                                  htmlFor="Confirm_Password"
+                                >
+                                  {t("Confirm_Password")}
+                                </label>
+                              </div>
+                              <div className="col-md-10 passParent">
+                                <input
+                                  {...register("Confirm_Password", {
+                                    required: true,
+                                  })}
+                                  id="Confirm_Password"
+                                  type={type.Confirm_Password}
+                                  className="form-control"
+                                  placeholder={t("Confirm_Password")}
+                                />
+                                <span
+                                  className="passIcon"
+                                  onClick={() => {
+                                    handleToggle("Confirm_Password");
+                                  }}
+                                >
+                                  <Icon
+                                    className="absolute mr-10"
+                                    icon={icon.Confirm_Password}
+                                    size={25}
+                                  />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row justify-content-end mt-3">
+                          <div className="col-md-3 d-flex justify-content-end">
+                            <button
+                              className="btn text-dark bg-light"
+                              type="submit"
+                            >
+                              {t("Change Password")}
+                            </button>
+                          </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>

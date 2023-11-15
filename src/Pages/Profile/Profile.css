@@ -1,15 +1,17 @@
-.ParantDiv{
+.ParantDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     /* height: 100vh; */
     margin-top: 50px !important;
 }
-.form-control{
+
+.form-control {
     color: var(--card-color);
     font-size: 18px;
     font-weight: bold;
 }
+
 .form-control:focus {
     box-shadow: none;
     border-color: var(--card-color);
@@ -45,7 +47,7 @@
 }
 
 .labels {
-    font-size: 11px
+    font-size: 1.2rem;
 }
 
 .add-experience:hover {
@@ -54,31 +56,36 @@
     cursor: pointer;
     border: solid 1px var(--card-color);
 }
-.mtTabs{
+
+.mtTabs {
     margin-top: 90px;
 }
-.nav-link{
+
+.nav-link {
     background: #fff !important;
 }
 
-.nav-link:active{
+.nav-link:active {
     background: transparent !important;
 }
-.nav-link.active{
+
+.nav-link.active {
     background: transparent !important;
     color: #fff !important;
 }
-.nav-item button{
+
+.nav-item button {
     border-radius: 0px !important;
     width: fit-content;
     font-size: 22px;
     font-weight: 600;
 }
-.nav-tabs .nav-item{
+
+.nav-tabs .nav-item {
     margin: 0 1px;
 }
 
-.cfeatures{
+.cfeatures {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -95,10 +102,12 @@
     align-items: center;
     padding: 3px 15px 3px 3px;
 }
+
 .item_container .content p.save {
     align-items: center;
-    color:var(--bs-green);
+    color: var(--bs-green);
 }
+
 .item_container .content h4 {
     font-size: 16px !important;
 }
@@ -137,7 +146,7 @@
     background: #E26D5C;
 }
 
-.card-heading{
+.card-heading {
     font-size: 18px;
     font-weight: bold;
     background: #fff;
@@ -149,19 +158,21 @@
     padding: 10px 15px;
     background: #fff;
     font-size: 14px;
-    color: #636262; 
-    overflow: hidden ;
+    color: #636262;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     min-height: 86px;
 }
-.card-text p{
-    height: 3em; 
-    overflow: hidden; 
+
+.card-text p {
+    height: 3em;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: pre;
 }
+
 .card-button {
     display: flex;
     justify-content: center;
@@ -177,4 +188,56 @@
     background-color: #1D3461;
     color: #fff;
 
+}
+
+.Upload {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #8396BF;
+    padding: 0px 11px;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: fit-content;
+    position: relative;
+}
+
+.Upload i {
+    font-size: 30px;
+    color: var(--main-color);
+}
+
+.bi-cloud-upload::before {
+    display: flex;
+    padding: 8px 0px;
+}
+
+.Upload input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 144%;
+    left: 0px;
+}
+
+.Upload p {
+    font-weight: 400 !important;
+    word-wrap: break-word;
+    width: 130px;
+    font-size: 20px !important;
+    margin: 0;
+}
+
+.passParent {
+    position: relative;
+}
+
+.passIcon {
+    position: absolute;
+    left: 20px;
+    top: 7px;
+    z-index: 99;
+    color: black;
+    cursor: pointer;
 }

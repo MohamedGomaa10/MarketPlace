@@ -181,5 +181,17 @@
 	"application coupons appear": "Here the application coupons appear that you can request to activate and then market them on platforms",
 	"Subscription_management_main_title": "There are no activated applications on your account",
 	"Subscription_management_sub_title": "Start connecting your applications and develop your business through Coject apps market solutions that help you manage your business professionally",
-	"Help Center": "Help Center"
+	"Help Center": "Help Center",
+	"Name": "Name",
+	"Email": "Email",
+	"Prefered_Language": "Prefered Language",
+	"User_Name": "User Name",
+	"Old_Password": "Old Password",
+	"New_Password": "New Password",
+	"Confirm_Password": "Confirm Password",
+	"Change Password": "Change Password",
+	"Save": "Save",
+	"Select": "Select",
+	"Public Profile": "Public Profile",
+	"Password and Authentication": "Password and Authentication"
 }
