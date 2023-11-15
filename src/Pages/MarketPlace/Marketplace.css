@@ -736,6 +736,16 @@ input[type="radio"]::before {
     max-width: 100%;
 }
 
+.NoData{
+    display: flex;
+    justify-content: center;
+}
+
+.NoData img{
+    width: 80%;
+    height: 80%;
+}
+
 .btnPagination{
     display: flex;
     gap: 10px;

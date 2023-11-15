@@ -38,10 +38,10 @@ const AccountBank = () => {
         var reader = new FileReader();
         if (FileData) {
             reader.onload = (e) => {
-              const result  = e.target;
-              if (result) {
-                setFileDataURL(result)
-              }
+                const result = e.target;
+                if (result) {
+                    setFileDataURL(result)
+                }
             }
             FileData && FileData?.map((Item: any, Index: any) => (
                 FileData[Index].Name === type &&
@@ -49,7 +49,7 @@ const AccountBank = () => {
             ));
             setFreeShow(true);
             setFileDataURL(null);
-          }
+        }
     }
 
     return (

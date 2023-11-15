@@ -2,6 +2,9 @@ import React, {FC, useEffect, useState} from 'react';
 
 import jwtDecode from 'jwt-decode';
 
+// Translation
+import i18next from 'i18next';
+
 // React Router
 import { useNavigate } from 'react-router-dom';
 
@@ -23,6 +26,7 @@ const App: FC = () => {
         localStorage.clear();
         Navigate('/login', { replace: true })
       }
+      i18next.changeLanguage(localStorage.lang).then();
   },[Token, Navigate]);
 
   return (

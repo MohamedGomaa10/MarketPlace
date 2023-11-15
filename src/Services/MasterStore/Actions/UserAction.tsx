@@ -1,6 +1,9 @@
 // Axios Middleware
 import RequestAuth from '../../../Middleware/Requests/RequestAuth';
 
+// Axios
+import axios from "axios";
+
 // User Sign In Interface
 export interface UserSignInInterface {
     Data: {
@@ -42,40 +45,9 @@ export interface UserSignUpInterface {
 
 // User Sign Up
 export const UserSignUpAction = async ( Payload: UserSignUpInterface ) => {
-    const response = await RequestAuth.post( 'Security/RegisterUser', Payload.Data )
-    // Payload.Navigate('/dashboard', { replace: true });
+    const response = await RequestAuth.post( 'Security/RegisterUser', Payload.Data );
     return response.data;
 }
-
-// // User Email Verified Interface
-// export interface UserEmailVerifiedInterface {
-//     Data: {
-//         id: string;
-//         hash: string;
-//     };
-//     Navigate: any;
-// }
-
-// // User Email Verified
-// export const UserEmailVerifiedAction = async ( Payload: UserEmailVerifiedInterface ) => {
-//     const response = await Request.post( '/users/email-verified', Payload.Data );
-//     Payload.Navigate('/', { replace: true });
-//     return response.data;
-// }
-
-// // User Profile
-// export const UserProfileAction = async () => {
-//     const response = await Request.get( '/users/profile' );
-//     return response.data;
-// }
-
-// // User Sign Out
-// export const UserSignOutAction = async ( Payload: any ) => {
-//     const response = await Request.post( '/users/sign-out' );
-//     localStorage.clear();
-//     Payload.Navigate('/dashboard/sign-in', { replace: true });
-//     return response.data;
-// }
 
 // User Sign Up Interface
 export interface UserSignToProductInterface {
@@ -95,7 +67,17 @@ export interface UserSignToProductInterface {
 }
 
 export const UserSignToProductAction = async ( Payload: UserSignToProductInterface ) => {
-    const response = await RequestAuth.post( Payload.URL + '/Coject/Market/Register', Payload.Data )
-    //Payload.Navigate(`/profile`, { replace: true });
+    const response = await RequestAuth.post( Payload.URL + '/Coject/Market/Register', Payload.Data );
+    return response.data;
+}
+
+export interface ChangeUserPasswordInterface {
+    NEW_PASSWORD: string;
+}
+
+const baseUrl = 'https://dev.aait.com.sa/CojectAuth';
+
+export const ChangeUserPasswordAction = async ( Payload: ChangeUserPasswordInterface ) => {
+    const response = await axios.post( baseUrl + '/Security/ChangePassword', Payload );
     return response.data;
 }

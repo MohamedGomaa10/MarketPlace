@@ -11,6 +11,8 @@ import { RootState } from "../MasterStore";
 import { UserSignInInterface, UserSignInAction,
          UserSignUpInterface, UserSignUpAction,
          UserSignToProductInterface,
+         ChangeUserPasswordAction,
+         ChangeUserPasswordInterface,
          UserSignToProductAction
          /*UserEmailVerifiedInterface, UserEmailVerifiedAction,
 UserSignOutAction, UserProfileAction*/ } from '../Actions/UserAction';
@@ -53,29 +55,13 @@ export const UserSignToProduct = createAsyncThunk(
     }
 )
 
-// User Sign Out
-// export const UserSignOut = createAsyncThunk(
-//     'Users/SignOut',
-//     async (Payload: any) => {
-//         return await UserSignOutAction(Payload);
-//     }
-// )
-
-// // Client Email Verified
-// export const UserEmailVerified = createAsyncThunk(
-//     'Users/EmailVerified',
-//     async (Payload: UserEmailVerifiedInterface) => {
-//         return await UserEmailVerifiedAction(Payload);
-//     }
-// )
-
-// // User Profile
-// export const UserProfile = createAsyncThunk(
-//     'Users/Profile',
-//     async () => {
-//         return await UserProfileAction();
-//     }
-// )
+// User Sign Up
+export const ChangeUserPasswordSlice = createAsyncThunk(
+    'Users/ChangeUserPassword',
+    async (Payload: ChangeUserPasswordInterface) => {        
+        return  await ChangeUserPasswordAction(Payload);
+    }
+)
 
 const UserSlice = createSlice({
     name: 'Users',

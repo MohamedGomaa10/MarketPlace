@@ -12,6 +12,9 @@ import { NavLink } from "react-router-dom";
 import { GetAllProducts, Selectproducts, SelectLatestProducts, SelectFeaturedProducts } from "../../Services/MasterStore/Reducers/ProductSlice";
 import { GetAllCategories, SelectCategories } from "../../Services/MasterStore/Reducers/CategorySlice";
 
+//Image 
+import NoData from "../../Assets/Projects/No data-rafiki.png";
+
 //css
 import "./Marketplace.css";
 
@@ -247,7 +250,7 @@ useEffect(() => {
                 <div className="SectionCategories_container">
                   {/* <div className="row"> */}
                   <div className="SectionCategories row">
-                    <div className="moreDetail">
+                    {!! FinalData.length ? <div className="moreDetail">
                       {!!FinalData.length &&
                         FinalData.map((Product: any, Index: number) => (
                           <NavLink
@@ -290,7 +293,7 @@ useEffect(() => {
                             </div>
                           </NavLink>
                         ))}
-                    </div>
+                    </div> : <div className="NoData"><img src={NoData} alt="#"/></div>}
                   </div>
                 </div>
               </section>
@@ -307,7 +310,7 @@ useEffect(() => {
                       <button type="button" className="btn next" onClick={()=>{NextPage(); handleLinkClick();}}>{t('next')}</button>
                     </div>
                   </div>
-                </div> : <h5 className="fw-bold">{localStorage.getItem("LANG") === "en" ? `Not Found Apps To Category (${CategoryName.NAME_TWO})` : `لا توجد تطبيقات لتصنيف (${CategoryName.NAME_ONE})`}</h5>}
+                </div> : '' }
               </div>
             </div>}
         </div>

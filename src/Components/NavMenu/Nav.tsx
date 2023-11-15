@@ -1,10 +1,11 @@
 ﻿import React, { useEffect, useState, useRef } from 'react'
 
 //React Router
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 // Translation
 import i18next from 'i18next';
+
 import { useTranslation } from 'react-i18next';
 
 // React Router
