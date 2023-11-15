@@ -173,6 +173,11 @@
     white-space: pre;
 }
 
+.passParent small{
+    color: var(--icon-color);
+    font-weight: bold;
+}
+
 .card-button {
     display: flex;
     justify-content: center;

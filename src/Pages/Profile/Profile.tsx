@@ -27,15 +27,16 @@ const Profile = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [Token] = useState(localStorage.getItem("token"));
+  const [messageError, setMessageError] = useState('');
   const [type, setType] = useState({
     Old_Password: "password",
     New_Password: "password",
     Confirm_Password: "password",
   });
   const [icon, setIcon] = useState({
-    Old_Password: eyeOff,
-    New_Password: eyeOff,
-    Confirm_Password: eyeOff,
+    Old_Password: eye,
+    New_Password: eye,
+    Confirm_Password: eye,
   });
   const { register, handleSubmit } = useForm();
 
@@ -60,14 +61,14 @@ const Profile = () => {
     if (id === "Old_Password") {
       if (type.Old_Password === "password") {
         setIcon((prev) => {
-          return { ...prev, Old_Password: eye };
+          return { ...prev, Old_Password: eyeOff};
         });
         setType((prev) => {
           return { ...prev, Old_Password: "text" };
         });
       } else {
         setIcon((prev) => {
-          return { ...prev, Old_Password: eyeOff };
+          return { ...prev, Old_Password: eye };
         });
         setType((prev) => {
           return { ...prev, Old_Password: "password" };
@@ -77,14 +78,14 @@ const Profile = () => {
     else if (id === "New_Password") {
       if (type.New_Password === "password") {
         setIcon((prev) => {
-          return { ...prev, New_Password: eye };
+          return { ...prev, New_Password: eyeOff };
         });
         setType((prev) => {
           return { ...prev, New_Password: "text" };
         });
       } else {
         setIcon((prev) => {
-          return { ...prev, New_Password: eyeOff };
+          return { ...prev, New_Password: eye };
         });
         setType((prev) => {
           return { ...prev, New_Password: "password" };
@@ -94,14 +95,14 @@ const Profile = () => {
     else {
       if (type.Confirm_Password === "password") {
         setIcon((prev) => {
-          return { ...prev, Confirm_Password: eye };
+          return { ...prev, Confirm_Password: eyeOff };
         });
         setType((prev) => {
           return { ...prev, Confirm_Password: "text" };
         });
       } else {
         setIcon((prev) => {
-          return { ...prev, Confirm_Password: eyeOff };
+          return { ...prev, Confirm_Password: eye };
         });
         setType((prev) => {
           return { ...prev, Confirm_Password: "password" };
@@ -111,7 +112,14 @@ const Profile = () => {
   };
 
   const ChangePassword: SubmitHandler<any> = (data) => {
-     dispatch(ChangeUserPasswordSlice(data));
+    const Data = {
+      NEW_PASSWORD: data.New_Password
+    }
+    if(data.New_Password === data.Confirm_Password){
+      dispatch(ChangeUserPasswordSlice(Data));
+    }else{
+      setMessageError('كلمات المرور غير متطابقة');
+    }
   }
 
   return (
@@ -221,7 +229,7 @@ const Profile = () => {
                               <div className="col-md-10 passParent">
                                 <input id="Old_Password" type={type.Old_Password} className="form-control" placeholder={t("Old_Password")}/>
                                 <span className="passIcon" onClick={() => { handleToggle("Old_Password") }}>
-                                  <Icon className="absolute mr-10" icon={icon.Old_Password} size={25}/>
+                                  <Icon className="absolute mr-10" icon={icon.Old_Password} size={20}/>
                                 </span>
                               </div>
                             </div>
@@ -234,7 +242,7 @@ const Profile = () => {
                               <div className="col-md-10 passParent">
                                 <input {...register("New_Password", { required: true })} name="New_Password" id="New_Password" type={type.New_Password} className="form-control" placeholder={t("New_Password")}/>
                                 <span className="passIcon" onClick={() => { handleToggle("New_Password"); }}>
-                                  <Icon className="absolute mr-10" icon={icon.New_Password} size={25}/>
+                                  <Icon className="absolute mr-10" icon={icon.New_Password} size={20}/>
                                 </span>
                               </div>
                             </div>
@@ -247,10 +255,11 @@ const Profile = () => {
                                 </label>
                               </div>
                               <div className="col-md-10 passParent">
-                                <input id="Confirm_Password" type={type.Confirm_Password} className="form-control" placeholder={t("Confirm_Password")}/>
+                                <input {...register("Confirm_Password", { required: true })} name="Confirm_Password" id="Confirm_Password" type={type.Confirm_Password} className="form-control" placeholder={t("Confirm_Password")}/>
                                 <span className="passIcon" onClick={() => { handleToggle("Confirm_Password");}}>
-                                  <Icon className="absolute mr-10" icon={icon.Confirm_Password} size={25}/>
+                                  <Icon className="absolute mr-10" icon={icon.Confirm_Password} size={20}/>
                                 </span>
+                              <small>{messageError}</small>
                               </div>
                             </div>
                           </div>
