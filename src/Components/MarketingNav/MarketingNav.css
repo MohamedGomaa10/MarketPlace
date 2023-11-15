@@ -21,7 +21,7 @@
 .lang {
     display: flex;
     gap: 5px;
-    justify-content: center;
+    justify-content: flex-start;
     cursor: pointer;
 }
 
@@ -166,12 +166,13 @@
 
 .mobileMenu{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .dropdown-menu {
-    background: #191b3b;
     color: var(--main-color);
+    width: 250px;
+    padding: 10px;
     border: 1px solid var(--main-color);
 }
 

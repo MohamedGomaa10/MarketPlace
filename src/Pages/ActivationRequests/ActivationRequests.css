@@ -97,6 +97,17 @@ html[dir="ltr"] .container_Activation_main {
     cursor: pointer;
 }
 
+.CouponImageNot{
+    display: flex;
+    justify-content: center;
+    margin-top: -185px;
+}
+
+.CouponImageNot img{
+    width: 900px;
+    height: 970px;
+}
+
 .CojectGrid .pagination span {
     font-size: 20px;
 }

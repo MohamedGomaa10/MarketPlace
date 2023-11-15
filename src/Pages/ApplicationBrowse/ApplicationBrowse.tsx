@@ -12,6 +12,10 @@ import { GetAllCategories, SelectCategories } from "../../Services/MasterStore/R
 
 import { GetAllPrdouctsOffer, SelectMarketProgram } from "../../Services/MasterStore/Reducers/MarketProgramSlice";
 
+
+//Image 
+import NoOffers from "../../Assets/Projects/902e4ce2-877b-4460-b90c-63e847996e86.svg";
+
 //css
 import './ApplicationBrowse.css';
 
@@ -104,8 +108,8 @@ const ApplicationBrowse = () => {
                             <button className='Influencer-only'>{t('View stores dedicated to influencers')}</button>
                         </div> */}
                     </div>
-                    <div className='card_section'>
-                        {SearchValue ? SearchValue.map((Data: any, Index: any) => (
+                    {SearchValue ? <div className='card_section'>
+                        {SearchValue && SearchValue.map((Data: any, Index: any) => (
                             <NavLink to={`/browse-application-detail/${Data?.GUID}`} className={'Parent_A'} key={Index}>
                                 <div className='Market_Statues' style={{background: `${Data?.MARKETER_STATUS === 'A' ? 'var(--icon-color)' : Data?.MARKETER_STATUS === 'E' ? '#d9534f' : ''}`}}><h6>{`${Data?.MARKETER_STATUS === 'A' ? t('active') : Data?.MARKETER_STATUS === 'E' ? t('Finished') : ''}`}</h6></div>
                                 <div className='card_content' >
@@ -131,13 +135,12 @@ const ApplicationBrowse = () => {
                                     </div>
                                 </div>
                             </NavLink>
-                        )) : 
-                        <div>
-                          <h3>{t('Subscription_management_main_title')}</h3>
-                          <h5>{t('Subscription_management_sub_title')}</h5>
-                        </div>
+                        ))
                         }
-                    </div>
+                    </div> :
+                    <div className='OfferImageNot'>
+                        <img src={NoOffers} alt='#' />
+                    </div>}   
                 </div>
             </div>
         </React.Fragment>

@@ -129,3 +129,12 @@ html[dir="ltr"] .container_Sales_main {
         padding: 25px !important;
     }
 }
+
+.Bank {
+    display: flex;
+    justify-content: center;
+}
+.Bank img{
+    width: 900px;
+    height: 670px;
+}

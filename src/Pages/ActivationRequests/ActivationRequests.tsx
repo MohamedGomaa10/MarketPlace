@@ -11,6 +11,9 @@ import StaticData from "../../Services/StaticData/statisticsData.json";
 //translation
 import { useTranslation } from 'react-i18next';
 
+//Image 
+import Coupon from "../../Assets/Projects/Coupon.svg";
+
 //css
 import "./ActivationRequests.css";
 
@@ -68,23 +71,23 @@ const ActivationRequests = () => {
     <React.Fragment>
       <div className="container_Activation_main" id="container_main">
         <div className="container_Activation_body">
-             <div className="Content_Body">
-                <h1>{t('Statistics')}</h1>
-                <div className="cards">
-                  {StaticData?.map((Data: any, Index: any) => (
-                    <div className="cardDetails" key={Index}>
-                      <div>
-                        <h3>{t(Data?.name)}</h3>
-                        <h6 style={{ color: Data?.color }}>{Index < SUMMARY_REF?.length ? SUMMARY_REF && SUMMARY_REF.map((Image: any) => ((Image.COUPON_STATE === Data.COUPON_STATE) ? Image?.COUPON_COUNT : '')) : 0}</h6>
-                      </div>
-                      <i className={Data?.icon}></i>
-                    </div>
-                  ))}
-                </div>
-              </div>
           <div className="Content_Body">
+            <h1>{t('Statistics')}</h1>
+            <div className="cards">
+              {StaticData?.map((Data: any, Index: any) => (
+                <div className="cardDetails" key={Index}>
+                  <div>
+                    <h3>{t(Data?.name)}</h3>
+                    <h6 style={{ color: Data?.color }}>{Index < SUMMARY_REF?.length ? SUMMARY_REF && SUMMARY_REF.map((Image: any) => ((Image.COUPON_STATE === Data.COUPON_STATE) ? Image?.COUPON_COUNT : '')) : 0}</h6>
+                  </div>
+                  <i className={Data?.icon}></i>
+                </div>
+              ))}
+            </div>
+          </div>
+           <div className="Content_Body">
             <h1>{t('ActivationRequests')}</h1>
-            <div className="CojectGrid">
+            {SaleTabel.length ? <div className="CojectGrid">
               <table className="table">
                 <thead>
                   <tr>
@@ -117,19 +120,22 @@ const ActivationRequests = () => {
                   </div>
                   <div
                     className="col-md-3"
-                    style={{  display: "flex",justifyContent:'end' }}
+                    style={{ display: "flex", justifyContent: 'end' }}
                   >
-                    <i className="bi bi-arrow-right" onClick={()=>{PreviousPage();}}></i>
+                    <i className="bi bi-arrow-right" onClick={() => { PreviousPage(); }}></i>
                     <div className="pagnationcurrent">
-                      <span>{CurrentPage+1}</span>
+                      <span>{CurrentPage + 1}</span>
                     </div>
                     <span style={{ marginLeft: "6px" }}>/{PageNumber}</span>
-                    <i className="bi bi-arrow-left" onClick={()=>{NextPage();}}></i>
+                    <i className="bi bi-arrow-left" onClick={() => { NextPage(); }}></i>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div>:              
+                    <div className="CouponImageNot">
+                        <img src={Coupon} alt='#' />
+                    </div>}
+          </div> 
         </div>
       </div>
     </React.Fragment>

@@ -151,6 +151,15 @@ hr {
     gap: 7px;
 }
 
+.OfferImageNot{
+    display: flex;
+    justify-content: center;
+}
+
+.OfferImageNot img{
+    width: 900px;
+}
+
 .Cardactions button {
     background: #8295bf1c;
     color: #8396BF !important;

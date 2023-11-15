@@ -169,7 +169,7 @@ const MarketingNav = () => {
                   <NavLink to="/" onClick={handleShow}>
                       <h5 className="dropdownBody">
                       <i className="bi bi-shop-window"></i>
-                        {localStorage.getItem('LANG') === 'en' ? 'Marketing Application' : 'تطبيق التسويق' }</h5>
+                        {localStorage.getItem('LANG') === 'en' ? 'Marketing Application' : 'تطبيق المتجر' }</h5>
                   </NavLink>
                 </li>
               ) : (

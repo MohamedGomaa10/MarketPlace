@@ -11,6 +11,9 @@ import { GetMarketerOperationSlice, SelectMarketProgram } from "../../Services/M
 //translation
 import { useTranslation } from 'react-i18next';
 
+//Image 
+import Bank from "../../Assets/Projects/Bank.svg";
+
 //css
 import "./SalesReports.css";
 
@@ -90,7 +93,7 @@ const SalesReports = () => {
           </div>
           <div className="Content_Body">
             <h1>{t('SalesReports')}</h1>
-            <div className="CojectGrid">
+            {SaleTabel.length ? <div className="CojectGrid">
               <table className="table">
                 <thead>
                   <tr>
@@ -132,7 +135,10 @@ const SalesReports = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> :              
+                    <div className="Bank">
+                        <img src={Bank} alt='#' />
+                    </div>}
           </div>
         </div>
       </div>
