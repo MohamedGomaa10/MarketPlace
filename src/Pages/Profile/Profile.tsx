@@ -217,7 +217,7 @@ const Profile = () => {
                                 </label>
                               </div>
                               <div className="col-md-10">
-                                <input name="User_Name" id="User_Name" type="text" className="form-control" placeholder={t("User_Name")}/>
+                                <input name="User_Name" id="User_Name" type="text" value={localStorage?.UserInfo ? JSON.parse(localStorage?.UserInfo)?.USER_NAME : ''} className="form-control" placeholder={t("User_Name")}/>
                               </div>
                             </div>
                           </div>

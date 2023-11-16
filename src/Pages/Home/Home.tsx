@@ -114,7 +114,6 @@ const CategoryImagesArray: any = [
       {/* First Cards */}
       <section className="cSectionTwo">
         <div className="SectionTwo_container">
-          {/* <div className="row"> */}
           <div className="SectionTwo">
             <div className="row">
               <div className="col-3">
@@ -154,12 +153,11 @@ const CategoryImagesArray: any = [
                 <img src={pic4} className="imghight" alt="#" />
               </div>
               <div className="col-9">
-                <h3>{userProductOne && userProductOne.length + ' +'}</h3>
+                <h3>{userProductOne ? userProductOne.length + ' +' : ''}</h3>
                 <p>{t(`Install`)}</p>
               </div>
             </div>
           </div>
-          {/* </div> */}
         </div>
       </section>
 
