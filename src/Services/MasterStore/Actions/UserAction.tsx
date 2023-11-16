@@ -77,7 +77,12 @@ export interface ChangeUserPasswordInterface {
 
 const baseUrl = 'https://dev.aait.com.sa/CojectAuth';
 
+const headers = {
+    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+    'Content-Type': 'application/json'
+  };
+
 export const ChangeUserPasswordAction = async ( Payload: ChangeUserPasswordInterface ) => {
-    const response = await axios.post( baseUrl + '/Security/ChangePassword', Payload );
+    const response = await axios.post( baseUrl + '/Security/ChangePassword', Payload, {headers} );
     return response.data;
 }

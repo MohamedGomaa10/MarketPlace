@@ -161,9 +161,6 @@ const MarketingNav = () => {
                     </h5>
                 </div>
               </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
               {Token ? (
                 <li className="mobileMenu">
                   <NavLink to="/" onClick={handleShow}>
