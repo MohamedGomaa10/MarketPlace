@@ -178,6 +178,16 @@
     font-weight: bold;
 }
 
+.publicProfileForm button{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.authentication button{
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .card-button {
     display: flex;
     justify-content: center;
