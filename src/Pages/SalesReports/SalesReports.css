@@ -55,6 +55,7 @@ html[dir="ltr"] .container_Sales_main {
     display: grid;
     gap: 13px;
     grid-template-columns: repeat(4, 1fr);
+    display: none;
 }
 
 .CojectGrid .table {

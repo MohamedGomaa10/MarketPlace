@@ -73,7 +73,8 @@
 }
 
 .ImageUserHeader h4{
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 17px;
 }
 
 @media(max-width: 700px) {
